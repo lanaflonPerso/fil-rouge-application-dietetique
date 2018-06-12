@@ -1,6 +1,6 @@
-import { NavItems } from './nav-items';
+import { NavItem } from './nav-items';
 
-const NAV_ITEMS_DATA: NavItems[] =
+const NAV_ITEMS_DATA: NavItem[] =
 [
     {
         id: 'home',

@@ -1,4 +1,4 @@
-export interface NavItems {
+export interface NavItem {
     // identifiant manipulé dans le code
     id: string;
     // attribut de la balise <a> pour l'afficher en survol

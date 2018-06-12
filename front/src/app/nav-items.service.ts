@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NavItems } from './nav-items';
+import { NavItem } from './nav-items';
 import NAV_ITEMS_DATA from './nav-items-data';
 
 @Injectable({
@@ -7,9 +7,11 @@ import NAV_ITEMS_DATA from './nav-items-data';
 })
 export class NavItemsService {
 
-  listNavItems: NavItems[] = NAV_ITEMS_DATA;
+  listNavItems: NavItem[] = NAV_ITEMS_DATA;
+  selectedNavItem: NavItem = NAV_ITEMS_DATA[0];
 
   constructor() {
-    console.log('coucou');
   }
+
+
 }
