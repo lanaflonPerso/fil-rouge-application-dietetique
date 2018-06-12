@@ -7,7 +7,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Page d\'accueil',
         anchor: 'Page d\'accueil',
         link: '/',
-        picto: '#',
+        picto: 'home',
         position: 'header'
     },
     {
@@ -15,7 +15,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Aliments',
         anchor: 'Aliments',
         link: '/aliment',
-        picto: '#',
+        picto: 'spa',
         position: 'header'
     },
     {
@@ -23,7 +23,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Recettes',
         anchor: 'Recettes',
         link: '/recipe',
-        picto: '#',
+        picto: 'view_list',
         position: 'header'
     },
     {
@@ -31,7 +31,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Repas',
         anchor: 'Repas',
         link: '/meal',
-        picto: '#',
+        picto: 'restaurant',
         position: 'header'
     },
     {
@@ -39,7 +39,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Statistiques',
         anchor: 'Statistiques',
         link: '/dashboard',
-        picto: '#',
+        picto: 'trending_down',
         position: 'header'
     },
     {
@@ -47,7 +47,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Profil',
         anchor: 'Profil',
         link: '#',
-        picto: '#',
+        picto: 'person',
         position: 'header'
     },
     {
@@ -55,7 +55,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         title: 'Contact',
         anchor: 'Contact',
         link: '#',
-        picto: '#',
+        picto: '',
         position: 'footer'
     },
     {
