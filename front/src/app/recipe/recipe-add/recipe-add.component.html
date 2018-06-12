@@ -1,27 +1,45 @@
-<div class="row">
-  <div class="col">
-  <form class="example-form">
-      <fieldset>
-          <legend>Ma recette</legend>  
-          <div class="recipeNameAndPhoto">
-            <mat-label>Nom :</mat-label>
-            <mat-form-field class="example-full-width">         
-              <input matInput placeholder="nom de l'aliment (ex : sushi)" value="{{getRecipe().name}}" #name>
-            </mat-form-field>
-                
-            <input  class="ng-hide" id="photo" multiple type="file" #photo/>
-            <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
-          </div>
-          <div  class="recipeNameAndPhoto">
-          <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
-          </div>
-      </fieldset>
-      <fieldset>
-          <legend>Composition</legend>
+<div>
+    <form class="example-form">
+        <fieldset>
+            <legend>Ma recette</legend>  
+            <div class="recipeNameAndPhoto">
+              <mat-label>Nom :</mat-label>
+              <mat-form-field class="example-full-width">         
+                <input matInput placeholder="nom de l'aliment (ex : sushi)" value="{{getRecipe().name}}" #name>
+              </mat-form-field>
+                  
+              <input  class="ng-hide" id="photo" multiple type="file" #photo/>
+              <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
+            </div>
+            <div  class="recipeNameAndPhoto">
+            <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
+            </div>
         </fieldset>
-    </form>
-  </div>
-  <div class="col">
-
-  </div>
+        <fieldset>
+            <legend>Composition</legend>
+          </fieldset>
+      </form>
 </div>
+
+<div class="container">
+    <div class="row">
+      <div class="col">
+        1 of 2
+      </div>
+      <div class="col">
+        2 of 2
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        1 of 3
+      </div>
+      <div class="col">
+        2 of 3
+      </div>
+      <div class="col">
+        3 of 3
+      </div>
+    </div>
+  </div>
+  
