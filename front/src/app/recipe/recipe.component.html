@@ -1,0 +1,48 @@
+<div id="recipe">
+  <h2>Vos recettes</h2>
+
+  <div id="search">
+    <form>
+      <fieldset>
+        <legend>Chercher une recette :</legend>
+        <mat-form-field appearance="legacy">
+            <mat-label>Recipe search</mat-label>
+            <input matInput placeholder="Chercher une recette" (input)="filter(search.value)" #search>
+            <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+      </fieldset>
+    </form>
+  </div>
+
+  <p>
+    <a routerLink="/recipe/add"><mat-icon>add_box</mat-icon></a>
+  </p>
+
+  <div id="recipeList">
+    <mat-grid-list cols="3" rowHeight="50px;" class="">
+      
+      <mat-grid-tile class="grid-item header">Name</mat-grid-tile>
+      <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
+      <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
+      
+      <ng-container *ngFor="let recipe of filteredRecipes">
+        <mat-grid-tile class="grid-item"> {{recipe.name}}</mat-grid-tile>
+        <mat-grid-tile class="grid-item"><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></mat-grid-tile>
+
+        <mat-grid-tile class="grid-item">
+          <a routerLink="/recipe"><mat-icon>list</mat-icon></a>
+          -
+          <a routerLink="/recipe/{{recipe.id}}"><mat-icon>edit</mat-icon></a>
+          - 
+          <a routerLink="/recipe/delete/{{recipe.id}}"> <mat-icon>delete</mat-icon></a>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list> 
+    <mat-list>
+        <mat-list-item *ngFor="let recipe of recipes">
+                
+        </mat-list-item>
+      </mat-list>
+
+  </div>
+</div>
