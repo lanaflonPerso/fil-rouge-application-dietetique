@@ -4,6 +4,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
+import { AlimentsComponent } from './aliments/aliments.component';
+import { AlimentComponent } from './aliment/aliment.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule,
@@ -30,7 +32,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 
-
 const routes: Routes = [
   { path: '', component: RecipeComponent },
   { path: 'recipe', component: RecipeComponent },
@@ -44,7 +45,9 @@ const routes: Routes = [
     FooterComponent,
     BodyComponent,
     RecipeComponent,
-    RecipeAddComponent
+    RecipeAddComponent,
+    AlimentsComponent,
+    AlimentComponent
   ],
   imports: [
     BrowserModule,
