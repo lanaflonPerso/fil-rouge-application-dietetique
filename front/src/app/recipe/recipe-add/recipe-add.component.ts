@@ -1,5 +1,8 @@
+import { AlimentService } from './../../aliment.service';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/recipe';
+import { RecipeService } from '../../recipe.service';
+import { Aliment } from '../../models/aliment';
 
 @Component({
   selector: 'app-recipe-add',
@@ -10,9 +13,13 @@ export class RecipeAddComponent implements OnInit {
 
   recipe: Recipe;
 
-  constructor() {
-    // tslint:disable-next-line:max-line-length
-    this.recipe = new Recipe(1, 'sauce poivre', 'https://www.academiedugout.fr/images/41981/948-580/9151-sauce-au-poivre.jpg?poix=50&poiy=50');
+  aliments: Aliment[] = [];
+  filteredAliments: Aliment[] = [];
+
+  constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
+   this.recipe = this.recipeService.getRecipes()[0];
+   this.aliments = this.alimentService.getAliments();
+   this.filteredAliments = this.aliments;
   }
 
   ngOnInit() {
@@ -22,9 +29,11 @@ export class RecipeAddComponent implements OnInit {
     return this.recipe;
   }
 
-  getComposition() {
-    // tslint:disable-next-line:max-line-length
-
+  filterAliments(searchText) {
+    this.filteredAliments = this.aliments;
+    if (searchText !== '' ) {
+      this.filteredAliments = this.aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
+    }
   }
 
 }
