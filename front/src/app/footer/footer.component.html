@@ -1,3 +1,6 @@
-<p>
-  footer works!
-</p>
+<mat-toolbar [color]="'white'" fxLayout="row" fxLayoutAlign="space-around center">
+    <span *ngFor="let navItem of navItemsService.getListNavItems('footer')" [style.color]="navItemsService.selectedNavItem == navItem ? 'pink' : 'blue'"
+      (click)="navItemsService.selectNavItem(navItem)">
+      {{navItem.anchor}}
+    </span>
+  </mat-toolbar>
