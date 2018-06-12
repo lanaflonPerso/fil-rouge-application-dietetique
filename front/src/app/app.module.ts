@@ -28,13 +28,13 @@ import { RecipeService } from './recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './nav-items.service';
+import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
+
 
 const routes: Routes = [
   { path: '', component: RecipeComponent },
   { path: 'recipe', component: RecipeComponent },
-  { path: 'recipe/:id', component: RecipeComponent },
-  { path: 'recipe/delete/:id', component: RecipeComponent },
-
+  { path: 'recipe/add', component: RecipeAddComponent}
 ];
 
 @NgModule({
@@ -43,7 +43,8 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
     BodyComponent,
-    RecipeComponent
+    RecipeComponent,
+    RecipeAddComponent
   ],
   imports: [
     BrowserModule,
