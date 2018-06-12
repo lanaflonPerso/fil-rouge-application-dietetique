@@ -33,8 +33,9 @@ import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 
 const routes: Routes = [
   { path: '', component: RecipeComponent },
+  { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
-  { path: 'recipe/add', component: RecipeAddComponent}
+  { path: 'recipe/add', component: RecipeAddComponent},
 ];
 
 @NgModule({
