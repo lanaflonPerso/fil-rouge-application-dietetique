@@ -30,7 +30,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 
-
 const routes: Routes = [
   { path: '', component: RecipeComponent },
   { path: 'recipe', component: RecipeComponent },
