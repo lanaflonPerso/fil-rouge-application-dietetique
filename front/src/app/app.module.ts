@@ -22,8 +22,11 @@ import { MatIconModule,
   MatGridListModule,
   MatGridTile
 } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RecipeService } from './recipe.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { NavItemsService } from './nav-items.service';
+
 
 @NgModule({
   declarations: [
@@ -49,11 +52,14 @@ import { RecipeService } from './recipe.service';
     MatTableModule,
     MatButtonModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    FlexLayoutModule
   ],
   providers: [
-    RecipeService
-  ],
+    RecipeService,
+    NavItemsService
+  ]
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }
