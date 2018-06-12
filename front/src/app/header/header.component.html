@@ -1,4 +1,5 @@
-<p>
-  Turbo-Xav is the Angular King!
-  And he's happy
-</p>
+<mat-toolbar [color]="'primary'" fxLayout="row" fxLayoutAlign="space-around center">
+  <span *ngFor="let item of navItemsService.getListNavItems('header')" [style.color]="navItemsService.selectedNavItem == item ? 'pink' : 'white'"
+    (click)="navItemsService.selectNavItem(item)"> {{item.anchor}}
+  </span>
+</mat-toolbar>
