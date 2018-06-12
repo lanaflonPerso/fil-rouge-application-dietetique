@@ -6,7 +6,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         id: 'home',
         title: 'Page d\'accueil',
         anchor: 'Page d\'accueil',
-        link: '#',
+        link: '/',
         picto: 'home',
         position: 'header'
     },
@@ -14,7 +14,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         id: 'aliments',
         title: 'Aliments',
         anchor: 'Aliments',
-        link: '#',
+        link: '/aliment',
         picto: 'spa',
         position: 'header'
     },
@@ -22,7 +22,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         id: 'recettes',
         title: 'Recettes',
         anchor: 'Recettes',
-        link: '#',
+        link: '/recipe',
         picto: 'view_list',
         position: 'header'
     },
@@ -30,7 +30,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         id: 'repas',
         title: 'Repas',
         anchor: 'Repas',
-        link: '#',
+        link: '/meal',
         picto: 'restaurant',
         position: 'header'
     },
@@ -38,7 +38,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         id: 'stats',
         title: 'Statistiques',
         anchor: 'Statistiques',
-        link: '#',
+        link: '/dashboard',
         picto: 'trending_down',
         position: 'header'
     },
