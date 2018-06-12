@@ -28,9 +28,11 @@
         <mat-grid-tile class="grid-item"><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></mat-grid-tile>
 
         <mat-grid-tile class="grid-item">
-          <mat-icon>edit</mat-icon>
+          <a routerLink="/recipe"><mat-icon>list</mat-icon></a>
+          -
+          <a routerLink="/recipe/{{recipe.id}}"><mat-icon>edit</mat-icon></a>
           - 
-          <mat-icon>delete</mat-icon>
+          <a routerLink="/recipe/delete/{{recipe.id}}"> <mat-icon>delete</mat-icon></a>
         </mat-grid-tile>
       </ng-container>
     </mat-grid-list> 
