@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { BodyComponent } from './body/body.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavItemsService } from './nav-items.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [NavItemsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

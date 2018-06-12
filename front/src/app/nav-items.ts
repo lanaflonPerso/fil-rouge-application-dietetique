@@ -1,8 +1,14 @@
 export interface NavItems {
+    // identifiant manipulé dans le code
     id: string;
-    label: string;
+    // attribut de la balise <a> pour l'afficher en survol
     title: string;
-    content: string;
-    picture: string;
+    // texte du lien cliquable
+    anchor: string;
+    // lien sur lequel on pointe
+    link: string;
+    // chemin de l'icône
+    picto: string;
+    // position de l'item de navigation
     position: string;
 }

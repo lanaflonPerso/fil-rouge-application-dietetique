@@ -1,3 +1,4 @@
+import { NavItemsService } from './../nav-items.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public navItemsService: NavItemsService) { }
 
   ngOnInit() {
   }
