@@ -25,7 +25,7 @@ export class RecipeComponent implements OnInit {
   filter(searchText: string) {
     this.filteredRecipes = this.recipes;
     if (searchText !== '' ) {
-      this.filteredRecipes = this.recipes.filter(myRecipe => myRecipe.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
+      this.filteredRecipes = this.recipes.filter(recipe => recipe.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
     }
   }
 
