@@ -1,10 +1,10 @@
-import { Aliment } from './aliment';
+import { Ingredient } from './ingredient';
 
 export class Recipe {
     id: number;
     name: String;
     visual: String;
-    aliments: Aliment[] = [];
+    ingredients: Ingredient[] = [];
 
     constructor(id: number, name: String, visual: String) {
         this.id = id;
@@ -12,11 +12,11 @@ export class Recipe {
         this.visual = visual;
     }
 
-    public addAliments(aliment: Aliment) {
-        this.aliments.push(aliment);
+    public addIngredient(ingredient: Ingredient) {
+        this.ingredients.push(ingredient);
     }
 
-    public getAliments() {
-        return this.aliments;
+    public getIngredients() {
+        return this.ingredients;
     }
 }
