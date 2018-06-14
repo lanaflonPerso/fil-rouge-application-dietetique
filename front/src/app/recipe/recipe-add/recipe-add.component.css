@@ -16,3 +16,13 @@
   .ng-hide{
     display:none;
   }
+
+  .quantity{
+    width:25px;
+  }
+
+  .label{
+    width:120px;
+    display:block;
+    float:left;
+  }
