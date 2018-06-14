@@ -8,31 +8,30 @@ import LIST_ALIMENTS from './liste-aliments';
 export class AlimentService {
 
   aliments: Aliment[] = [];
-  aliment;
+  aliment: Aliment = null;
 
   constructor() {
 
-    this.aliment = LIST_ALIMENTS.aliment;
+    const aliments = LIST_ALIMENTS.aliment;
 
-    // tslint:disable-next-line:max-line-length
-    const saucisse = new Aliment(1, 'saucisse', 'https://images.marmitoncdn.org/pixcontent/bf2efd42-ffbc-4c4d-b7c7-637a1c67adcb/6d8a4455-566c-48ed-8aef-0fe77a8bb89b/manger_une_saucisse_1_398.jpg', 2, 3, 4, 5);
-    const frite =  new Aliment(2, 'frite', 'http://cache.marieclaire.fr/data/photo/w850_c17/cuisine/41/fritemanioc2.jpg', 20, 30, 40, 50);
-    this.aliments.push(saucisse, frite);
+    for (let i = 0; i < aliments.length ; i++) {
+      const alim = aliments[i];
+      // tslint:disable-next-line:max-line-length
+      this.aliments.push(new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
+    }
+
   }
 
   public getAliments() {
-    // return this.aliments;
-    return this.aliment;
+    return this.aliments;
+
   }
 
   public getAliment(iReal: string) {
-    // console.log('iReal searched: ' + iReal + ' ' + typeof(iReal));
+    console.log('iReal searched: ' + iReal + ' ' + typeof(iReal));
 
-    const real = this.aliment.filter((elt) => elt.nameUrl === iReal);
-
-    // console.log('Real = ' + real.name);
-    // console.log('Real 0 : ' + real[0].name);
-
+    const real = this.aliments.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
+    console.log(real);
     return real[0];
   }
 }

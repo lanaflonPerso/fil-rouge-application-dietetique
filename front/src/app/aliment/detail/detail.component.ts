@@ -18,10 +18,11 @@ export class DetailComponent implements OnInit {
     this.route.params.subscribe
     (
         params => {
-                      // console.log(params);
+                      console.log(params);
                       const name: string = params.nomAliment;
                       const realTmp = this.alimentService.getAliment(name.valueOf());
                       this.aliment = realTmp;
+
       });
       // console.log('hors subscribe');
   }

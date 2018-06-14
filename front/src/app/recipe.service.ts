@@ -3,6 +3,7 @@ import { Aliment } from './models/aliment';
 import { Injectable } from '@angular/core';
 import { Recipe } from './models/recipe';
 import { Ingredient } from './models/ingredient';
+import LIST_ALIMENTS from './liste-aliments';
 
 @Injectable({
   providedIn: 'root'
@@ -14,20 +15,26 @@ export class RecipeService {
   recipe: Recipe = null;
 
   constructor() {
+
     // tslint:disable-next-line:max-line-length
     const recipe0 = new Recipe(1, 'Saucisse frites', 'https://eurekasante.vidal.fr/files/content/images/vidal/nutrition/saucisses_frites.jpg');
     // tslint:disable-next-line:max-line-length
     const recipe1 = new Recipe(2, 'Kebab Salade Tomate Oignon', 'http://static.750g.com/images/600-600/147beccae9b55ec2d9eb09e08788bffa/kebab.png');
     const recipe2  = new Recipe(3, 'Mac Bacon', 'https://i.ytimg.com/vi/bje8LEdJKco/maxresdefault.jpg');
 
-    // tslint:disable-next-line:max-line-length
-    const saucisse = new Aliment(1, 'saucisse', 'https://images.marmitoncdn.org/pixcontent/bf2efd42-ffbc-4c4d-b7c7-637a1c67adcb/6d8a4455-566c-48ed-8aef-0fe77a8bb89b/manger_une_saucisse_1_398.jpg', 2, 3, 4, 5);
-    const saucisseIng = new Ingredient(1, 3, saucisse);
-    recipe0.addIngredient(saucisseIng);
 
-    const frite =  new Aliment(2, 'frite', 'http://cache.marieclaire.fr/data/photo/w850_c17/cuisine/41/fritemanioc2.jpg', 20, 30, 40, 50);
-    const friteIng = new Ingredient(2, 4, frite);
-    //recipe0.addIngredient(friteIng);
+    const alims = LIST_ALIMENTS.aliment;
+    const aliments: Aliment[] = [];
+    for (let i = 0; i < alims.length ; i++) {
+      const alim = alims[i];
+      // tslint:disable-next-line:max-line-length
+      aliments.push(new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
+    }
+
+    const saucisseIng = new Ingredient(1, 3, aliments[3]);
+    recipe0.addIngredient(saucisseIng);
+    const friteIng = new Ingredient(2, 4, aliments[4]);
+    recipe0.addIngredient(friteIng);
 
     this.recipes.push(recipe0);
     this.recipes.push(recipe1);

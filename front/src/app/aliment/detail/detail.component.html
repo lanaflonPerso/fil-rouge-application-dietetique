@@ -2,7 +2,7 @@
   <li class="breadcrumb-item"><a href="/">Accueil</a></li>
   <!-- <li class="breadcrumb-item"><a href="/{{aliment.categorie}}">{{aliment.categorie | titlecase}}</a></li> -->
   <!-- <li class="breadcrumb-item"><a href="/{{aliment.categorie.nameUrl}}">{{aliment.categorie.name}}</a></li> -->
-  <li class="breadcrumb-item active">{{aliment.categorie.name}}</li>
+  <!--<li class="breadcrumb-item active">{{aliment.categorie.name}}</li>-->
   <li class="breadcrumb-item active">{{aliment.name}}</li>
 </ol>
 
@@ -21,7 +21,7 @@
 
 <div class="row">
         <div class="col-lg-4">
-          <img class="img-thumbnail" src="{{aliment.image}}" alt="">
+          <img class="img-thumbnail" src="{{aliment.visual}}" alt="">
         </div>  
         <div class="col-lg-8">{{aliment.description}}</div>
 </div>
@@ -46,10 +46,10 @@
     </thead>
     <tbody>
       <tr class="center">
-        <td>{{aliment.proteines}}</td>                    
-        <td>{{aliment.glucides}}</td>
-        <td>{{aliment.lipides}}</td>
-        <td>{{aliment.fibres}}</td>
+        <td>{{aliment.protein}}</td>                    
+        <td>{{aliment.glucid}}</td>
+        <td>{{aliment.lipid}}</td>
+        <td>{{aliment.fiber}}</td>
         <td>{{aliment.ig}}</td>
         <td>206</td>
         <td>207</td>
