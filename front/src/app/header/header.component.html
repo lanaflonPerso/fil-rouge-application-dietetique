@@ -1,8 +1,10 @@
-<mat-toolbar [color]="'white'" fxLayout="row" fxLayoutAlign="space-around center">
-  <span *ngFor="let navItem of navItemsService.getListNavItems('header')" 
-    (click)="navItemsService.selectNavItem(navItem)">
-    <a title="{{navItem.title}}" routerLink="{{navItem.link}}">
-      <mat-icon>{{navItem.picto}}</mat-icon>
-    </a>
-  </span>
-</mat-toolbar>
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color: #dbeff0;">
+  <div class="container">
+
+    <span *ngFor="let navItem of navItemsService.getListNavItems('header')" (click)="navItemsService.selectNavItem(navItem)">
+      <a title="{{navItem.title}}" routerLink="{{navItem.link}}">
+        <mat-icon>{{navItem.picto}}</mat-icon>
+      </a>
+    </span>
+  </div>
+</nav>
