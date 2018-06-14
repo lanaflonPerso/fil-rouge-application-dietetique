@@ -1,6 +1,7 @@
 import { Aliment } from './models/aliment';
 import { Injectable } from '@angular/core';
 import { Recipe } from './models/recipe';
+import { Ingredient } from './models/ingredient';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +19,12 @@ export class RecipeService {
 
     // tslint:disable-next-line:max-line-length
     const saucisse = new Aliment(1, 'saucisse', 'https://images.marmitoncdn.org/pixcontent/bf2efd42-ffbc-4c4d-b7c7-637a1c67adcb/6d8a4455-566c-48ed-8aef-0fe77a8bb89b/manger_une_saucisse_1_398.jpg', 2, 3, 4);
-    recipe0.addAliments(saucisse);
+    const saucisseIng = new Ingredient(1, 3, saucisse);
+    recipe0.addIngredient(saucisseIng);
+
     const frite =  new Aliment(2, 'frite', 'http://cache.marieclaire.fr/data/photo/w850_c17/cuisine/41/fritemanioc2.jpg', 20, 30, 40);
-    recipe0.addAliments(frite);
+    const friteIng = new Ingredient(2, 4, frite);
+    recipe0.addIngredient(friteIng);
 
     this.recipes.push(recipe0);
     this.recipes.push(recipe1);

@@ -19,7 +19,10 @@
       <fieldset>
           <legend>Composition</legend>
           <ul>
-              <li *ngFor="let aliment of getRecipe().aliments">{{aliment.name}} - <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" /></li>
+              <li *ngFor="let ingredient of getRecipe().getIngredients()">
+                {{ingredient.getAliment().name}} - {{ingredient.quantity}}
+                <img src="{{ingredient.getAliment().visual}}" alt="photo de {{ingredient.getAliment().name}}" width="100" height="100" />
+              </li>
           </ul>
       </fieldset>
       <fieldset>
