@@ -17,16 +17,17 @@ export class RecipeAddComponent implements OnInit {
   filteredAliments: Aliment[] = [];
 
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
-   this.recipe = this.recipeService.getRecipes()[0];
-   this.aliments = this.alimentService.getAliments();
-   this.filteredAliments = this.aliments;
+
   }
 
   ngOnInit() {
+    this.recipe = this.recipeService.getRecipe();
+    this.aliments = this.alimentService.getAliments();
+    this.filteredAliments = this.aliments;
   }
 
-  getRecipe() {
-    return this.recipe;
+  getRecipe(): Recipe {
+    return this.recipeService.getRecipe();
   }
 
   filterAliments(searchText) {
@@ -36,4 +37,12 @@ export class RecipeAddComponent implements OnInit {
     }
   }
 
+
+  addAlimentToRecipe(aliment: Aliment) {
+    this.recipeService.addAlimentToRecipe(aliment, 1);
+  }
+
+  removeAlimentFromRecipe(aliment: Aliment) {
+    this.recipeService.removeAlimentFromRecipe(aliment, 1);
+  }
 }

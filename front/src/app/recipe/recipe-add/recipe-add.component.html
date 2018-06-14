@@ -1,58 +1,75 @@
-<div class="row">
-  <div class="col-4">
-    <form class="example-form">
-      <fieldset>
-          <legend>Ma recette</legend>  
-          <div class="recipeNameAndPhoto">
-            <mat-label>Nom :</mat-label>
-            <mat-form-field class="example-full-width">         
-              <input matInput placeholder="nom de l'aliment (ex : sushi)" value="{{getRecipe().name}}" #name>
-            </mat-form-field>
+<div class="container">
+    <div class="row">
+      <div class="col-8">
+          <div>
+              <form class="example-form" >
+                  <div class="border">
+                    <fieldset>
+                        <legend>Ma recette</legend>  
+                        <div class="recipeNameAndPhoto">
+                          <mat-label>Nom :</mat-label>
+                          <mat-form-field class="example-full-width">         
+                            <input matInput placeholder="nom de l'aliment (ex : sushi)" value="{{getRecipe().name}}" #name>
+                          </mat-form-field>
+                              
+                          <input  class="ng-hide" id="photo" multiple type="file" #photo/>
+                          <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
+                        </div>
+                        <div  class="recipeNameAndPhoto">
+                        <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Composition</legend>
+                        <div *ngFor="let ingredient of getRecipe().getIngredients()">
+          
+                          <mat-label class="label">{{ingredient.getAliment().name}} :</mat-label> - 
+                          <img src="{{ingredient.getAliment().visual}}" alt="photo de {{ingredient.getAliment().name}}" width="100" height="100" />
+                          
+                          <mat-form-field class="quantity">         
+                            <input matInput  value="{{ingredient.quantity}}" />
+                          </mat-form-field>
+              
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend>Que faire ?</legend>
+                      <mat-label>Sauver votre recette :</mat-label>
+                      <input type="button" name="ok" value="enregistrer" class="btn btn-primary" />
+                    </fieldset>
+                  </div>
+                </form>      
+              </div>
+      </div>
+      <div class="col-4">
+          <div class="col-4 " class="border">
+              Rechercher des aliments
+              <div id="search" >
+                  
+                <form class="example-form" >
+                  <fieldset>
+                    <legend>Chercher une recette :</legend>
+                    <mat-form-field appearance="legacy">
+                        <mat-label>Recipe search</mat-label>
+                        <input matInput placeholder="Chercher un aliment" (input)="filterAliments(search.value)" #search>
+                        <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                  </fieldset>
+                </form>
+
+                <div *ngFor="let aliment of filteredAliments">
+                      
+                  <mat-label class="label">{{aliment.name}} :</mat-label>
+                  <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
                 
-            <input  class="ng-hide" id="photo" multiple type="file" #photo/>
-            <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
-          </div>
-          <div  class="recipeNameAndPhoto">
-          <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
-          </div>
-      </fieldset>
-      <fieldset>
-          <legend>Composition</legend>
-          <ul>
-              <li *ngFor="let ingredient of getRecipe().getIngredients()">
-                {{ingredient.getAliment().name}} - {{ingredient.quantity}}
-                <img src="{{ingredient.getAliment().visual}}" alt="photo de {{ingredient.getAliment().name}}" width="100" height="100" />
-              </li>
-          </ul>
-      </fieldset>
-      <fieldset>
-          <legend>Que faire ?</legend>
-        <mat-label>Sauver votre recette :</mat-label>
-        <input type="button" name="ok" value="enregistrer" class="btn btn-primary" />
-    </fieldset>
-    </form>
+                  <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
+                  <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
+                
+                </div> 
+              </div>
+      </div>
+    </div>
   </div>
-  <div class="col-4">
-    <p>Vous pouvez glisser déposer vos aliments dans la recette.<br />Allez-y c'est facile :)</p>
-  </div>
-  <div class="col-4">
-  Rechercher des aliments
-  <div id="search">
-      <form>
-        <fieldset>
-          <legend>Chercher une recette :</legend>
-          <mat-form-field appearance="legacy">
-              <mat-label>Recipe search</mat-label>
-              <input matInput placeholder="Chercher un aliment" (input)="filterAliments(search.value)" #search>
-              <mat-icon matSuffix>search</mat-icon>
-              </mat-form-field>
-        </fieldset>
-      </form>
-      <ul>
-          <li *ngFor="let aliment of filteredAliments">{{aliment.name}} - <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" /></li>
-      </ul>
-    </div> 
-  </div>
-</div>
+
 
   
