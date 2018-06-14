@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlimentService } from '../aliment.service';
 
 @Component({
   selector: 'app-aliment',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlimentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private alimentService: AlimentService) { }
 
   ngOnInit() {
   }
 
+  public getAliments() {
+    return  this.alimentService.getAliments();
+  }
 }
