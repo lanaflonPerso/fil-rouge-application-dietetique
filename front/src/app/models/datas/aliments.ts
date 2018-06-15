@@ -4,7 +4,7 @@ const LIST_ALIMENTS = {
         id: 1,
         name: 'Ananas',
         nameUrl: 'ananas',
-        categorie: {id: 1, name : 'Fruits'},
+        category: {id: 1, name : 'Fruits'},
         // tslint:disable-next-line:max-line-length
         visual: 'https://img-3.journaldesfemmes.com/xm8YBwXp2VBkE1oju46O2bgpBkA=/910x607/smart/6c9089cb6e3d4aaf9380a549234d0bf7/ccmcms-jdf/10662303.jpg',
         // tslint:disable-next-line:max-line-length
@@ -19,7 +19,7 @@ const LIST_ALIMENTS = {
         id: 2,
         name: 'Poivron',
         nameUrl: 'poivron',
-        categorie: {id: 2, name : 'Legumes'},
+        category: {id: 2, name : 'Legumes'},
         // tslint:disable-next-line:max-line-length
         visual: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Capsicum_annuum_fruits_IMGP0049.jpg/1200px-Capsicum_annuum_fruits_IMGP0049.jpg',
         // tslint:disable-next-line:max-line-length
@@ -34,7 +34,7 @@ const LIST_ALIMENTS = {
         id: 3,
         name: 'Poire',
         nameUrl: 'poire',
-        categorie: {id: 1, name : 'Fruits'},
+        category: {id: 1, name : 'Fruits'},
         // tslint:disable-next-line:max-line-length
         visual: 'http://www.sepal.fr/wp-content/uploads/2016/10/Poires-02-copie.jpg',
         // tslint:disable-next-line:max-line-length
@@ -47,7 +47,7 @@ const LIST_ALIMENTS = {
       },
       { id: 4,
         name: 'Saucisse',
-        categorie: {id: 3, name : 'Charcuterie'},
+        category: {id: 3, name : 'Charcuterie'},
         // tslint:disable-next-line:max-line-length
         visual: 'https://images.marmitoncdn.org/pixcontent/bf2efd42-ffbc-4c4d-b7c7-637a1c67adcb/6d8a4455-566c-48ed-8aef-0fe77a8bb89b/manger_une_saucisse_1_398.jpg',
         // tslint:disable-next-line:max-line-length
@@ -61,7 +61,7 @@ const LIST_ALIMENTS = {
       {
         id: 5,
         name: 'Frite',
-        categorie: {id: 4, name : 'Patatas'},
+        category: {id: 4, name : 'Patatas'},
         // tslint:disable-next-line:max-line-length
         visual: 'http://cache.marieclaire.fr/data/photo/w850_c17/cuisine/41/fritemanioc2.jpg',
         // tslint:disable-next-line:max-line-length

@@ -19,14 +19,16 @@
 </p>
 
 <div id="recipeList">
-  <mat-grid-list cols="3" rowHeight="50px;" class="">
+  <mat-grid-list cols="4" rowHeight="50px;" class="">
     
     <mat-grid-tile class="grid-item header">Nom</mat-grid-tile>
+    <mat-grid-tile class="grid-item header">Catégorie</mat-grid-tile>
     <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
     <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
     
     <ng-container *ngFor="let aliment of getFileteredAliments()">
       <mat-grid-tile class="grid-item"> {{aliment.name}}</mat-grid-tile>
+      <mat-grid-tile class="grid-item"> {{aliment.category.name}}</mat-grid-tile>
       <mat-grid-tile class="grid-item"><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></mat-grid-tile>
 
       <mat-grid-tile class="grid-item">
