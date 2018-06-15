@@ -7,6 +7,10 @@ nav.navbar{
     background-color: #9de9a9;
 }
 
+header {
+    margin-bottom: 20px;
+}
+
 footer {
     margin-top: 50px;
 }
