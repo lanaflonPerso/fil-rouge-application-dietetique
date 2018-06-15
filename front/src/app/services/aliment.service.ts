@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Aliment } from './models/aliment';
-import LIST_ALIMENTS from './liste-aliments';
+import { Aliment } from '../models/business/aliment';
+import LIST_ALIMENTS from '../models/datas/aliments';
 
 @Injectable({
   providedIn: 'root'

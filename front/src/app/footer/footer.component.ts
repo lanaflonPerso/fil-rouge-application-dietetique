@@ -1,5 +1,5 @@
-import { NavItemsService } from './../nav-items.service';
 import { Component, OnInit } from '@angular/core';
+import { NavItemsService } from '../services/nav-items.service';
 
 @Component({
   selector: 'app-footer',

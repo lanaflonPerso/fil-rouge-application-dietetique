@@ -1,9 +1,10 @@
-import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
-import { Aliment } from './models/aliment';
+import { RecipeAddComponent } from '../recipe/recipe-add/recipe-add.component';
+import { Aliment } from '../models/business/aliment';
 import { Injectable } from '@angular/core';
-import { Recipe } from './models/recipe';
-import { Ingredient } from './models/ingredient';
-import LIST_ALIMENTS from './liste-aliments';
+import { Recipe } from '../models/business/recipe';
+import { Ingredient } from '../models/business/ingredient';
+import LIST_ALIMENTS from '../models/datas/aliments';
+
 
 @Injectable({
   providedIn: 'root'

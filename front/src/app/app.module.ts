@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { BodyComponent } from './body/body.component';
 import { AlimentComponent } from './aliment/aliment.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FormsModule } from '@angular/forms';
@@ -25,14 +24,14 @@ import { MatIconModule,
   MatExpansionModule
 } from '@angular/material';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipeService } from './recipe.service';
+import { RecipeService } from './services/recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { NavItemsService } from './nav-items.service';
+import { NavItemsService } from './services/nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 import { DetailComponent } from './aliment/detail/detail.component';
 import { HomeComponent } from './home/home.component';
-
+import { ViewComponent } from './view/view.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/:nomAliment', component: DetailComponent },
@@ -46,12 +45,12 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    BodyComponent,
     RecipeComponent,
     RecipeAddComponent,
     AlimentComponent,
     DetailComponent,
-    HomeComponent
+    HomeComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,

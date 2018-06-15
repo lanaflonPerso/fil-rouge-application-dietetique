@@ -47,7 +47,7 @@ const LIST_ALIMENTS = {
       },
       { id: 4,
         name: 'Saucisse',
-        categorie: {id: 3, name : 'Charcuterie',},
+        categorie: {id: 3, name : 'Charcuterie'},
         // tslint:disable-next-line:max-line-length
         visual: 'https://images.marmitoncdn.org/pixcontent/bf2efd42-ffbc-4c4d-b7c7-637a1c67adcb/6d8a4455-566c-48ed-8aef-0fe77a8bb89b/manger_une_saucisse_1_398.jpg',
         // tslint:disable-next-line:max-line-length

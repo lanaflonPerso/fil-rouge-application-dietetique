@@ -1,4 +1,4 @@
-import { NavItem } from './nav-items';
+import { NavItem } from './nav-item';
 
 const NAV_ITEMS_DATA: NavItem[] =
 [

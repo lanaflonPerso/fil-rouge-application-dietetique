@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { NavItem } from './nav-items';
-import NAV_ITEMS_DATA from './nav-items-data';
+
+import { NavItem } from '../models/datas/nav-item';
+import NAV_ITEMS_DATA from '../models/datas/nav-items';
 
 @Injectable({
   providedIn: 'root'

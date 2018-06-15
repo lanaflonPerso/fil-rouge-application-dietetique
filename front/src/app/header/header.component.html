@@ -1,14 +1,15 @@
-
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <span><img src="/assets/logo.png" /></span>
-    <span *ngFor="let navItem of navItemsService.getListNavItems('header')" (click)="navItemsService.selectNavItem(navItem)">
-      <figure>
-        <a class="white-icon" title="{{navItem.title}}" routerLink="{{navItem.link}}">
-          <mat-icon class="mat-icon">{{navItem.picto}}</mat-icon>
-          <figcaption>{{navItem.title}}</figcaption>
-        </a>
-      </figure>
-    </span>
-  </div>
-</nav>
+<header>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <span><img src="/assets/logo.png" /></span>
+      <span *ngFor="let navItem of navItemsService.getListNavItems('header')" (click)="navItemsService.selectNavItem(navItem)">
+        <figure>
+          <a class="white-icon" title="{{navItem.title}}" routerLink="{{navItem.link}}">
+            <mat-icon class="mat-icon">{{navItem.picto}}</mat-icon>
+            <figcaption>{{navItem.title}}</figcaption>
+          </a>
+        </figure>
+      </span>
+    </div>
+  </nav>
+</header>
