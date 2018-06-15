@@ -1,3 +1,4 @@
+import { GenericComponent } from './../generic/generic.component';
 import { RecipeService } from '../services/recipe.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,13 +7,16 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './recipe.component.html',
   styleUrls: ['./recipe.component.css']
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent extends GenericComponent implements OnInit {
 
   private searchText = '';
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private recipeService: RecipeService) {
+    super();
+  }
 
   ngOnInit() {
+
   }
 
   public getRecipes() {
@@ -26,6 +30,7 @@ export class RecipeComponent implements OnInit {
     } else {
       return this.getRecipes();
     }
+
   }
 
   public filter(searchText: string) {

@@ -5,6 +5,7 @@ import LIST_ALIMENTS from '../models/datas/aliments';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AlimentService {
 
   aliments: Aliment[] = [];

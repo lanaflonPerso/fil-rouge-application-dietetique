@@ -1,3 +1,4 @@
+import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItemsService } from '../services/nav-items.service';
 
@@ -6,9 +7,11 @@ import { NavItemsService } from '../services/nav-items.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent extends GenericComponent implements OnInit {
 
-  constructor(public navItemsService: NavItemsService) { }
+  constructor(public navItemsService: NavItemsService) {
+    super();
+  }
 
   ngOnInit() {
   }

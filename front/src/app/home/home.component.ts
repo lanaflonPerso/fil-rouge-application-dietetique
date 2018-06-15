@@ -1,3 +1,4 @@
+import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,11 +6,14 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent extends GenericComponent implements OnInit {
 
-  constructor() { }
+  public constructor() {
+    super();
+  }
 
   ngOnInit() {
+
   }
 
 }

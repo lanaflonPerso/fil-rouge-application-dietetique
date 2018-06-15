@@ -1,3 +1,4 @@
+import { GenericComponent } from './../../generic/generic.component';
 import { AlimentService } from '../../services/aliment.service';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/business/recipe';
@@ -9,7 +10,7 @@ import { Aliment } from '../../models/business/aliment';
   templateUrl: './recipe-add.component.html',
   styleUrls: ['./recipe-add.component.css']
 })
-export class RecipeAddComponent implements OnInit {
+export class RecipeAddComponent extends GenericComponent implements OnInit {
 
   recipe: Recipe;
 
@@ -17,7 +18,7 @@ export class RecipeAddComponent implements OnInit {
   filteredAliments: Aliment[] = [];
 
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
-
+    super();
   }
 
   ngOnInit() {

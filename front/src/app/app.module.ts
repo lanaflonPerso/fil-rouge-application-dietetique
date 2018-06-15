@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AlimentComponent } from './aliment/aliment.component';
+import { AlimentDetailComponent } from './aliment/aliment-detail/aliment-detail.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule,
@@ -29,12 +30,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './services/nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
-import { DetailComponent } from './aliment/detail/detail.component';
+
 import { HomeComponent } from './home/home.component';
-import { ViewComponent } from './view/view.component';
+import { DisplayComponent } from './display/display.component';
+import { GenericComponent } from './generic/generic.component';
+
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'aliment/:nomAliment', component: DetailComponent },
+  { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},
@@ -48,9 +51,10 @@ const routes: Routes = [
     RecipeComponent,
     RecipeAddComponent,
     AlimentComponent,
-    DetailComponent,
+    AlimentDetailComponent,
     HomeComponent,
-    ViewComponent
+    DisplayComponent,
+    GenericComponent
   ],
   imports: [
     BrowserModule,

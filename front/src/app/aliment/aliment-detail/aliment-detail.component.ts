@@ -1,18 +1,23 @@
+import { GenericComponent } from './../../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlimentService } from '../../services/aliment.service';
 
 @Component({
-  selector: 'app-detail',
-  templateUrl: './detail.component.html',
-  styleUrls: ['./detail.component.css']
+  selector: 'app-aliment-detail',
+  templateUrl: './aliment-detail.component.html',
+  styleUrls: ['./aliment-detail.component.css']
 })
-export class DetailComponent implements OnInit {
+
+export class AlimentDetailComponent extends GenericComponent implements OnInit {
+
 
   idReal;
   aliment;
 
-  constructor(private alimentService: AlimentService, private route: ActivatedRoute, private router: Router) { }
+  constructor(private alimentService: AlimentService, private route: ActivatedRoute, private router: Router) {
+    super();
+  }
 
   ngOnInit() {
     this.route.params.subscribe
@@ -24,7 +29,6 @@ export class DetailComponent implements OnInit {
                       this.aliment = realTmp;
 
       });
-      // console.log('hors subscribe');
   }
 
 }

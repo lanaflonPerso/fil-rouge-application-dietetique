@@ -1,3 +1,4 @@
+import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { NavItemsService } from '../services/nav-items.service';
 
@@ -7,9 +8,11 @@ import { NavItemsService } from '../services/nav-items.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent extends GenericComponent implements OnInit {
 
-  constructor(public navItemsService: NavItemsService) { }
+  constructor(public navItemsService: NavItemsService) {
+    super();
+  }
 
   ngOnInit() {
   }
