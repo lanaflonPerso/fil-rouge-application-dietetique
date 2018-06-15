@@ -1,10 +1,12 @@
 <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #9de9a9;">
   <div class="container">
-
     <span *ngFor="let navItem of navItemsService.getListNavItems('header')" (click)="navItemsService.selectNavItem(navItem)">
-      <a title="{{navItem.title}}" routerLink="{{navItem.link}}">
-        <mat-icon class="white-icon">{{navItem.picto}}</mat-icon>
-      </a>
+      <figure>
+        <a class="white-icon" title="{{navItem.title}}" routerLink="{{navItem.link}}">
+          <mat-icon>{{navItem.picto}}</mat-icon>
+          <figcaption>{{navItem.title}}</figcaption>
+        </a>
+      </figure>
     </span>
   </div>
 </nav>
