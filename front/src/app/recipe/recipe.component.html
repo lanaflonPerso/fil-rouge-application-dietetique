@@ -1,12 +1,13 @@
+<h1>Vos recettes</h1>
+
 <div id="recipe">
-  <h2>Vos recettes</h2>
 
   <div id="search">
     <form>
       <fieldset>
-        <legend>Chercher une recette :</legend>
+        <legend>Recherche :</legend>
         <mat-form-field appearance="legacy">
-            <mat-label>Recipe search</mat-label>
+            <mat-label>Chercher</mat-label>
             <input matInput placeholder="Chercher une recette" (input)="filter(search.value)" #search>
             <mat-icon matSuffix>search</mat-icon>
             </mat-form-field>
@@ -25,7 +26,7 @@
       <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
       <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
       
-      <ng-container *ngFor="let recipe of filteredRecipes">
+      <ng-container *ngFor="let recipe of getFileteredRecipes()">
         <mat-grid-tile class="grid-item"> {{recipe.name}}</mat-grid-tile>
         <mat-grid-tile class="grid-item"><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></mat-grid-tile>
 

@@ -14,6 +14,7 @@ export class Aliment {
     fiber: number;
     ig: number;
 
+    // tslint:disable-next-line:max-line-length
     constructor(id: number, name: String, description: String, visual: String, protein: number, glucid: number, lipid: number, fiber: number, ig: number) {
         this.id = id;
         this.name = name;

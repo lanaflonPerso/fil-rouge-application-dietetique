@@ -9,24 +9,29 @@ import { Recipe } from '../models/recipe';
 })
 export class RecipeComponent implements OnInit {
 
-  recipes: Recipe[];
+  private searchText = '';
 
-  filteredRecipes: Recipe[];
-
-  constructor(public recipeService: RecipeService) {
-
-  }
+  constructor(private recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipes = this.recipeService.getRecipes();
-    this.filteredRecipes = this.recipes;
   }
 
-  filter(searchText: string) {
-    this.filteredRecipes = this.recipes;
-    if (searchText !== '' ) {
-      this.filteredRecipes = this.recipes.filter(recipe => recipe.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
+  public getRecipes() {
+    return  this.recipeService.getRecipes();
+  }
+
+  public getFileteredRecipes() {
+    if (this.searchText !== '' ) {
+      return this.recipeService.getRecipes()
+      .filter(recipe => recipe.name.toLocaleLowerCase().includes( this.searchText.toLocaleLowerCase() ));
+    } else {
+      return this.getRecipes();
     }
   }
+
+  public filter(searchText: string) {
+    this.searchText = searchText;
+  }
+
 
 }

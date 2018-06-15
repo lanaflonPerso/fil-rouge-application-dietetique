@@ -31,9 +31,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 import { DetailComponent } from './aliment/detail/detail.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: RecipeComponent },
+  { path: '', component: HomeComponent },
   { path: 'aliment/:nomAliment', component: DetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
@@ -49,7 +50,8 @@ const routes: Routes = [
     RecipeComponent,
     RecipeAddComponent,
     AlimentComponent,
-    DetailComponent
+    DetailComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

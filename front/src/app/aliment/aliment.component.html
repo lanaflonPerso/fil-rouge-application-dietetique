@@ -1,3 +1,41 @@
-<ul *ngFor="let aliment of getAliments()">
-  <li><a routerLink='/aliment/{{aliment.name | lowercase}}'>{{aliment.name}}</a></li>
-</ul>
+<h1>Vos aliments</h1>
+
+<div id="search">
+  <form>
+    <fieldset>
+      <legend>Recherche :</legend>
+      <mat-form-field appearance="legacy">
+          <mat-label>Chercher</mat-label>
+          <input matInput placeholder="Chercher un aliment" (input)="filter(search.value)" #search>
+          <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+    </fieldset>
+  </form>
+</div>
+
+
+<p>
+  <a routerLink="/recipe/add"><mat-icon>add_box</mat-icon></a>
+</p>
+
+<div id="recipeList">
+  <mat-grid-list cols="3" rowHeight="50px;" class="">
+    
+    <mat-grid-tile class="grid-item header">Name</mat-grid-tile>
+    <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
+    <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
+    
+    <ng-container *ngFor="let aliment of getFileteredAliments()">
+      <mat-grid-tile class="grid-item"> {{aliment.name}}</mat-grid-tile>
+      <mat-grid-tile class="grid-item"><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></mat-grid-tile>
+
+      <mat-grid-tile class="grid-item">
+        <a routerLink="/aliment"><mat-icon>list</mat-icon></a>
+        -
+        <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a>
+        - 
+        <a routerLink="routerLink='/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
+      </mat-grid-tile>
+    </ng-container>
+  </mat-grid-list>     
+</div>
