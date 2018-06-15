@@ -38,8 +38,6 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
     }
   }
 
-  
-
 
   addAlimentToRecipe(aliment: Aliment) {
     this.recipeService.addAlimentToRecipe(aliment, 1);
