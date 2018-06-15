@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlimentService } from '../aliment.service';
-import { Aliment } from '../models/aliment';
+import { AlimentService } from '../services/aliment.service';
+import { Aliment } from '../models/business/aliment';
 
 @Component({
   selector: 'app-aliment',

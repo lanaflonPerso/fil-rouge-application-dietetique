@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlimentService } from '../../aliment.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlimentService } from '../../services/aliment.service';
 
 @Component({
   selector: 'app-detail',

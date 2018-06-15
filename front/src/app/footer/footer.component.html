@@ -1,8 +1,10 @@
-<nav class="navbar navbar-default footer">
-  <div class="container">
-    <span *ngFor="let navItem of navItemsService.getListNavItems('footer')" (click)="navItemsService.selectNavItem(navItem)"
-      [style.color]="navItemsService.selectedNavItem == navItem ? 'pink' : 'blue'">
-      <a  class="white-icon" href="{{navItem.link}}" title="{{navItem.title}}">{{navItem.anchor}}</a>
-    </span>
-  </div>
-</nav>
+<footer>
+  <nav class="navbar navbar-default footer">
+    <div class="container">
+      <span *ngFor="let navItem of navItemsService.getListNavItems('footer')" (click)="navItemsService.selectNavItem(navItem)"
+        [style.color]="navItemsService.selectedNavItem == navItem ? 'pink' : 'blue'">
+        <a  class="white-icon" href="{{navItem.link}}" title="{{navItem.title}}">{{navItem.anchor}}</a>
+      </span>
+    </div>
+  </nav>
+</footer>

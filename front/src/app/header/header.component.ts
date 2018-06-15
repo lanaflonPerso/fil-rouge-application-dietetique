@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavItemsService } from '../nav-items.service';
+import { NavItemsService } from '../services/nav-items.service';
+
 
 @Component({
   selector: 'app-header',
