@@ -2,7 +2,7 @@
   <div class="container">
     <span *ngFor="let navItem of navItemsService.getListNavItems('footer')" (click)="navItemsService.selectNavItem(navItem)"
       [style.color]="navItemsService.selectedNavItem == navItem ? 'pink' : 'blue'">
-      <a  style="color: #64b871;" href="{{navItem.link}}" title="{{navItem.title}}">{{navItem.anchor}}</a>
+      <a  class="white-icon" href="{{navItem.link}}" title="{{navItem.title}}">{{navItem.anchor}}</a>
     </span>
   </div>
 </nav>
