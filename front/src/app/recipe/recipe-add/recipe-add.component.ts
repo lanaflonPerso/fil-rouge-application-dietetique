@@ -1,8 +1,8 @@
-import { AlimentService } from './../../aliment.service';
+import { AlimentService } from '../../services/aliment.service';
 import { Component, OnInit } from '@angular/core';
-import { Recipe } from '../../models/recipe';
-import { RecipeService } from '../../recipe.service';
-import { Aliment } from '../../models/aliment';
+import { Recipe } from '../../models/business/recipe';
+import { RecipeService } from '../../services/recipe.service';
+import { Aliment } from '../../models/business/aliment';
 
 @Component({
   selector: 'app-recipe-add',
