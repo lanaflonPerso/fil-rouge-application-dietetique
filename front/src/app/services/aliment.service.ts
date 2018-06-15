@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Aliment } from '../models/business/aliment';
 import LIST_ALIMENTS from '../models/datas/aliments';
+import { Category } from '../models/business/category';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,9 @@ export class AlimentService {
     for (let i = 0; i < aliments.length ; i++) {
       const alim = aliments[i];
       // tslint:disable-next-line:max-line-length
-      this.aliments.push(new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
+      const aliment = new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig);
+      aliment.setCategory(new Category(alim.category.id, alim.category.name));
+      this.aliments.push(aliment);
     }
 
   }

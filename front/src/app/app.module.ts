@@ -34,9 +34,11 @@ import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
 import { HomeComponent } from './home/home.component';
 import { DisplayComponent } from './display/display.component';
 import { GenericComponent } from './generic/generic.component';
+import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'aliment/category', component: CategoryComponent },
   { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
@@ -54,7 +56,8 @@ const routes: Routes = [
     AlimentDetailComponent,
     HomeComponent,
     DisplayComponent,
-    GenericComponent
+    GenericComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,
