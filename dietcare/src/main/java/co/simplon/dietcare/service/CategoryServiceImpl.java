@@ -15,23 +15,28 @@ public class CategoryServiceImpl implements CategoryService {
 	@Inject
 	CategoryRepository categoryRepository;
 	
-	public Category saveCategory(Category category) {
+	@Override
+	public Category save(Category category) {
 		categoryRepository.save(category);
 		return category;
 	}
 	
-	public List<Category> getAll() {
+	@Override
+	public List<Category> findAll() {
 		return categoryRepository.findAll();
 	}
 	
+	@Override
 	public Optional<Category> findbyId(Long id) {
 		return categoryRepository.findById(id);
 	}
 	
+	@Override
 	public List<Category> findbyName(String name) {
 		return categoryRepository.findByName(name);
 	}
 	
+	@Override
 	public List<Category> findByNameLike(String name) {
 		return categoryRepository.findByNameLike(name);
 	}
