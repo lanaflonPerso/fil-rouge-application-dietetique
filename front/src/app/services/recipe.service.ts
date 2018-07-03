@@ -32,16 +32,16 @@ export class RecipeService {
       aliments.push(new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
     }
 
-    const saucisseIng = new Ingredient(1, 3, aliments[3]);
+    /*const saucisseIng = new Ingredient(1, 300, aliments[3]);
     recipe0.addIngredient(saucisseIng);
-    const friteIng = new Ingredient(2, 4, aliments[4]);
-    recipe0.addIngredient(friteIng);
+    const friteIng = new Ingredient(2, 400, aliments[4]);
+    recipe0.addIngredient(friteIng);*/
 
     this.recipes.push(recipe0);
     this.recipes.push(recipe1);
     this.recipes.push(recipe2);
 
-    this.recipe = recipe0;
+    this.recipe = new Recipe(null, '', '');
   }
 
   getRecipes(): Recipe[]  {
@@ -60,7 +60,7 @@ export class RecipeService {
     const ingredient: Ingredient = this.recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id );
 
     if ( ingredient != null ) {
-      ingredient.quantity--;
+      ingredient.quantity -= quantity;
       if ( ingredient.quantity <= 0) {
         this.recipe.getIngredients().splice(this.recipe.getIngredients().indexOf(ingredient), 1);
       }
@@ -68,14 +68,13 @@ export class RecipeService {
   }
 
   addAlimentToRecipe(aliment: Aliment, quantity: number) {
-
     let ingredient: Ingredient = this.recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id );
 
     if ( ingredient == null ) {
-      ingredient = new Ingredient(null, 1, aliment);
+      ingredient = new Ingredient(null, quantity, aliment);
       this.recipe.addIngredient(ingredient);
     } else {
-      ingredient.quantity++;
+      ingredient.quantity =  Number(ingredient.quantity) + Number(quantity);
     }
   }
 }

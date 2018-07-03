@@ -1,3 +1,4 @@
+import { Ingredient } from './../../models/business/ingredient';
 import { GenericComponent } from './../../generic/generic.component';
 import { AlimentService } from '../../services/aliment.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +13,6 @@ import { Aliment } from '../../models/business/aliment';
 })
 export class RecipeAddComponent extends GenericComponent implements OnInit {
 
-  recipe: Recipe;
 
   aliments: Aliment[] = [];
   filteredAliments: Aliment[] = [];
@@ -22,7 +22,7 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipe = this.recipeService.getRecipe();
+
     this.aliments = this.alimentService.getAliments();
     this.filteredAliments = this.aliments;
   }
@@ -31,19 +31,25 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
     return this.recipeService.getRecipe();
   }
 
-  filterAliments(searchText) {
+  filterAliments(searchText): void {
     this.filteredAliments = this.aliments;
-    if (searchText !== '' ) {
+
+    if (this.getSearchText() !== '' ) {
       this.filteredAliments = this.aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
     }
+
   }
 
-
-  addAlimentToRecipe(aliment: Aliment) {
-    this.recipeService.addAlimentToRecipe(aliment, 1);
+  addAlimentToRecipe(aliment: Aliment): void {
+    this.recipeService.addAlimentToRecipe(aliment, 100);
   }
 
-  removeAlimentFromRecipe(aliment: Aliment) {
-    this.recipeService.removeAlimentFromRecipe(aliment, 1);
+  removeAlimentFromRecipe(aliment: Aliment): void {
+    this.recipeService.removeAlimentFromRecipe(aliment, 100);
+  }
+
+  updateQuantity(event, ingredient: Ingredient) {
+    console.log(this.getRecipe().ingredients);
+    ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
 }
