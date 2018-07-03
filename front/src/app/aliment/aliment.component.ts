@@ -11,9 +11,7 @@ import { Aliment } from '../models/business/aliment';
 
 export class AlimentComponent extends GenericComponent implements OnInit {
 
-  private searchText = '';
-
-  constructor(private alimentService: AlimentService) {
+constructor(private alimentService: AlimentService) {
     super();
   }
 
@@ -25,15 +23,11 @@ export class AlimentComponent extends GenericComponent implements OnInit {
   }
 
   public getFileteredAliments(): Aliment[] {
-    if (this.searchText !== '' ) {
+    if (this.getSearchText() !== '' ) {
       return this.alimentService.getAliments()
-      .filter(aliment => aliment.name.toLocaleLowerCase().includes( this.searchText.toLocaleLowerCase() ));
+      .filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     } else {
       return this.getAliments();
     }
-  }
-
-  public filter(searchText: string): void {
-    this.searchText = searchText;
   }
 }

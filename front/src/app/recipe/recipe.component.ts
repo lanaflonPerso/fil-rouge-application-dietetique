@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipeComponent extends GenericComponent implements OnInit {
 
-  private searchText = '';
 
   constructor(private recipeService: RecipeService) {
     super();
@@ -24,18 +23,12 @@ export class RecipeComponent extends GenericComponent implements OnInit {
   }
 
   public getFileteredRecipes() {
-    if (this.searchText !== '' ) {
+    if (this.getSearchText() !== '' ) {
       return this.recipeService.getRecipes()
-      .filter(recipe => recipe.name.toLocaleLowerCase().includes( this.searchText.toLocaleLowerCase() ));
+      .filter(recipe => recipe.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     } else {
       return this.getRecipes();
     }
 
   }
-
-  public filter(searchText: string) {
-    this.searchText = searchText;
-  }
-
-
 }
