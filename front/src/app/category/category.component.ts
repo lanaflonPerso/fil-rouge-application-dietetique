@@ -22,11 +22,13 @@ export class CategoryComponent extends GenericComponent implements OnInit {
   }
 
   public getFileteredCategories(): Category[] {
+    let categories: Category[] = this.getCategories();
+
     if (this.getSearchText() !== '' ) {
-      return this.categoryService.getCategories()
+      categories = this.categoryService.getCategories()
       .filter(category => category.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
-    } else {
-      return this.getCategories();
     }
+
+    return categories;
   }
 }

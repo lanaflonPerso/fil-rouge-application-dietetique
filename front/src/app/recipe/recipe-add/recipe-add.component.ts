@@ -1,3 +1,4 @@
+import { Ingredient } from './../../models/business/ingredient';
 import { GenericComponent } from './../../generic/generic.component';
 import { AlimentService } from '../../services/aliment.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,38 +13,39 @@ import { Aliment } from '../../models/business/aliment';
 })
 export class RecipeAddComponent extends GenericComponent implements OnInit {
 
-  recipe: Recipe;
-
-  aliments: Aliment[] = [];
-  filteredAliments: Aliment[] = [];
-
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
     super();
   }
 
   ngOnInit() {
-    this.recipe = this.recipeService.getRecipe();
-    this.aliments = this.alimentService.getAliments();
-    this.filteredAliments = this.aliments;
+
   }
 
   getRecipe(): Recipe {
     return this.recipeService.getRecipe();
   }
 
-  filterAliments(searchText) {
-    this.filteredAliments = this.aliments;
-    if (searchText !== '' ) {
-      this.filteredAliments = this.aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
+  getFilteredAliments(): Aliment[] {
+    let filteredAliments = this.alimentService.getAliments();
+
+    if (this.getSearchText() !== '' ) {
+      // tslint:disable-next-line:max-line-length
+      filteredAliments = this.alimentService.getAliments().filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     }
+
+    return filteredAliments;
+
   }
 
-
-  addAlimentToRecipe(aliment: Aliment) {
-    this.recipeService.addAlimentToRecipe(aliment, 1);
+  addAlimentToRecipe(aliment: Aliment): void {
+    this.recipeService.addAlimentToRecipe(aliment, 100);
   }
 
-  removeAlimentFromRecipe(aliment: Aliment) {
-    this.recipeService.removeAlimentFromRecipe(aliment, 1);
+  removeAlimentFromRecipe(aliment: Aliment): void {
+    this.recipeService.removeAlimentFromRecipe(aliment, 100);
+  }
+
+  updateQuantity(event, ingredient: Ingredient) {
+    ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
 }

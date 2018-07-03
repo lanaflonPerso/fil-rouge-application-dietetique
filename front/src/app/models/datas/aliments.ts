@@ -13,7 +13,7 @@ const LIST_ALIMENTS = {
         glucid: 202,
         lipid: 203,
         fiber: 204,
-        ig: 205
+        ig: 16
       },
       {
         id: 2,
@@ -28,7 +28,7 @@ const LIST_ALIMENTS = {
         glucid: 202,
         lipid: 203,
         fiber: 204,
-        ig: 205
+        ig: 50
       },
       {
         id: 3,
@@ -43,7 +43,7 @@ const LIST_ALIMENTS = {
         glucid: 202,
         lipid: 203,
         fiber: 204,
-        ig: 205
+        ig: 5
       },
       { id: 4,
         name: 'Saucisse',
@@ -56,7 +56,7 @@ const LIST_ALIMENTS = {
         glucid: 202,
         lipid: 203,
         fiber: 204,
-        ig: 205
+        ig: 20
       },
       {
         id: 5,
@@ -70,7 +70,7 @@ const LIST_ALIMENTS = {
         glucid: 202,
         lipid: 203,
         fiber: 204,
-        ig: 205
+        ig: 25
       },
     ]
   };

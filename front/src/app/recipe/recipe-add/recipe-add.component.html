@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row">
-      <div class="col-8">
+      <div class="col-6">
           <div>
               <form class="example-form" >
                   <div class="border">
@@ -16,34 +16,40 @@
                           <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
                         </div>
                         <div  class="recipeNameAndPhoto">
-                        <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
+                          <img width="100" heiught="100" src="{{getRecipe().visual}}"/>
                         </div>
                     </fieldset>
                     <fieldset>
                         <legend>Composition</legend>
-                        <div *ngFor="let ingredient of getRecipe().getIngredients()">
-          
-                          <mat-label class="label">{{ingredient.getAliment().name}} :</mat-label> - 
-                          <img src="{{ingredient.getAliment().visual}}" alt="photo de {{ingredient.getAliment().name}}" width="100" height="100" />
-                          
-                          <mat-form-field class="quantity">         
-                            <input matInput  value="{{ingredient.quantity}}" />
-                          </mat-form-field>
-              
+                        <div class="row" *ngFor="let ingredient of getRecipe().getIngredients()">
+                          <div class="col-4">
+                            <mat-label class="label">{{ingredient.getAliment().name}} :</mat-label> - 
+                          </div>
+                          <div class="col-4">
+                            <img src="{{ingredient.getAliment().visual}}" alt="photo de {{ingredient.getAliment().name}}" width="100" height="100" />
+                          </div>
+                          <div class="col-4">
+                            <mat-form-field class="quantity">
+                                <mat-label class="label">quantité  (g ou ml)</mat-label>
+                                <input matInput name="quantity" value="{{ingredient.quantity}}" (input)="updateQuantity($event,ingredient);"/>
+                            </mat-form-field>
                         </div>
-                    </fieldset>
-                    <fieldset>
-                        <legend>Que faire ?</legend>
-                      <mat-label>Sauver votre recette :</mat-label>
-                      <input type="button" name="ok" value="enregistrer" class="btn btn-primary" />
-                    </fieldset>
+                        </div>                        
+                    </fieldset>                   
                   </div>
+                  
+                  <input type="button" name="ok" value="enregistrer" class="btn btn-primary" />
                 </form>      
               </div>
       </div>
-      <div class="col-4">
-          <div class="col-4 " class="border">
-              Rechercher des aliments
+      
+          <div class="col-6 " class="border">
+            <div>
+              <mat-label class="lead">Cg = <mark>{{getRecipe().getCg()}}</mark></mat-label>
+              <br />
+              <mat-label class="lead">Cg / 100 = <mark>{{getRecipe().getCgFor100()}}</mark></mat-label>
+            </div>  
+            Rechercher des aliments
               <div id="search" >
                   
                 <form class="example-form" >
@@ -51,13 +57,13 @@
                     <legend>Chercher une recette :</legend>
                     <mat-form-field appearance="legacy">
                         <mat-label>Recipe search</mat-label>
-                        <input matInput placeholder="Chercher un aliment" (input)="filterAliments(search.value)" #search>
+                        <input matInput placeholder="Chercher un aliment" (input)="filter(search.value)" #search>
                         <mat-icon matSuffix>search</mat-icon>
                         </mat-form-field>
                   </fieldset>
                 </form>
 
-                <div *ngFor="let aliment of filteredAliments">
+                <div *ngFor="let aliment of getFilteredAliments()">
                       
                   <mat-label class="label">{{aliment.name}} :</mat-label>
                   <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
@@ -67,7 +73,7 @@
                 
                 </div> 
               </div>
-      </div>
+      
     </div>
   </div>
 
