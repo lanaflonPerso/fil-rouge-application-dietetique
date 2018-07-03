@@ -10,8 +10,6 @@ import { Category } from '../models/business/category';
 })
 export class CategoryComponent extends GenericComponent implements OnInit {
 
-  private searchText = '';
-
   constructor(private categoryService: CategoryService) {
     super();
   }
@@ -24,16 +22,13 @@ export class CategoryComponent extends GenericComponent implements OnInit {
   }
 
   public getFileteredCategories(): Category[] {
-    if (this.searchText !== '' ) {
-      return this.categoryService.getCategories()
-      .filter(category => category.name.toLocaleLowerCase().includes( this.searchText.toLocaleLowerCase() ));
-    } else {
-      return this.getCategories();
+    let categories: Category[] = this.getCategories();
+
+    if (this.getSearchText() !== '' ) {
+      categories = this.categoryService.getCategories()
+      .filter(category => category.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     }
-  }
 
-  public filter(searchText: string): void {
-    this.searchText = searchText;
+    return categories;
   }
-
 }
