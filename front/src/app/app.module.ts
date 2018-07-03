@@ -39,14 +39,15 @@ import { MealComponent } from './meal/meal.component';
 import { DietComponent } from './diet/diet.component';
 import { MenuComponent } from './menu/menu.component';
 import { MomentComponent } from './moment/moment.component';
-
-const routes: Routes = [
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
   { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},
+  { path: 'recipe/detail/:id', component: RecipeDetailComponent},
   { path: 'meal', component: MealComponent},
 ];
 
@@ -57,6 +58,7 @@ const routes: Routes = [
     FooterComponent,
     RecipeComponent,
     RecipeAddComponent,
+    RecipeDetailComponent,
     AlimentComponent,
     AlimentDetailComponent,
     HomeComponent,

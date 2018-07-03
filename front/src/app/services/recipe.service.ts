@@ -77,4 +77,8 @@ export class RecipeService {
       ingredient.quantity =  Number(ingredient.quantity) + Number(quantity);
     }
   }
+
+  public getRecipeById(id: Number): Recipe {
+    return this.getRecipes().find(recipe => recipe.id === id );
+  }
 }
