@@ -15,7 +15,7 @@ import co.simplon.dietcare.model.Category;
 
 
 @Controller
-@RequestMapping("aliment/category")
+@RequestMapping("/aliment/category")
 public class CategoryController {
 	
 	@Inject
