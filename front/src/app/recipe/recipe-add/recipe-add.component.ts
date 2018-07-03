@@ -13,30 +13,27 @@ import { Aliment } from '../../models/business/aliment';
 })
 export class RecipeAddComponent extends GenericComponent implements OnInit {
 
-
-  aliments: Aliment[] = [];
-  filteredAliments: Aliment[] = [];
-
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
     super();
   }
 
   ngOnInit() {
 
-    this.aliments = this.alimentService.getAliments();
-    this.filteredAliments = this.aliments;
   }
 
   getRecipe(): Recipe {
     return this.recipeService.getRecipe();
   }
 
-  filterAliments(searchText): void {
-    this.filteredAliments = this.aliments;
+  getFilteredAliments(): Aliment[] {
+    let filteredAliments = this.alimentService.getAliments();
 
     if (this.getSearchText() !== '' ) {
-      this.filteredAliments = this.aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( searchText.toLocaleLowerCase() ));
+      // tslint:disable-next-line:max-line-length
+      filteredAliments = this.alimentService.getAliments().filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     }
+
+    return filteredAliments;
 
   }
 
@@ -49,7 +46,6 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   updateQuantity(event, ingredient: Ingredient) {
-    console.log(this.getRecipe().ingredients);
     ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
 }
