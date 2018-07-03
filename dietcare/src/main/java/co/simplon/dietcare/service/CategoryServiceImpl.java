@@ -10,7 +10,7 @@ import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.repository.CategoryRepository;
 
 @Named
-public class CategoryServiceImpl {
+public class CategoryServiceImpl implements CategoryService {
 
 	@Inject
 	CategoryRepository categoryRepository;
