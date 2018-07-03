@@ -1,5 +1,17 @@
 # Created by https://www.gitignore.io/api/java,angular
 
+### Maven ###
+dietcare/target/
+dietcare/pom.xml.tag
+dietcare/pom.xml.releaseBackup
+dietcare/pom.xml.versionsBackup
+dietcare/pom.xml.next
+dietcare/release.properties
+dietcare/dependency-reduced-pom.xml
+dietcare/buildNumber.properties
+dietcare/.mvn/timing.properties
+dietcare/.mvn/wrapper/maven-wrapper.jar
+
 ### Angular ###
 ## Angular ##
 # compiled output
