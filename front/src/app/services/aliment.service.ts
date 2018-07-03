@@ -32,10 +32,7 @@ export class AlimentService {
   }
 
   public getAliment(iReal: string) {
-    console.log('iReal searched: ' + iReal + ' ' + typeof(iReal));
-
     const real = this.aliments.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
-    console.log(real);
     return real[0];
   }
 }

@@ -1,3 +1,22 @@
-<p>
-  category works!
-</p>
+<form>
+    <fieldset>
+      <legend>Recherche :</legend>
+      <mat-form-field appearance="legacy">
+          <mat-label>Chercher</mat-label>
+          <input matInput placeholder="Chercher une category" (input)="filter(search.value)" #search>
+          <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+    </fieldset>
+</form>
+<div id="recipeList">
+  <mat-grid-list cols="2" rowHeight="50px;" class="">
+  <ng-container *ngFor="let category of getFileteredCategories()">
+    <mat-grid-tile class="grid-item"> {{category.name}}</mat-grid-tile>
+    <mat-grid-tile class="grid-item">
+      <a routerLink="/aliment/category"><mat-icon>edit</mat-icon></a>
+      - 
+      <a routerLink="/aliment/category"> <mat-icon>delete</mat-icon></a>
+    </mat-grid-tile>
+  </ng-container>
+</mat-grid-list>
+</div>

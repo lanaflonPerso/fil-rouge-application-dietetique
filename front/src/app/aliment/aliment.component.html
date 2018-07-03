@@ -13,6 +13,7 @@
   </form>
 </div>
 
+<p><a routerLink="/aliment/category">Gérer les catégories</a></p>
 
 <p>
   <a routerLink="/recipe/add"><mat-icon>add_box</mat-icon></a>
@@ -36,7 +37,7 @@
         -
         <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a>
         - 
-        <a routerLink="routerLink='/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
+        <a routerLink="/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
       </mat-grid-tile>
     </ng-container>
   </mat-grid-list>     
