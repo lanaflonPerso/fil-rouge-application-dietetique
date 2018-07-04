@@ -26,11 +26,25 @@ public class CategoryController {
 	CategoryService categoryService;
 	
 	// category creation
-	@RequestMapping(method = RequestMethod.POST)
+	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Category cat) {
 		return categoryService.save(cat).getId();
+	}
+	
+	// update category by id
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Category update(@PathVariable("id") Long id) {
+		// find category
+
+		// set new name
+		
+		// save category
+		
+		return null;
 	}
 	
 	// find all categories
@@ -43,25 +57,23 @@ public class CategoryController {
 	// find category by id
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Category> read(@PathVariable("id") Long id) {
+	public Optional<Category> findbyId(@PathVariable("id") Long id) {
 		return categoryService.findbyId(id);
 	}
-
-	// update category by id
-	@RequestMapping(value = "/{id}", method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.OK)
+	
+	// find category by name
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Category> update(@PathVariable("id") Long id) {
-		// get category
-		Optional<Category> cat = categoryService.findbyId(id);
-		// set new name
-		
-		// save category
-		
-		return null;
+	public List<Category> findbyName(@PathVariable("name") String name) {
+		return categoryService.findbyName(name);
 	}
-	
-//	public List<Category> findbyName(String name);
-//	public List<Category> findByNameLike(String name);
-	
+
+	// find category by name like
+	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	@ResponseBody
+	public List<Category> findByNameLike(@PathVariable("name") String name) {
+		return categoryService.findByNameLike(name);
+	}
+
+
 }

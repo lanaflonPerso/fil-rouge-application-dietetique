@@ -41,4 +41,13 @@ public class CategoryServiceImpl implements CategoryService {
 		return categoryRepository.findByNameLike(name);
 	}
 
+	@Override
+	public void deleteById(Long id) {
+		categoryRepository.deleteById(id);
+	}
+	
+	@Override
+	public long count() {
+		return categoryRepository.findAll().size();
+	}
 }
