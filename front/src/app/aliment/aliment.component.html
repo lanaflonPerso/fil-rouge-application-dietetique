@@ -20,7 +20,31 @@
 </p>
 
 <div id="recipeList">
-  <mat-grid-list cols="4" rowHeight="50px;" class="">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>              
+                <th>Nom</th>
+                <th>Catégorie</th>
+                <th>Visuel</th>
+                <th>Que faire ?</th>  
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let aliment of getFileteredAliments()">
+                <td> {{aliment.name}}</td>
+      <td> {{aliment.category.name}}</td>
+      <td><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></td>
+
+      <td>
+        <a routerLink="/aliment"><mat-icon>list</mat-icon></a>
+        -
+        <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a>
+        - 
+        <a routerLink="/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
+              </tr>
+        </tbody>
+      </table>
+  <!--<mat-grid-list cols="4" rowHeight="50px;" class="">
     
     <mat-grid-tile class="grid-item header">Nom</mat-grid-tile>
     <mat-grid-tile class="grid-item header">Catégorie</mat-grid-tile>
@@ -40,5 +64,5 @@
         <a routerLink="/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
       </mat-grid-tile>
     </ng-container>
-  </mat-grid-list>     
+  </mat-grid-list> -->    
 </div>

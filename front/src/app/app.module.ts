@@ -36,14 +36,18 @@ import { DisplayComponent } from './display/display.component';
 import { GenericComponent } from './generic/generic.component';
 import { CategoryComponent } from './category/category.component';
 import { MealComponent } from './meal/meal.component';
-import { DietComponent } from './diet/diet.component';
+
 import { MomentComponent } from './moment/moment.component';
 import { MealAddComponent } from './meal/meal-add/meal-add.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
+import { CategoryAddComponent } from './category/category-add/category-add.component';
+import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
+  { path: 'aliment/category/add', component: CategoryAddComponent },
+  { path: 'aliment/category/detail/:id', component: CategoryDetailComponent },
   { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
@@ -68,9 +72,10 @@ export const routes: Routes = [
     GenericComponent,
     CategoryComponent,
     MealComponent,
-    DietComponent,
     MealAddComponent,
-    MomentComponent
+    MomentComponent,
+    CategoryAddComponent,
+    CategoryDetailComponent
   ],
   imports: [
     BrowserModule,
