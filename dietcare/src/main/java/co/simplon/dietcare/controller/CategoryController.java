@@ -6,7 +6,6 @@ import java.util.Optional;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,46 +32,40 @@ public class CategoryController {
 		return categoryService.save(cat).getId();
 	}
 	
-	// update category by id
+	// update category
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Category update(@PathVariable("id") Long id) {
-		// find category
-
-		// set new name
-		
-		// save category
-		
-		return null;
+	public Category update(@RequestBody Category cat) {
+		return categoryService.save(cat);
 	}
 	
 	// find all categories
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/findall", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Category> findAll() {
 		return categoryService.findAll();
 	}
 	
 	// find category by id
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/findbyid", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Category> findbyId(@PathVariable("id") Long id) {
-		return categoryService.findbyId(id);
+	public Optional<Category> findbyId(@RequestBody Category cat) {
+		return categoryService.findbyId(cat.getId());
 	}
 	
 	// find category by name
-	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	@RequestMapping(value = "/findbyname", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findbyName(@PathVariable("name") String name) {
-		return categoryService.findbyName(name);
+	public List<Category> findbyName(@RequestBody Category cat) {
+		return categoryService.findbyName(cat.getName());
 	}
 
 	// find category by name like
-	@RequestMapping(value = "/{name}", method = RequestMethod.GET)
+	@RequestMapping(value = "/findbynamelike", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findByNameLike(@PathVariable("name") String name) {
-		return categoryService.findByNameLike(name);
+	public List<Category> findByNameLike(@RequestBody Category cat) {
+		return categoryService.findByNameLike(cat.getName());
 	}
 
 

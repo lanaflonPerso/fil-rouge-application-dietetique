@@ -1,15 +1,16 @@
-import { Menu } from './menu';
+export class Meal {
 
-export class Meal extends Menu {
+    id: number;
+    date: String;
+    name: String;
+    moment: String;
+    kcal: number;
 
-    date: Date;
-    fk_menu: number;
-    fk_moment: number;
-
-    constructor(id: number, date: Date, fk_menu: number, fk_moment: number) {
-        super(id, name);
+    constructor(id: number, date: String, name: String, moment: String, kcal: number) {
+        this.id = id;
         this.date = date;
-        this.fk_menu = fk_menu;
-        this.fk_moment = fk_moment;
+        this.name = name,
+        this.moment = moment;
+        this.kcal = kcal;
     }
 }

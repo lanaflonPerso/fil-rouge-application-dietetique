@@ -69,8 +69,8 @@ export const routes: Routes = [
     CategoryComponent,
     MealComponent,
     DietComponent,
-    MomentComponent,
-    MealAddComponent
+    MealAddComponent,
+    MomentComponent
   ],
   imports: [
     BrowserModule,

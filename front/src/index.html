@@ -4,10 +4,41 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
 
-<!-- SORT TABLE-->
+<!-- SORT TABLE - PAGE MEAL -->
+<!-- https://datatables.net/examples/advanced_init/defaults.html -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
-<!-- /SORT TABLE-->
+
+<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+<script type="text/javascript" class="init">
+
+$.extend( true, $.fn.dataTable.defaults, {
+  // "searching": false, //Masque le moteur de recherche, virer tout code extend pour affichier
+  // "ordering": false //Les colonnes ne sont pas triables
+} );
+
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "language": {
+            "lengthMenu": "Nombre de repas par page _MENU_",
+            "zeroRecords": "Aucun Résultat",
+            "info": "Page _PAGE_ sur _PAGES_",
+            "infoEmpty": "Aucun Résultat",
+            "infoFiltered": "(filtered from _MAX_ total records)",
+            "search":"Recherche:",
+            "oPaginate": { "sFirst":"Début","sLast":"Fin","sNext":"Suivant","sPrevious":"Précédent"}
+
+            // remplacer tout ce qui est au dessus par ce fichier (Francais)
+            //"url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+        }
+    } );
+} );
+</script>
+<!-- /SORT TABLE - PAGE MEAL -->
 
   <meta charset="utf-8">
   <title>Front</title>
@@ -16,17 +47,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-<!-- SORT TABLE-->
-<script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<!-- SORT TABLE - PAGE MEAL -->
 
-<script type="text/javascript" class="init">
-  $(document).ready(function() {
-    $('#example').DataTable();
-} );
-</script>
-<!-- /SORT TABLE-->
+<!-- /SORT TABLE - PAGE MEAL -->
 
 </head>
 <body>
