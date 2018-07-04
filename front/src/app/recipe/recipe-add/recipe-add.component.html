@@ -12,7 +12,7 @@
                             <input matInput placeholder="nom de l'aliment (ex : sushi)" value="{{getRecipe().name}}" #name>
                           </mat-form-field>
                               
-                          <input  class="ng-hide" name="photo" id="photo" multiple type="file" #photo ng2FileSelect [uploader]="uploader"/>
+                          <input  class="ng-hide"  id="photo" multiple type="file" #photo/>
                           <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
                         </div>
                         <div  class="recipeNameAndPhoto">
