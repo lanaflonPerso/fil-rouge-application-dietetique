@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -25,7 +26,7 @@ public class CategoryController {
 	CategoryService categoryService;
 	
 	// category creation
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Category cat) {
@@ -33,7 +34,7 @@ public class CategoryController {
 	}
 	
 	// update category
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Category update(@RequestBody Category cat) {
@@ -41,30 +42,31 @@ public class CategoryController {
 	}
 	
 	// find all categories
-	@RequestMapping(value = "/findall", method = RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Category> findAll() {
 		return categoryService.findAll();
 	}
 	
 	// find category by id
-	@RequestMapping(value = "/findbyid", method = RequestMethod.GET)
+	@RequestMapping(params = "id", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Category> findbyId(@RequestBody Category cat) {
-		return categoryService.findbyId(cat.getId());
+	public Optional<Category> findbyId(@RequestParam("id") Long id) {
+		return categoryService.findbyId(id);
 	}
 	
 	// find category by name
-	@RequestMapping(value = "/findbyname", method = RequestMethod.GET)
+	@RequestMapping(params = "name", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findbyName(@RequestBody Category cat) {
-		return categoryService.findbyName(cat.getName());
+	public List<Category> findbyName(@RequestParam("name") String name) {
+		return categoryService.findbyName(name);
 	}
 
 	// find category by name like
-	@RequestMapping(value = "/findbynamelike", method = RequestMethod.GET)
+//	@RequestMapping(value = "/findbynamelike", params = "name", method = RequestMethod.GET)
+	@RequestMapping(params = "namelike", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findByNameLike(@RequestBody Category cat) {
-		return categoryService.findByNameLike(cat.getName());
+	public List<Category> findByNameLike(@RequestParam("namelike") String namelike) {
+		return categoryService.findByNameLike(namelike);
 	}
 }
