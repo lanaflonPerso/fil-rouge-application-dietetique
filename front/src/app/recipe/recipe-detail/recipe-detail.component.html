@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-6">
+    <div class="col-3">
         <div class="row">
           <div class="col-12">
             <mat-label>Nom :</mat-label>
@@ -12,8 +12,82 @@
             <img src="{{getRecipe().visual}}" width="200" height="200" />
           </div>
         </div>
+        <p>Valeurs Diététique</p>
+          <div class="row">
+              <div class="col-6">
+                <mat-label class="lead">Cg</mat-label>
+              </div>
+              <div class="col-6">
+                <mark>{{getRecipe().getCg()}}</mark>
+              </div>
+          </div>
+          <div class="row">
+            
+                <div class="col-6">
+                  <mat-label class="lead">Cg pour 100 (g ou ml)</mat-label>
+                </div>
+                <div class="col-6">
+                  <mark>{{getRecipe().getCgFor100()}}</mark>
+                </div>
+            
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <mat-label class="lead">Energie</mat-label>
+              </div>
+              <div class="col-6">
+                  <mark>{{getRecipe().getEnergy()}} Kcal</mark>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <mat-label class="lead">Protéines</mat-label>
+              </div>
+              <div class="col-6">
+                  <mark>{{getRecipe().getProteins()}}</mark>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <mat-label class="lead">Glucides</mat-label>
+              </div>
+              <div class="col-6">
+                  <mark>{{getRecipe().getGlucids()}}</mark>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-6">
+                  <mat-label class="lead">Lipides</mat-label>
+              </div>
+              <div class="col-6">
+                  <mark>{{getRecipe().getLipids()}}</mark>
+              </div>
+          </div>
     </div>
-    <div class="col-6">
-      Detail
+    <div class="col-9">
+         
+          <p>Composition</p>
+          <ng-container *ngIf="getRecipe().getIngredients().length > 0">
+            <div class="row">
+                <div class="col-4">
+                    <mat-label class="label">Nom</mat-label> 
+                </div>
+                <div class="col-4">
+                    <mat-label class="label">Visuel</mat-label>
+                </div>
+                <div class="col-4">
+                    <mat-label class="label">Quantité</mat-label> 
+                </div>
+            </div>
+          </ng-container>
+          <ng-container *ngFor="let ingredient of getRecipe().getIngredients()">
+            <div *ngIf="ingredient.getAliment()" class="row" >
+              <div class="col-4">{{ingredient.getAliment().name}}</div>
+              <div class="col-4"><img src="{{ingredient.getAliment().visual}}" width="150" height="150" /></div>
+              <div class="col-4">{{ingredient.quantity}} (g ou ml)</div>
+            
+            </div>
+          </ng-container>       
+      
     </div>
 </div>

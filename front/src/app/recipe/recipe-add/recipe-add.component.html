@@ -21,6 +21,7 @@
                     </fieldset>
                     <fieldset>
                         <legend>Composition</legend>
+                        
                         <div class="row" *ngFor="let ingredient of getRecipe().getIngredients()">
                           <div class="col-4">
                             <mat-label class="label">{{ingredient.getAliment().name}} :</mat-label> - 
