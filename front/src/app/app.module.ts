@@ -25,8 +25,6 @@ import { MatIconModule,
   MatExpansionModule
 } from '@angular/material';
 
-import { FileSelectDirective } from 'ng2-file-upload';
-
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeService } from './services/recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -70,8 +68,7 @@ export const routes: Routes = [
     MealComponent,
     DietComponent,
     MenuComponent,
-    MomentComponent,
-    FileSelectDirective
+    MomentComponent
   ],
   imports: [
     BrowserModule,
