@@ -63,10 +63,16 @@ public class CategoryController {
 	}
 
 	// find category by name like
-//	@RequestMapping(value = "/findbynamelike", params = "name", method = RequestMethod.GET)
 	@RequestMapping(params = "namelike", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Category> findByNameLike(@RequestParam("namelike") String namelike) {
 		return categoryService.findByNameLike(namelike);
+	}
+	
+	// delete category by id
+	@RequestMapping(method = RequestMethod.DELETE)
+	@ResponseBody
+	public void deleteById(@RequestBody Category cat) {
+		categoryService.deleteById(cat.getId());
 	}
 }
