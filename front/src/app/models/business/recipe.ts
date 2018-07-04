@@ -1,3 +1,4 @@
+import { enableProdMode } from '@angular/core';
 import { Ingredient } from './ingredient';
 import { DietComponent } from './dietComponent';
 
@@ -14,15 +15,15 @@ export class Recipe extends DietComponent {
         this.visual = visual;
     }
 
-    public addIngredient(ingredient: Ingredient) {
+    public addIngredient(ingredient: Ingredient): void {
         this.ingredients.push(ingredient);
     }
 
-    public getIngredients() {
+    public getIngredients(): Ingredient[] {
         return this.ingredients;
     }
 
-    public getCg() {
+    public getCg(): Number {
         let cg: Number = 0;
         if ( this.ingredients.length > 0) {
            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
@@ -32,7 +33,7 @@ export class Recipe extends DietComponent {
         return cg;
     }
 
-    public getCgFor100() {
+    public getCgFor100(): Number {
 
         let cg100: Number = 0;
         if ( this.ingredients.length > 0) {
@@ -41,6 +42,49 @@ export class Recipe extends DietComponent {
            }
         }
         return cg100;
+
+    }
+
+    public getEnergy(): number {
+        let energy = 0;
+        if ( this.ingredients.length > 0) {
+            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
+                energy += this.ingredients[i].getEnergy();
+            }
+        }
+        return energy;
+    }
+
+    public getProteins(): number {
+        let proteins = 0;
+        if ( this.ingredients.length > 0) {
+            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
+                proteins += this.ingredients[i].getProteins();
+            }
+        }
+        return proteins;
+
+    }
+
+    public getGlucids(): number {
+        let glucids = 0;
+        if ( this.ingredients.length > 0) {
+            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
+                glucids += this.ingredients[i].getGlucids();
+            }
+        }
+        return glucids;
+
+    }
+
+    public getLipids(): number {
+        let lipids = 0;
+        if ( this.ingredients.length > 0) {
+            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
+                lipids +=  this.ingredients[i].getLipids();
+            }
+        }
+        return lipids;
 
     }
 }

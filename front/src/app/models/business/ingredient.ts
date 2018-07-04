@@ -37,4 +37,36 @@ export class Ingredient {
 
         return cg;
     }
+
+    public getEnergy(): number {
+        let energy = 0;
+        if ( this.getAliment() != null) {
+            energy = this.getAliment().getEnergy() * this.quantity;
+        }
+        return energy;
+    }
+
+    public getProteins(): number {
+        let proteins = 0;
+        if ( this.getAliment() != null) {
+            proteins = this.getAliment().getProteins() * this.quantity / 100;
+        }
+        return proteins;
+    }
+
+    public getGlucids(): number {
+        let glucids = 0;
+        if ( this.getAliment() != null) {
+            glucids = this.getAliment().getGlucids() * this.quantity / 100;
+        }
+        return glucids;
+    }
+
+    public getLipids(): number {
+        let lipids = 0;
+        if ( this.getAliment() != null) {
+            lipids = Number(this.getAliment().getLipids()) * this.quantity / 100;
+        }
+        return lipids;
+    }
 }

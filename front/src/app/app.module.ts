@@ -24,13 +24,15 @@ import { MatIconModule,
   MatGridTile,
   MatExpansionModule
 } from '@angular/material';
+
+import { FileSelectDirective } from 'ng2-file-upload';
+
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeService } from './services/recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './services/nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
-
 import { HomeComponent } from './home/home.component';
 import { DisplayComponent } from './display/display.component';
 import { GenericComponent } from './generic/generic.component';
@@ -39,14 +41,16 @@ import { MealComponent } from './meal/meal.component';
 import { DietComponent } from './diet/diet.component';
 import { MomentComponent } from './moment/moment.component';
 import { MealAddComponent } from './meal/meal-add/meal-add.component';
+import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
   { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},
+  { path: 'recipe/detail/:id', component: RecipeDetailComponent},
   { path: 'meal', component: MealComponent},
   { path: 'meal/add', component: MealAddComponent},
 ];
@@ -58,6 +62,7 @@ const routes: Routes = [
     FooterComponent,
     RecipeComponent,
     RecipeAddComponent,
+    RecipeDetailComponent,
     AlimentComponent,
     AlimentDetailComponent,
     HomeComponent,
@@ -67,7 +72,8 @@ const routes: Routes = [
     MealComponent,
     DietComponent,
     MomentComponent,
-    MealAddComponent
+    MealAddComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

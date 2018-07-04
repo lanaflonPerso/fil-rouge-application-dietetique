@@ -32,10 +32,10 @@ export class RecipeService {
       aliments.push(new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
     }
 
-    /*const saucisseIng = new Ingredient(1, 300, aliments[3]);
+    const saucisseIng = new Ingredient(1, 300, aliments[3]);
     recipe0.addIngredient(saucisseIng);
     const friteIng = new Ingredient(2, 400, aliments[4]);
-    recipe0.addIngredient(friteIng);*/
+    recipe0.addIngredient(friteIng);
 
     this.recipes.push(recipe0);
     this.recipes.push(recipe1);
@@ -76,5 +76,9 @@ export class RecipeService {
     } else {
       ingredient.quantity =  Number(ingredient.quantity) + Number(quantity);
     }
+  }
+
+  public getRecipeById(id: Number): Recipe {
+    return this.getRecipes().find(recipe => recipe.id === id );
   }
 }
