@@ -63,9 +63,10 @@ public class CategoryController {
 	}
 
 	// find category by name like
-	@RequestMapping(value = "/findbynamelike", params = "name", method = RequestMethod.GET)
+//	@RequestMapping(value = "/findbynamelike", params = "name", method = RequestMethod.GET)
+	@RequestMapping(params = "namelike", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findByNameLike(@RequestParam("name") String name) {
-		return categoryService.findByNameLike(name);
+	public List<Category> findByNameLike(@RequestParam("namelike") String namelike) {
+		return categoryService.findByNameLike(namelike);
 	}
 }

@@ -38,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
 	
 	@Override
 	public List<Category> findByNameLike(String name) {
-		return categoryRepository.findByNameLike(name);
+		return categoryRepository.findByNameLike("%" + name + "%");
 	}
 
 	@Override
