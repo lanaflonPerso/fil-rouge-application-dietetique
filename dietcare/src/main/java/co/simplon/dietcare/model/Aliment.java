@@ -33,16 +33,16 @@ public class Aliment {
 	private String visual;
 	
 	@Column(name = "PROTEIN")
-	private Float protein;
+	private Float proteins;
 	
 	@Column(name = "GLUCID")
-	private Float glucid;
+	private Float glucids;
 	
 	@Column(name = "LIPID")
-	private Float lipid;
+	private Float lipids;
 	
 	@Column(name = "FIBER")
-	private Float fiber;
+	private Float fibers;
 	
 	@Column(name = "IG")
 	private Float ig;
@@ -52,24 +52,24 @@ public class Aliment {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Aliment(Long id, String name, Category category, String description, String visual, Float protein,
-			Float glucid, Float lipid, Float fiber, Float ig) {
+	public Aliment(Long id, String name, Category category, String description, String visual, Float proteins,
+			Float glucids, Float lipids, Float fibers, Float ig) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.category = category;
 		this.description = description;
 		this.visual = visual;
-		this.protein = protein;
-		this.glucid = glucid;
-		this.lipid = lipid;
-		this.fiber = fiber;
+		this.proteins = proteins;
+		this.glucids = glucids;
+		this.lipids = lipids;
+		this.fibers = fibers;
 		this.ig = ig;
 	}
 
-	public Aliment(String name, Category category, String description, String visual, Float protein, Float glucid, Float lipid,
-			Float fiber, Float ig) {
-		this(null, name, category, description, visual, protein, glucid, lipid, fiber, ig);
+	public Aliment(String name, Category category, String description, String visual, Float proteins, Float glucids, Float lipids,
+			Float fibers, Float ig) {
+		this(null, name, category, description, visual, proteins, glucids, lipids, fibers, ig);
 	}
 
 	public Long getId() {
@@ -113,35 +113,35 @@ public class Aliment {
 	}
 
 	public Float getProtein() {
-		return protein;
+		return proteins;
 	}
 
-	public void setProtein(Float protein) {
-		this.protein = protein;
+	public void setProtein(Float proteins) {
+		this.proteins = proteins;
 	}
 
 	public Float getGlucid() {
-		return glucid;
+		return glucids;
 	}
 
-	public void setGlucid(Float glucid) {
-		this.glucid = glucid;
+	public void setGlucid(Float glucids) {
+		this.glucids = glucids;
 	}
 
 	public Float getLipid() {
-		return lipid;
+		return lipids;
 	}
 
-	public void setLipid(Float lipid) {
-		this.lipid = lipid;
+	public void setLipid(Float lipids) {
+		this.lipids = lipids;
 	}
 
 	public Float getFiber() {
-		return fiber;
+		return fibers;
 	}
 
-	public void setFiber(Float fiber) {
-		this.fiber = fiber;
+	public void setFiber(Float fibers) {
+		this.fibers = fibers;
 	}
 
 	public Float getIg() {
@@ -155,8 +155,8 @@ public class Aliment {
 	@Override
 	public String toString() {
 		return "Aliment [id=" + id + ", name=" + name + ", category=" + category + ", description=" + description
-				+ ", visual=" + visual + ", protein=" + protein + ", glucid=" + glucid + ", lipid=" + lipid + ", fiber="
-				+ fiber + ", ig=" + ig + "]";
+				+ ", visual=" + visual + ", proteins=" + proteins + ", glucids=" + glucids + ", lipids=" + lipids + ", fibers="
+				+ fibers + ", ig=" + ig + "]";
 	}
 		
 	
