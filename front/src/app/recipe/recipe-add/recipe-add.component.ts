@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/business/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { Aliment } from '../../models/business/aliment';
+import {  FileUploader, FileSelectDirective } from 'ng2-file-upload/ng2-file-upload';
+
+const URL = 'http://localhost:8090/upload';
 
 @Component({
   selector: 'app-recipe-add',
@@ -13,12 +16,18 @@ import { Aliment } from '../../models/business/aliment';
 })
 export class RecipeAddComponent extends GenericComponent implements OnInit {
 
+  public uploader: FileUploader = new FileUploader({url: URL, itemAlias: 'photo'});
+
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
     super();
   }
 
   ngOnInit() {
-
+    this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+         console.log('ImageUpload:uploaded:', item, status, response);
+         alert('File uploaded successfully');
+     };
   }
 
   getRecipe(): Recipe {

@@ -24,13 +24,15 @@ import { MatIconModule,
   MatGridTile,
   MatExpansionModule
 } from '@angular/material';
+
+import { FileSelectDirective } from 'ng2-file-upload';
+
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeService } from './services/recipe.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { NavItemsService } from './services/nav-items.service';
 import { RecipeAddComponent } from './recipe/recipe-add/recipe-add.component';
-
 import { HomeComponent } from './home/home.component';
 import { DisplayComponent } from './display/display.component';
 import { GenericComponent } from './generic/generic.component';
@@ -68,7 +70,8 @@ export const routes: Routes = [
     MealComponent,
     DietComponent,
     MenuComponent,
-    MomentComponent
+    MomentComponent,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,
