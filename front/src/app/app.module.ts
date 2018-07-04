@@ -37,8 +37,8 @@ import { GenericComponent } from './generic/generic.component';
 import { CategoryComponent } from './category/category.component';
 import { MealComponent } from './meal/meal.component';
 import { DietComponent } from './diet/diet.component';
-import { MenuComponent } from './menu/menu.component';
 import { MomentComponent } from './moment/moment.component';
+import { MealAddComponent } from './meal/meal-add/meal-add.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -48,6 +48,7 @@ const routes: Routes = [
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},
   { path: 'meal', component: MealComponent},
+  { path: 'meal/add', component: MealAddComponent},
 ];
 
 @NgModule({
@@ -65,8 +66,8 @@ const routes: Routes = [
     CategoryComponent,
     MealComponent,
     DietComponent,
-    MenuComponent,
-    MomentComponent
+    MomentComponent,
+    MealAddComponent
   ],
   imports: [
     BrowserModule,
