@@ -1,0 +1,16 @@
+<h2>Ajout d'une catégorie</h2>
+
+<form>
+    <fieldset>
+      <legend>catégorie :</legend>
+      
+      <mat-label>Nom :</mat-label>
+      <mat-form-field>  
+        <input matInput placeholder="Input" name="name" [(ngModel)]="getCategory().name" />
+      </mat-form-field>    
+      
+      <button mat-raised-button color="primary" name="submit" (click)="updateCategory()">Enregistrer</button> 
+      
+      
+  </fieldset>
+</form>

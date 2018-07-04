@@ -16,10 +16,35 @@
   </div>
 
   <p>
-    <a routerLink="/recipe/add"><mat-icon>add_box</mat-icon></a>
+    <a routerLink="/recipe/add">
+      <mat-icon>add_box</mat-icon>
+    </a>
   </p>
 
   <div id="recipeList">
+    <table class="table table-striped table-bordered">
+      <thead>
+          <tr>              
+            <td>Nom</td>
+            <td>Visuel</td>
+            <td>Valeur calorique ( / 100 g)</td>
+            <td>Charge Glicémique ( / 100 g)</td>
+            <td>Que faire ?</td>  
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let recipe of getFileteredRecipes()">
+              <td> {{recipe.name}}</td>
+              <td><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></td>
+              <td>500 KCal</td>
+              <td>50</td>
+              <td>
+                <a routerLink="/recipe/detail/{{recipe.id}}">Voir la recette<mat-icon>list</mat-icon></a>
+              </td>
+            </tr>
+      </tbody>
+  </table>
+    <!--
     <mat-grid-list cols="5" rowHeight="50px;" class="">
       
       <mat-grid-tile class="grid-item header">Nom</mat-grid-tile>
@@ -37,6 +62,6 @@
           <a routerLink="/recipe/detail/{{recipe.id}}">Voir la recette<mat-icon>list</mat-icon></a>
         </mat-grid-tile>
       </ng-container>
-    </mat-grid-list>     
+    </mat-grid-list>-->     
   </div>
 </div>

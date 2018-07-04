@@ -28,8 +28,8 @@ export class CategoryService {
 
   }
 
-  public getCategorie(iReal: string) {
-    const real = this.categories.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
+  public getCategorie(id: number) {
+    const real = this.categories.filter((elt) => elt.id === id);
     return real[0];
   }
 }
