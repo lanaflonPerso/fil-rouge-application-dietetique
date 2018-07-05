@@ -31,7 +31,7 @@ export class GenericComponent implements OnInit {
     this.config = new Config();
     $(document).ready( function() {
       const table: any = $('.table');
-      this.dataTable = table.DataTable();
+      // table.DataTable();
        /*const table2: any = $('#example');
       table2.DataTable( {
         'language': {
