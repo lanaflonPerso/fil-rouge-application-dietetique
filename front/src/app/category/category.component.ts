@@ -2,16 +2,9 @@ import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/business/category';
-import { DataSource } from '@angular/cdk/table';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { MatSort, MatTableDataSource } from '@angular/material';
-
-
-
-
-
-
-
+// import { DataSource } from '@angular/cdk/table';
+// import { BehaviorSubject, Observable } from 'rxjs';
+// import { MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-category',
@@ -21,13 +14,10 @@ import { MatSort, MatTableDataSource } from '@angular/material';
 
 export class CategoryComponent extends GenericComponent implements OnInit {
 
-  dataSource;
+ /* dataSource;
       displayedColumns = [];
       @ViewChild(MatSort) sort: MatSort;
 
-      /**
-       * Pre-defined columns list for user table
-       */
       columnNames = [{
         id: 'id',
         value: 'No.'
@@ -36,12 +26,12 @@ export class CategoryComponent extends GenericComponent implements OnInit {
         id: 'name',
         value: 'Name'
       }
-     ];
+     ];*/
 
-      createTable() {
+     /* createTable() {
         this.dataSource = new MatTableDataSource(this.categoryService.getCategories());
         this.dataSource.sort = this.sort;
-      }
+      }*/
 
   constructor(private categoryService: CategoryService) {
     super();
@@ -49,7 +39,7 @@ export class CategoryComponent extends GenericComponent implements OnInit {
 
   ngOnInit() {
 
-    this.displayedColumns = this.columnNames.map(x => x.id);
+    // this.displayedColumns = this.columnNames.map(x => x.id);
     // this.createTable();
     this.gererateDataTable();
   }
@@ -70,9 +60,9 @@ export class CategoryComponent extends GenericComponent implements OnInit {
   }
 }
 
-export interface Element {
+/*export interface Element {
   position: number;
   name: string;
   weight: number;
   symbol: string;
-}
+}*/

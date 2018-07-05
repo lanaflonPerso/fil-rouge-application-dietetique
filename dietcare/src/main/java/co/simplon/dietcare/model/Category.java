@@ -3,6 +3,7 @@ package co.simplon.dietcare.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,18 +14,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATEGORY")
+@Table(name = "category")
 public class Category {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name;
 	
-	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY)
+	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 
 	public Category() {
@@ -69,7 +70,11 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", nb aliments=" + aliments.size() + "]";
+		String str = "Category [id=" + id + ", name=" + name + ", nb aliments=" + aliments.size() + "]";
+		for(Aliment aliment: this.getAliments()) {
+			str += aliment.getName();
+		}
+		return str;
 	}
 	
 	

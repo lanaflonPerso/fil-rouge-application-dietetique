@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,6 +31,7 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Category cat) {
+		System.out.println(cat);
 		return categoryService.save(cat).getId();
 	}
 	
@@ -38,6 +40,7 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Category update(@RequestBody Category cat) {
+		
 		return categoryService.save(cat);
 	}
 	
@@ -49,24 +52,24 @@ public class CategoryController {
 	}
 	
 	// find category by id
-	@RequestMapping(params = "id", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Category> findbyId(@RequestParam("id") Long id) {
+	public Optional<Category> findbyId(@PathVariable("id") Long id) {
 		return categoryService.findbyId(id);
 	}
 	
 	// find category by name
-	@RequestMapping(params = "name", method = RequestMethod.GET)
+	@RequestMapping(value = "/filter/{name}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findbyName(@RequestParam("name") String name) {
+	public List<Category> findbyName(@PathVariable("name") String name) {
 		return categoryService.findbyName(name);
 	}
 
 	// find category by name like
-	@RequestMapping(params = "namelike", method = RequestMethod.GET)
+	@RequestMapping(params = "/likefilter/{name}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Category> findByNameLike(@RequestParam("namelike") String namelike) {
-		return categoryService.findByNameLike(namelike);
+	public List<Category> findByNameLike(@PathVariable("name") String name) {
+		return categoryService.findByNameLike(name);
 	}
 	
 	// delete category by id

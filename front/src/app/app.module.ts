@@ -43,6 +43,8 @@ import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.comp
 import { CategoryAddComponent } from './category/category-add/category-add.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
@@ -96,7 +98,8 @@ export const routes: Routes = [
     MatGridListModule,
     MatExpansionModule,
     FlexLayoutModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpClientModule
   ],
   providers: [
     RecipeService,

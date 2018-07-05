@@ -10,6 +10,7 @@ export class Category {
     constructor(id: number, name: String) {
         this.id = id;
         this.name = name;
+        this.aliments = [];
     }
 
     public addAliment(aliment: Aliment): void {
