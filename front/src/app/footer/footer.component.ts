@@ -14,6 +14,7 @@ export class FooterComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }

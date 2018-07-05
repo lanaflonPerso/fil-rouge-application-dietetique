@@ -48,8 +48,10 @@ export class CategoryComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.displayedColumns = this.columnNames.map(x => x.id);
-    this.createTable();
+    // this.createTable();
+    this.gererateDataTable();
   }
 
   public getCategories(): Category[] {

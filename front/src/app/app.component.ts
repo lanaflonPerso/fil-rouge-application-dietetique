@@ -11,6 +11,7 @@ export class AppComponent extends GenericComponent implements OnInit {
 
 
   ngOnInit(): void {
+
   }
 
 }

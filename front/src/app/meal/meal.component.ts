@@ -14,6 +14,7 @@ export class MealComponent  extends GenericComponent  implements OnInit {
   }
 
   ngOnInit() {
+    this.gererateDataTable();
   }
 
   public getMeals() {

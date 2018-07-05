@@ -20,14 +20,10 @@ export class AlimentDetailComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.route.params.subscribe
     (
         params => {
-                      // console.log(this.route.snapshot.paramMap.get('nomAliment'));
-                      // console.log(params);
-                      // const name: string = params.nomAliment;
-                      // const realTmp = this.alimentService.getAliment(name.valueOf());
-                      // this.aliment = realTmp;
                       this.aliment = this.alimentService.getAliment(this.route.snapshot.paramMap.get('nomAliment'));
 
       });

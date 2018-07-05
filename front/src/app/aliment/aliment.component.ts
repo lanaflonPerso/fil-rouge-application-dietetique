@@ -16,6 +16,7 @@ constructor(private alimentService: AlimentService) {
   }
 
   ngOnInit() {
+    this.gererateDataTable();
   }
 
   public getAliments(): Aliment[] {

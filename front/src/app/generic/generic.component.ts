@@ -13,8 +13,6 @@ export class GenericComponent implements OnInit {
 
   config: Config;
 
-  isInitialized = false;
-
   private searchText: String = '';
 
   public setSearchText(searchText: String) {
@@ -29,53 +27,24 @@ export class GenericComponent implements OnInit {
     this.setSearchText(searchText);
   }
 
-  public constructor() {
-    this.config = new Config();
-
-    $(document).ready( function() {
-      const table: any = $('.table');
-
-      if ( !this.isInitialized ) {
-        table.DataTable({
-        'searching': false,
-        'language': {
-          'lengthMenu': 'Nombre de repas par page _MENU_',
-          'zeroRecords': 'Aucun Résultat',
-          'info': 'Page _PAGE_ sur _PAGES_',
-          'infoEmpty': 'Aucun Résultat',
-          'infoFiltered': '(filtered from _MAX_ total records)',
-          'search':'Recherche:',
-          'oPaginate': { 'sFirst':'Début','sLast':'Fin','sNext':'Suivant','sPrevious':'Précédent'}
-          // remplacer tout ce qui est au dessus par ce fichier (Francais)
-          // "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
-        }
-      });
-      this.isInitialized = true;
-    } else {
-      table.DataTable();
-    }
-       /*const table2: any = $('#example');
-      table2.DataTable( {
-        'language': {
-            'lengthMenu': 'Nombre de repas par page _MENU_',
-            'zeroRecords': 'Aucun Résultat',
-            'info': 'Page _PAGE_ sur _PAGES_',
-            'infoEmpty': 'Aucun Résultat',
-            'infoFiltered': '(filtered from _MAX_ total records)',
-            'search':'Recherche:',
-            'oPaginate': { 'sFirst':'Début','sLast':'Fin','sNext':'Suivant','sPrevious':'Précédent'}
-
-            // remplacer tout ce qui est au dessus par ce fichier (Francais)
-            //'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
-        }
-    } );*/
-
-
+  protected gererateDataTable(): void {
+        $(document).ready(
+          function() {
+            const table: any = $('.table');
+          table.DataTable({
+          'language': {
+                        'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+          }
+        });
       }
     );
   }
 
-  ngOnInit() {
+  public constructor() {
+    this.config = new Config();
   }
 
+  ngOnInit() {
+
+  }
 }

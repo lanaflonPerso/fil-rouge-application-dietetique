@@ -15,6 +15,7 @@ export class HeaderComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
 

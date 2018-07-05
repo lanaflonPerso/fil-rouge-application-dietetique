@@ -13,6 +13,7 @@ export class DisplayComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
 }
