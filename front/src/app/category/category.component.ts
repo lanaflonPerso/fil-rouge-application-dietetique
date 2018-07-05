@@ -1,20 +1,55 @@
 import { GenericComponent } from './../generic/generic.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import { Category } from '../models/business/category';
+import { DataSource } from '@angular/cdk/table';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { MatSort, MatTableDataSource } from '@angular/material';
+
+
+
+
+
+
+
 
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.css']
 })
+
 export class CategoryComponent extends GenericComponent implements OnInit {
+
+  dataSource;
+      displayedColumns = [];
+      @ViewChild(MatSort) sort: MatSort;
+
+      /**
+       * Pre-defined columns list for user table
+       */
+      columnNames = [{
+        id: 'id',
+        value: 'No.'
+
+      }, {
+        id: 'name',
+        value: 'Name'
+      }
+     ];
+
+      createTable() {
+        this.dataSource = new MatTableDataSource(this.categoryService.getCategories());
+        this.dataSource.sort = this.sort;
+      }
 
   constructor(private categoryService: CategoryService) {
     super();
   }
 
   ngOnInit() {
+    this.displayedColumns = this.columnNames.map(x => x.id);
+    this.createTable();
   }
 
   public getCategories(): Category[] {
@@ -31,4 +66,11 @@ export class CategoryComponent extends GenericComponent implements OnInit {
 
     return categories;
   }
+}
+
+export interface Element {
+  position: number;
+  name: string;
+  weight: number;
+  symbol: string;
 }
