@@ -28,6 +28,7 @@ public class Category {
 	private String name;
 	
 	@JsonManagedReference
+	//@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 
@@ -35,15 +36,15 @@ public class Category {
 		super();
 	}
 
-	public Category(Long id, String name, List<Aliment> aliments) {
+	public Category(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.aliments = aliments;
+		
 	}
 
 	public Category(String name) {
-		this(null, name, null);
+		this.name = name;
 	}
 
 	public Long getId() {

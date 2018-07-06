@@ -7,7 +7,10 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { Aliment } from '../models/business/aliment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders( {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    })
 };
 
 @Injectable({

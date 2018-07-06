@@ -31,14 +31,8 @@ export class CategoryAddComponent extends GenericComponent implements OnInit {
   }
 
   public addCategory() {
-    // const aliment: Aliment = new Aliment(null, 'toto', '', '', 1, 1, 1, 1, 1 );
-    // this.category.aliments.push(aliment);
-    // aliment.setCategory(new Category(this.category.id, this.category.name));
     this.categoryService.addCategory(this.category);
-    // console.log(this.category);
-    // const category = new Category(null, this.category.name);
-    // this.categoryService.getCategories().push(category);
-    // this.category = new Category(null, '');
+    this.category = new Category(null, '');
     this.router.navigateByUrl('/aliment/category');
   }
 
