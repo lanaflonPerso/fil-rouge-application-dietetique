@@ -34,7 +34,7 @@ public abstract class DietComponent {
 
 	@Column(name = "visual")
 	private String visual;
-	
+	/*
 	@JsonManagedReference
 	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Component> components = new ArrayList<Component>();
@@ -45,7 +45,7 @@ public abstract class DietComponent {
 
 	public void setComponents(List<Component> components) {
 		this.components = components;
-	}
+	}*/
 
 	public DietComponent(Long id, String name, String description, String visual) {
 		this.id = id;

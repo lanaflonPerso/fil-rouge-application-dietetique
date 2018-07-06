@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -30,7 +31,6 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Category cat) {
-		System.out.println("Create");
 		return categoryService.save(cat).getId();
 	}
 	
@@ -39,7 +39,7 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Category update(@RequestBody Category cat) {
-		System.out.println("update");
+		
 		return categoryService.save(cat);
 	}
 	
@@ -47,7 +47,6 @@ public class CategoryController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Category> findAll() {
-		System.out.println("findAll");
 		return categoryService.findAll();
 	}
 	
@@ -55,7 +54,6 @@ public class CategoryController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Optional<Category> findbyId(@PathVariable("id") Long id) {
-		System.out.println("findbyId");
 		return categoryService.findbyId(id);
 	}
 	

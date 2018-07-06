@@ -34,8 +34,9 @@ public class Aliment extends DietComponent {
 	@Column(name = "ig")
 	private Float ig;
 	
+	
 	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_category", nullable = true)
 	private Category category;
 	
@@ -57,13 +58,13 @@ public class Aliment extends DietComponent {
 		this.ig = ig;
 	}
 	
-	public List<Ingredient> getIngredients() {
-		return ingredients;
-	}
+	//public List<Ingredient> getIngredients() {
+		//return ingredients;
+	//}
 
-	public void setIngredients(List<Ingredient> ingredients) {
-		this.ingredients = ingredients;
-	}
+	//public void setIngredients(List<Ingredient> ingredients) {
+		//this.ingredients = ingredients;
+	//}
 
 
 	public Category getCategory() {

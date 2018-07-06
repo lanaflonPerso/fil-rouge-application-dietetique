@@ -7,7 +7,10 @@ import { catchError, retry, map } from 'rxjs/operators';
 import { Aliment } from '../models/business/aliment';
 
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  headers: new HttpHeaders( {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    })
 };
 
 @Injectable({
@@ -36,11 +39,8 @@ export class CategoryService {
 
   public addCategory(category: Category) {
 
-  // category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
-  /*const cat = {
-    id: null ,
-    name: 'test'
-  };*/
+  category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
+
   this.http.post(this.restUrl, category, httpOptions).subscribe(result => {
      this.getRestCategories();
    });
