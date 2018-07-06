@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoryService } from '../../services/category.service';
 import { Category } from '../../models/business/category';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Aliment } from '../../models/business/aliment';
 
 @Component({
   selector: 'app-category-add',
@@ -30,9 +31,14 @@ export class CategoryAddComponent extends GenericComponent implements OnInit {
   }
 
   public addCategory() {
-    const category = new Category(null, this.category.name);
-    this.categoryService.getCategories().push(category);
-    this.category = new Category(null, '');
+    // const aliment: Aliment = new Aliment(null, 'toto', '', '', 1, 1, 1, 1, 1 );
+    // this.category.aliments.push(aliment);
+    // aliment.setCategory(new Category(this.category.id, this.category.name));
+    this.categoryService.addCategory(this.category);
+    // console.log(this.category);
+    // const category = new Category(null, this.category.name);
+    // this.categoryService.getCategories().push(category);
+    // this.category = new Category(null, '');
     this.router.navigateByUrl('/aliment/category');
   }
 

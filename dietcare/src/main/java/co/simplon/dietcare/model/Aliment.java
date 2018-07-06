@@ -1,5 +1,6 @@
 package co.simplon.dietcare.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,46 +11,49 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
-@Table(name = "ALIMENT")
+@Table(name = "aliment")
 public class Aliment {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long id;
 	
-	@Column(name = "NAME")
+	@Column(name = "name")
 	private String name;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_category")
-	private Category category;
-	
-	@Column(name = "DESCRIPTION")
+	@Column(name = "description")
 	private String description;
 
-	@Column(name = "VISUAL")
+	@Column(name = "visual")
 	private String visual;
 	
-	@Column(name = "PROTEIN")
+	@Column(name = "proteins")
 	private Float proteins;
 	
-	@Column(name = "GLUCID")
+	@Column(name = "glucids")
 	private Float glucids;
 	
-	@Column(name = "LIPID")
+	@Column(name = "lipids")
 	private Float lipids;
 	
-	@Column(name = "FIBER")
+	@Column(name = "fibers")
 	private Float fibers;
 	
-	@Column(name = "IG")
+	@Column(name = "ig")
 	private Float ig;
+	
+	@JsonBackReference
+	//@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_category", nullable = true)
+	private Category category;
 
 	public Aliment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Aliment(Long id, String name, Category category, String description, String visual, Float proteins,
@@ -112,35 +116,35 @@ public class Aliment {
 		this.visual = visual;
 	}
 
-	public Float getProtein() {
+	public Float getProteins() {
 		return proteins;
 	}
 
-	public void setProtein(Float proteins) {
+	public void setProteins(Float proteins) {
 		this.proteins = proteins;
 	}
 
-	public Float getGlucid() {
+	public Float getGlucids() {
 		return glucids;
 	}
 
-	public void setGlucid(Float glucids) {
+	public void setGlucids(Float glucids) {
 		this.glucids = glucids;
 	}
 
-	public Float getLipid() {
+	public Float getLipids() {
 		return lipids;
 	}
 
-	public void setLipid(Float lipids) {
+	public void setLipids(Float lipids) {
 		this.lipids = lipids;
 	}
 
-	public Float getFiber() {
+	public Float getFibers() {
 		return fibers;
 	}
 
-	public void setFiber(Float fibers) {
+	public void setFibers(Float fibers) {
 		this.fibers = fibers;
 	}
 

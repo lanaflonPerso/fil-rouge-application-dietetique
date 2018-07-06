@@ -35,6 +35,9 @@ export class CategoryDetailComponent extends GenericComponent implements OnInit 
   }
 
   public updateCategory() {
+
+    const cat: Category = this.getCategory();
+    this.categoryService.updateCategory(cat);
     this.router.navigateByUrl('/aliment/category');
   }
 
