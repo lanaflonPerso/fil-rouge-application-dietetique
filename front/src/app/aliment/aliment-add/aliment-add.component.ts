@@ -24,7 +24,6 @@ export class AlimentAddComponent implements OnInit {
 
   ngOnInit() {
     this.aliment = new Aliment(null, '', '', '' , 0, 0, 0, 0, 0);
-    
   }
 
   public getAliment(): Aliment {
@@ -44,7 +43,6 @@ export class AlimentAddComponent implements OnInit {
   public changeCat(select) {
     this.categorie = this.categoryService.getCategorie(Number(select.value));
     this.aliment.setCategory(this.categorie);
-    
   }
 
 }

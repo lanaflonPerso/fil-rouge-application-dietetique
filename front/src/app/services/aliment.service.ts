@@ -57,8 +57,8 @@ export class AlimentService {
     return this.aliments;
   }
 
-  public getAliment(id: string) {
-    const real = this.aliments.filter((elt) => elt.name.toLowerCase() === id.toLowerCase());
+  public getAliment(id: number) {
+    const real = this.aliments.filter((elt) => elt.id === id);
     return real[0];
   }
 

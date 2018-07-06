@@ -54,7 +54,7 @@ export const routes: Routes = [
   { path: 'aliment/category/add', component: CategoryAddComponent },
   { path: 'aliment/category/detail/:id', component: CategoryDetailComponent },
   { path: 'aliment/add', component: AlimentAddComponent},
-  { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
+  { path: 'aliment/detail/:id', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},

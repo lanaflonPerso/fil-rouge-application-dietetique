@@ -24,7 +24,8 @@ export class AlimentDetailComponent extends GenericComponent implements OnInit {
     this.route.params.subscribe
     (
         params => {
-                      this.aliment = this.alimentService.getAliment(this.route.snapshot.paramMap.get('nomAliment'));
+                      // this.aliment = this.alimentService.getAliment(this.route.snapshot.paramMap.get('nomAliment'));
+                      this.aliment = this.alimentService.getAliment(Number(this.route.snapshot.paramMap.get('id')));
 
       });
   }

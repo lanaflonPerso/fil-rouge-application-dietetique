@@ -31,7 +31,6 @@ export class MealAddComponent extends GenericComponent implements OnInit {
 
   public checkValueAliments() {
     this.printListAliments = !this.printListAliments;
-    console.log('Aliment : ' + this.printListAliments );
   }
 
   public getPrintListAliments() {
@@ -40,7 +39,6 @@ export class MealAddComponent extends GenericComponent implements OnInit {
 
   public checkValueRecipes() {
     this.printListRecipes = !this.printListRecipes;
-    console.log('Recette : ' + this.printListRecipes );
   }
 
   public getPrintListRecipes() {
@@ -55,4 +53,11 @@ export class MealAddComponent extends GenericComponent implements OnInit {
     return  this.recipeService.getRecipes();
   }
 
+  public addAlimentToMeal(aliment: Aliment): void {
+    this.mealService.addAlimentToMeal(aliment, 100);
+  }
+
+  public getListAliments() {
+    return this.mealService.listAliments;
+  }
 }
