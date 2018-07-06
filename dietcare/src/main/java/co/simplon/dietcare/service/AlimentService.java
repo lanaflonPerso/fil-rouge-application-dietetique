@@ -21,7 +21,7 @@ public interface AlimentService {
 	public List<Aliment> findByNameLike(String name);
 	// delete an entity by id
 	public void deleteById(Long id);
-	// count all entities
-	public long count(); 
+//	// count all entities
+//	public long count(); 
 
 }

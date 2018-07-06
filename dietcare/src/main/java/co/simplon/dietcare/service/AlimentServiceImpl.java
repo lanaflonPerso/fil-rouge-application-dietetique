@@ -17,8 +17,8 @@ public class AlimentServiceImpl implements AlimentService {
 	
 	@Override
 	public Aliment save(Aliment aliment) {
-		alimentRepository.save(aliment);
-		return aliment;
+		return alimentRepository.save(aliment);
+//		return aliment;
 	}
 	
 	@Override
@@ -46,8 +46,8 @@ public class AlimentServiceImpl implements AlimentService {
 		alimentRepository.deleteById(id);
 	}
 	
-	@Override
-	public long count() {
-		return alimentRepository.findAll().size();
-	}
+//	@Override
+//	public long count() {
+//		return alimentRepository.findAll().size();
+//	}
 }
