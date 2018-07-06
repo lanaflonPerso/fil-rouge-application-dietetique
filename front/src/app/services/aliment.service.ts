@@ -28,11 +28,15 @@ export class AlimentService {
 
   public getAliments() {
     return this.aliments;
-
   }
 
-  public getAliment(iReal: string) {
-    const real = this.aliments.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
+  // public getAliment(iReal: string) {
+  //   const real = this.aliments.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
+  //   return real[0];
+  // }
+
+  public getAliment(iReal: number) {
+    const real = this.aliments.filter((elt) => elt.id === iReal);
     return real[0];
   }
 }

@@ -45,12 +45,39 @@
                         <legend>Composition</legend>	
                         <form>                      
                           <div class="form-row">
+
+                            
+                          <!-- CONTENU ALIMENT -->
+                          <table id="MealAlimentList" *ngIf="getListAliments().length > 0" class="table table-striped table-bordered" style="width:100%">
+                              <ng-container >  
+                                <thead>
+                                    <tr>
+                                        <th>Aliments</th>
+                                        <th class="text-center">Visuel</th>
+                                        <th class="text-center">Supprimer</th>
+                                    </tr>
+                                </thead>
+                                
+                                <tbody>                                                              
+                                    <tr *ngFor="let alim of getListAliments()">
+                                        <td><a routerLink="/aliment/detail/{{alim.id}}" title="{{alim.name}}">{{alim.name}}</a></td>
+                                        <td class="text-center"><img src="{{alim.visual}}" alt="Visuel {{alim.name}}" width="30" height="30"/></td>
+                                        <td class="text-center"><mat-icon class="pointer" (click)="addAlimentToMeal(alim)">delete</mat-icon></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                </tfoot>
+                              </ng-container>
+                            </table>
+                            <!-- /CONTENU ALIMENT -->
   
+
+                              
                             <div class="form-group col-md-10">
                                 <label for="comment">Comment:</label>
                                 <textarea class="form-control" rows="5" id="comment"></textarea>
                             </div>
-  
+
                           </div>
                         </form>				
                       </fieldset>	
@@ -78,9 +105,9 @@
                               
                               <tbody>                                                              
                                   <tr *ngFor="let alim of getAliments()">
-                                      <td><a routerLink="/aliment/{{alim.name | lowercase}}" title="{{alim.name}}">{{alim.name}}</a></td>
+                                      <td><a routerLink="/aliment/detail/{{alim.id}}" title="{{alim.name}}">{{alim.name}}</a></td>
                                       <td class="text-center"><img src="{{alim.visual}}" alt="Visuel {{alim.name}}" width="30" height="30"/></td>
-                                      <td class="text-center"><a routerLink="#" title="Ajouter un composant"><mat-icon>add_box</mat-icon></a></td>
+                                      <td class="text-center"><mat-icon class="pointer" (click)="addAlimentToMeal(alim)">add_box</mat-icon></td>
                                   </tr>
                               </tbody>
                               <tfoot>
@@ -109,7 +136,7 @@
                                   <tr *ngFor="let recipe of getRecipes()">
                                       <td><a routerLink="/recipe/detail/{{recipe.id}}" title="{{recipe.name}}">{{recipe.name}}</a></td>
                                       <td class="text-center"><img src="{{recipe.visual}}" alt="Visuel {{recipe.name}}" width="30" height="30"/></td>
-                                      <td class="text-center"><a routerLink="#" title="Ajouter un composant"><mat-icon>add_box</mat-icon></a></td>
+                                      <td class="text-center"><a routerLink="#" title="Ajouter une recette"><mat-icon>add_box</mat-icon></a></td>
                                   </tr>
                               </tbody>
                               <tfoot>
