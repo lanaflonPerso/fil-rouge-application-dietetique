@@ -46,7 +46,6 @@ export class CategoryService {
    });
 
   }
-
   public updateCategory(category: Category) {
 
     this.http.put(this.restUrl, category, httpOptions).subscribe(result => {

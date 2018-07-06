@@ -13,8 +13,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
@@ -29,7 +27,7 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value = "category-aliments")
 	//@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();

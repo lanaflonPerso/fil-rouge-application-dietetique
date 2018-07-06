@@ -16,7 +16,7 @@
 <p><a routerLink="/aliment/category">Gérer les catégories</a></p>
 
 <p>
-  <a routerLink="/recipe/add"><mat-icon>add_box</mat-icon></a>
+  <a routerLink="/aliment/add"><mat-icon>add_box</mat-icon></a>
 </p>
 
 <div id="recipeList">
@@ -24,16 +24,26 @@
         <thead>
             <tr>              
                 <th>Nom</th>
-                <th>Catégorie</th>
-                <th>Visuel</th>
+                <th>Protéines</th>
+                <th>Glucides</th>
+                <th>Lipides</th>
+                <th>Ig</th>
+                
+                <!--<th>Catégorie</th>-->
+                <!--<th>Visuel</th>-->
                 <th>Que faire ?</th>  
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let aliment of getFileteredAliments()">
+      <tr *ngFor="let aliment of getFileteredAliments()">
                 <td> {{aliment.name}}</td>
-      <td> {{aliment.category.name}}</td>
-      <td><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></td>
+                <td> {{aliment.proteins}}</td>
+                <td> {{aliment.glucids}}</td>
+                <td> {{aliment.lipids}}</td>
+                <td> {{aliment.ig}}</td>
+                
+      <!--<td> {{aliment.category.name}} </td>-->
+      <!--<td><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></td>-->
 
       <td>
         <a routerLink="/aliment"><mat-icon>list</mat-icon></a>

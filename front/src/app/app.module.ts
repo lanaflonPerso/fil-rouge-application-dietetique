@@ -22,7 +22,8 @@ import { MatIconModule,
   MatListModule,
   MatGridListModule,
   MatGridTile,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -45,12 +46,14 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import { MealDetailComponent } from './meal/meal-detail/meal-detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AlimentAddComponent } from './aliment/aliment-add/aliment-add.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
   { path: 'aliment/category/add', component: CategoryAddComponent },
   { path: 'aliment/category/detail/:id', component: CategoryDetailComponent },
+  { path: 'aliment/add', component: AlimentAddComponent},
   { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
@@ -80,7 +83,8 @@ export const routes: Routes = [
     MomentComponent,
     CategoryAddComponent,
     CategoryDetailComponent,
-    MealDetailComponent
+    MealDetailComponent,
+    AlimentAddComponent
   ],
   imports: [
     BrowserModule,
@@ -100,6 +104,7 @@ export const routes: Routes = [
     MatListModule,
     MatGridListModule,
     MatExpansionModule,
+    MatSelectModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
     HttpClientModule

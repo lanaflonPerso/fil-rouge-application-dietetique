@@ -4,11 +4,6 @@ import { DietComponent } from './dietComponent';
 export class Aliment extends DietComponent {
 
     category: Category = null;
-
-    id: number;
-    name: String;
-    description: String;
-    visual: String;
     proteins: number;
     glucids: number;
     lipids: number;
@@ -17,11 +12,7 @@ export class Aliment extends DietComponent {
 
     // tslint:disable-next-line:max-line-length
     constructor(id: number, name: String, description: String, visual: String, proteins: number, glucids: number, lipids: number, fibers: number, ig: number) {
-        super();
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.visual = visual;
+        super(id, name, visual, description);
         this.proteins = proteins;
         this.glucids = glucids;
         this.lipids = lipids;
@@ -31,10 +22,6 @@ export class Aliment extends DietComponent {
 
     public setCategory(category: Category) {
         this.category = category;
-    }
-
-    public getEnergy(): number {
-        return this.proteins * 4 + this.glucids * 4 + 9 * this.lipids;
     }
 
     public getProteins(): number {
@@ -47,5 +34,9 @@ export class Aliment extends DietComponent {
 
     public getLipids(): number {
         return this.lipids;
+    }
+
+    public getEnergy(): number {
+        return this.proteins * 4 + this.glucids * 4 + 9 * this.lipids;
     }
 }
