@@ -39,7 +39,7 @@ export class CategoryAddComponent extends GenericComponent implements OnInit {
     // const category = new Category(null, this.category.name);
     // this.categoryService.getCategories().push(category);
     // this.category = new Category(null, '');
-    this.router.navigateByUrl('/aliment/category');
+    // this.router.navigateByUrl('/aliment/category');
   }
 
 }

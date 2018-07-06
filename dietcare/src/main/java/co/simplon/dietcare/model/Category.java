@@ -35,15 +35,15 @@ public class Category {
 		super();
 	}
 
-	public Category(Long id, String name, List<Aliment> aliments) {
+	public Category(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.aliments = aliments;
+		
 	}
 
 	public Category(String name) {
-		this(null, name, null);
+		this.name = name;
 	}
 
 	public Long getId() {

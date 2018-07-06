@@ -36,8 +36,11 @@ export class CategoryService {
 
   public addCategory(category: Category) {
 
-  category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
-
+  // category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
+  /*const cat = {
+    id: null ,
+    name: 'test'
+  };*/
   this.http.post(this.restUrl, category, httpOptions).subscribe(result => {
      this.getRestCategories();
    });
