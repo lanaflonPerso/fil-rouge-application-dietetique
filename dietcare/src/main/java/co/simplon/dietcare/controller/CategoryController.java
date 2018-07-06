@@ -31,7 +31,7 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Category cat) {
-		//System.out.println(cat);
+		System.out.println(cat);
 		return categoryService.save(cat).getId();
 	}
 	

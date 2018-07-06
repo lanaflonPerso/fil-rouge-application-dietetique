@@ -4,6 +4,7 @@ import LIST_CATEGORIES from '../models/datas/categories';
 import { Observable, throwError  } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry, map } from 'rxjs/operators';
+import { Aliment } from '../models/business/aliment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -35,7 +36,7 @@ export class CategoryService {
 
   public addCategory(category: Category) {
 
- // const cat = new Category( null, category.name);
+  category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
 
   this.http.post(this.restUrl, category, httpOptions).subscribe(result => {
      this.getRestCategories();

@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "aliment")
 public class Aliment {
@@ -22,10 +24,6 @@ public class Aliment {
 	
 	@Column(name = "name")
 	private String name;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_category", nullable = true)
-	private Category category;
 	
 	@Column(name = "description")
 	private String description;
@@ -47,6 +45,12 @@ public class Aliment {
 	
 	@Column(name = "ig")
 	private Float ig;
+	
+	@JsonBackReference
+	//@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "fk_category", nullable = true)
+	private Category category;
 
 	public Aliment() {
 		super();
