@@ -28,7 +28,7 @@ constructor(private alimentService: AlimentService) {
       return this.alimentService.getAliments()
       .filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     } else {
-      return this.getAliments();
+      return this.alimentService.getAliments();
     }
   }
 }

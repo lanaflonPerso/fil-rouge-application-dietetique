@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Aliment } from '../models/business/aliment';
 import LIST_ALIMENTS from '../models/datas/aliments';
 import { Category } from '../models/business/category';
@@ -17,7 +17,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class AlimentService {
+export class AlimentService implements OnInit {
 
   private restUrl = 'http://localhost:8090/aliment';
 
@@ -37,6 +37,10 @@ export class AlimentService {
       aliment.setCategory(new Category(alim.category.id, alim.category.name));
       this.aliments.push(aliment);
     }*/
+    this.getRestAliments();
+  }
+
+  ngOnInit(): void {
     this.getRestAliments();
   }
 
