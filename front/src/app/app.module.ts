@@ -42,6 +42,7 @@ import { MealAddComponent } from './meal/meal-add/meal-add.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { CategoryAddComponent } from './category/category-add/category-add.component';
 import { CategoryDetailComponent } from './category/category-detail/category-detail.component';
+import { MealDetailComponent } from './meal/meal-detail/meal-detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -57,6 +58,7 @@ export const routes: Routes = [
   { path: 'recipe/detail/:id', component: RecipeDetailComponent},
   { path: 'meal', component: MealComponent},
   { path: 'meal/add', component: MealAddComponent},
+  { path: 'meal/detail/:id', component: MealDetailComponent},
 ];
 
 @NgModule({
@@ -77,7 +79,8 @@ export const routes: Routes = [
     MealAddComponent,
     MomentComponent,
     CategoryAddComponent,
-    CategoryDetailComponent
+    CategoryDetailComponent,
+    MealDetailComponent
   ],
   imports: [
     BrowserModule,
