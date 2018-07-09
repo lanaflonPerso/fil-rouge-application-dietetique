@@ -1,6 +1,6 @@
+import { Category } from './../../models/business/category';
 import { GenericComponent } from './../../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../../models/business/category';
 import { CategoryService } from '../../services/category.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -13,6 +13,8 @@ export class CategoryDetailComponent extends GenericComponent implements OnInit 
 
   private category: Category;
 
+  private categories: Category[];
+
   constructor(private categoryService: CategoryService,  private router: Router, private route: ActivatedRoute) {
     super();
     this.route.params.subscribe
@@ -24,10 +26,12 @@ export class CategoryDetailComponent extends GenericComponent implements OnInit 
   }
 
   ngOnInit() {
+    this.categoryService.getCategories()
+    .subscribe(categories => this.categories = categories);
   }
 
    public getCategories(): Category[] {
-    return  this.categoryService.getCategories();
+    return  this.categories;
   }
 
   public getCategory(): Category {

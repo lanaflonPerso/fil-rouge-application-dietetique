@@ -1,7 +1,7 @@
 import { Category } from './../models/business/category';
 import { Injectable } from '@angular/core';
 import LIST_CATEGORIES from '../models/datas/categories';
-import { Observable, throwError  } from 'rxjs';
+import { Observable, throwError, of  } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { catchError, retry, map } from 'rxjs/operators';
 import { Aliment } from '../models/business/aliment';
@@ -24,17 +24,7 @@ export class CategoryService {
   categorie: Category = null;
 
   constructor(private http: HttpClient) {
-
-    /*const categories = LIST_CATEGORIES.categories;
-   for (let i = 0; i < categories.length ; i++) {
-      const cat = categories[i];
-      // tslint:disable-next-line:max-line-length
-      const category = new Category( cat.id, cat.name);
-      this.categories.push(category);
-    }*/
-
-    this.getRestCategories();
-
+   this.getRestCategories();
   }
 
   public addCategory(category: Category) {
@@ -53,8 +43,8 @@ export class CategoryService {
      });
   }
 
-  public getCategories() {
-    return this.categories;
+  public getCategories(): Observable<Category[]> {
+    return of(this.categories);
   }
 
   public getCategorie(id: number) {

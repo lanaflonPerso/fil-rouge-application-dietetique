@@ -33,6 +33,8 @@ export class CategoryComponent extends GenericComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }*/
 
+  categories: Category[];
+
   constructor(private categoryService: CategoryService) {
     super();
   }
@@ -41,18 +43,20 @@ export class CategoryComponent extends GenericComponent implements OnInit {
 
     // this.displayedColumns = this.columnNames.map(x => x.id);
     // this.createTable();
+    this.categoryService.getCategories()
+    .subscribe(categories => { this.categories = categories; console.log(categories); });
     this.gererateDataTable();
   }
 
   public getCategories(): Category[] {
-    return  this.categoryService.getCategories();
+    return  this.categories;
   }
 
   public getFileteredCategories(): Category[] {
     let categories: Category[] = this.getCategories();
 
     if (this.getSearchText() !== '' ) {
-      categories = this.categoryService.getCategories()
+      categories = this.categories
       .filter(category => category.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     }
 

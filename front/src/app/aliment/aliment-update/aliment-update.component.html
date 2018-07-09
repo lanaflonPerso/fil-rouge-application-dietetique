@@ -1,18 +1,19 @@
-<h2>Ajout d'un aliment</h2>
+<h2>Ajout d'un aliment : {{getAliment().name}}</h2>
+
 <form>
     <fieldset>
       <legend>Aliment :</legend>
-      <!--
+      
       <mat-label>description :</mat-label>
       
-      <mat-form-field>
+      <!--<mat-form-field>
         <mat-select placeholder="Select" (selectionChange)="changeCat($event)">
           <mat-option value=""></mat-option>
           <mat-option *ngFor="let categorie of getCategories()" value="{{categorie.id}}">{{categorie.name}}</mat-option>
           
         </mat-select>
       </mat-form-field>
-      
+    -->
       <mat-label>Nom :</mat-label>
       <mat-form-field>         
         <input matInput placeholder="nom de l'aliment" name="name" [(ngModel)]="getAliment().name" #name>
@@ -47,7 +48,7 @@
       <mat-form-field>         
         <input matInput placeholder="Ig" name="ig" [(ngModel)]="getAliment().ig" #lipids>
       </mat-form-field>
-    -->
+    
     </fieldset>
-    <button mat-raised-button color="primary" (click)="addAliment()">Enregistrer</button> 
+    <button mat-raised-button color="primary" (click)="updateAliment()">Enregistrer</button> 
 </form>

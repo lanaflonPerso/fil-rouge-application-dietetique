@@ -13,17 +13,19 @@ import { Aliment } from '../../models/business/aliment';
 export class CategoryAddComponent extends GenericComponent implements OnInit {
 
   private category: Category;
-
+  private categories: Category[];
   constructor(private categoryService: CategoryService,  private router: Router) {
     super();
   }
 
   ngOnInit() {
     this.category = new Category(null, '');
+    this.categoryService.getCategories()
+    .subscribe(categories => this.categories = categories);
   }
 
    public getCategories(): Category[] {
-    return  this.categoryService.getCategories();
+    return  this.categories;
   }
 
   public getCategory(): Category {

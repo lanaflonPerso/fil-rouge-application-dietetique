@@ -24,22 +24,21 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.aliment = new Aliment(null, 'test', 'test', 'not visual' , 0, 0, 0, 0, 0);
+    this.aliment = new Aliment(null, '', '', '' , 0, 0, 0, 0, 0);
     this.route.params.subscribe
     (
         params => {
                        this.aliment = this.alimentService.getAliment(Number(this.route.snapshot.paramMap.get('id')));
-                       console.log(this.aliment);
-      });
+                  });
   }
 
   public getAliment(): Aliment {
     return this.aliment;
   }
 
-  public addAliment() {
+  public updateAliment() {
 
-    this.alimentService.addAliment(this.aliment);
+    this.alimentService.updateAliment(this.aliment);
     this.router.navigateByUrl('/aliment');
   }
 

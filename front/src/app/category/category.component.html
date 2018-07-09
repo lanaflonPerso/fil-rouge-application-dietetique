@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let category of getFileteredCategories()">
+          <tr *ngFor="let category of categories">
               <td>{{category.name}}</td>
               <td>
                   <a routerLink="/aliment/category/detail/{{category.id}}"><mat-icon>edit</mat-icon></a>
