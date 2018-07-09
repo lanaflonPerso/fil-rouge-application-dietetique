@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import co.simplon.dietcare.model.Aliment;
+import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.service.AlimentService;
 
 @Controller
@@ -23,6 +25,14 @@ public class AlimentController {
 	
 	@Inject
 	AlimentService alimentService;
+	
+	// find all categories
+	@RequestMapping(method = RequestMethod.GET)
+	@ResponseBody
+	public List<Aliment> findAll() {
+		return alimentService.findAll();
+	}
+	
 	
 	// aliment creation
 	@RequestMapping(method = RequestMethod.POST)
@@ -40,19 +50,13 @@ public class AlimentController {
 		return alimentService.save(alim);
 	}
 	
-	// find all aliments
-	@RequestMapping(method = RequestMethod.GET)
+	// find category by id
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public List<Aliment> findAll() {
-		return alimentService.findAll();
-	}
-	
-	// find aliment by id
-	@RequestMapping(params = "id", method = RequestMethod.GET)
-	@ResponseBody
-	public Optional<Aliment> findbyId(@RequestParam("id") Long id) {
+	public Optional<Aliment> findbyId(@PathVariable("id") Long id) {
 		return alimentService.findbyId(id);
 	}
+		
 	
 	// find aliment by name
 	@RequestMapping(params = "name", method = RequestMethod.GET)
