@@ -39,7 +39,6 @@ public class CategoryController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Category update(@RequestBody Category cat) {
-		
 		return categoryService.save(cat);
 	}
 	

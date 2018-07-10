@@ -10,11 +10,12 @@ import { Category } from '../../models/business/category';
   templateUrl: './aliment-add.component.html',
   styleUrls: ['./aliment-add.component.css']
 })
+
 export class AlimentAddComponent implements OnInit {
 
   private aliment: Aliment;
 
-  private categorie: Category;
+  private category: Category;
 
   private categories: Category[];
 
@@ -24,6 +25,7 @@ export class AlimentAddComponent implements OnInit {
 
   ngOnInit() {
     this.aliment = new Aliment(null, '', '', '' , 0, 0, 0, 0, 0);
+    this.categoryService.getCategories().subscribe((categories: Category[]) => { this.categories = categories; })
   }
 
   public getAliment(): Aliment {
@@ -32,17 +34,21 @@ export class AlimentAddComponent implements OnInit {
 
   public addAliment() {
 
-    this.alimentService.addAliment(this.aliment);
-    this.router.navigateByUrl('/aliment');
+    this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
+      this.router.navigateByUrl('/aliment');
+    });
   }
 
   public getCategories() {
-    return  this.categoryService.getCategories();
+    return  this.categories;
   }
 
   public changeCat(select) {
-    this.categorie = this.categoryService.getCategorie(Number(select.value));
-    this.aliment.setCategory(this.categorie);
+    this.categoryService.getCategory(Number(select.value)).subscribe((category) => {
+       this.category = category;
+       this.aliment.setCategory(this.category);
+      }
+    );
   }
 
 }

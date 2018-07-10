@@ -14,9 +14,7 @@ export class AlimentUpdateComponent implements OnInit {
 
   private aliment: Aliment;
 
-  private categorie: Category;
-
-  private categories: Category[];
+  private category: Category;
 
   // tslint:disable-next-line:max-line-length
   constructor(private alimentService: AlimentService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router) {
@@ -24,12 +22,12 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.aliment = new Aliment(null, '', '', '' , 0, 0, 0, 0, 0);
-    this.route.params.subscribe
-    (
-        params => {
-                       this.aliment = this.alimentService.getAliment(Number(this.route.snapshot.paramMap.get('id')));
-                  });
+    this.loadAliment();
+  }
+
+  private loadAliment() {
+    const id = this.route.snapshot.paramMap.get('id');
+   this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => { this.aliment = aliment; } );
   }
 
   public getAliment(): Aliment {
@@ -38,21 +36,22 @@ export class AlimentUpdateComponent implements OnInit {
 
   public updateAliment() {
 
-    this.alimentService.updateAliment(this.aliment);
-    this.router.navigateByUrl('/aliment');
+    this.alimentService.updateAliment(this.aliment).subscribe( (aliment: Aliment) => { 
+      this.router.navigateByUrl('/aliment'); 
+    });
+
   }
 
   public getAlimentById(id: number) {
     this.alimentService.getAliment(id);
   }
 
-  public getCategories() {
-    return  this.categoryService.getCategories();
-  }
-
-  public changeCat(select) {
-    this.categorie = this.categoryService.getCategorie(Number(select.value));
-    this.aliment.setCategory(this.categorie);
+ public changeCat(select) {
+    this.categoryService.getCategory(Number(select.value)).subscribe((category) => {
+       this.category = category;
+       this.aliment.setCategory(this.category);
+      }
+    );
   }
 
 }

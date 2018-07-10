@@ -17,73 +17,27 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class AlimentService implements OnInit {
+export class AlimentService {
 
   private restUrl = 'http://localhost:8090/aliment';
 
-  aliments: Aliment[] = [];
-  aliment: Aliment = null;
-
   constructor(private http: HttpClient) {
-    this.getRestAliments();
+
   }
 
-  ngOnInit(): void {
-    this.getRestAliments();
+  public updateAliment(aliment: Aliment): Observable<Aliment> {
+    return this.http.put<Aliment>(this.restUrl, aliment, httpOptions);
   }
 
-  public updateAliment(aliment: Aliment) {
-
-    this.http.put(this.restUrl, aliment, httpOptions).subscribe(result => {
-       this.getRestAliments();
-     });
+  public addAliment(aliment: Aliment): Observable<Aliment> {
+    return this.http.post<Aliment>(this.restUrl, aliment, httpOptions);
   }
 
-  public addAliment(aliment: Aliment): void {
-    this.http.post(this.restUrl, aliment, httpOptions).subscribe(result => {
-      this.getRestAliments();
-    });
+  public getAliments(): Observable<Aliment[]> {
+    return this.http.get<Aliment[]>(this.restUrl);
   }
 
-  public getAliments(): Aliment[] {
-    return this.aliments;
+  public getAliment(id: number): Observable<Aliment> {
+    return this.http.get<Aliment>(this.restUrl + '/' + id);
   }
-
-  public getAliment(id: number) {
-    this.getRestAlimentById(id);
-    return this.aliment;
-  }
-
-
-
-    getRestAliments(): void {
-      this.restAlimentsServiceGetRestItems()
-      .subscribe(
-        aliments => {
-          this.aliments = aliments;
-        }
-      );
-  }
-
-  // Rest Items Service: Read all REST Items
-  restAlimentsServiceGetRestItems(): Observable<any[]> {
-      return this.http.get<any[]>(this.restUrl).pipe(map(data => data));
-  }
-
-
-  getRestAlimentById(id: number): void {
-    this.restAlimentsServiceGetRestItemById(id)
-    .subscribe(
-      aliment => {
-        this.aliment = aliment;
-      }
-    );
-}
-
-// Rest Items Service: Read all REST Items
-restAlimentsServiceGetRestItemById(id: number): Observable<any> {
-    return this.http.get<any[]>(this.restUrl + '/' + id).pipe(map(data => data));
-}
-
-
 }

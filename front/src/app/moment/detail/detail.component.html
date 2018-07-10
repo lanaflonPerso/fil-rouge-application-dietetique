@@ -1,0 +1,16 @@
+<h2>Mise à jour d'une catégorie</h2>
+
+<form>
+    <fieldset>
+      <legend>catégorie :</legend>
+      
+      <mat-label>Nom :</mat-label>
+      <mat-form-field *ngIf="getMoment() != null">         
+        <input matInput placeholder="Nom du moment( ex: Diner)" name="name" [(ngModel)]="getMoment().name" #name/>
+      </mat-form-field>    
+      
+      <button mat-raised-button color="primary" name="submit" (click)="updateMoment()">Enregistrer</button> 
+      
+      
+  </fieldset>
+</form>

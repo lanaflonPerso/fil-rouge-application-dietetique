@@ -38,7 +38,7 @@ public class Meal {
 	@JoinColumn(name = "fk_moment", nullable = true)
 	private Moment moment;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value = "meal-components")
 	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Component> components = new ArrayList<Component>();;
 	

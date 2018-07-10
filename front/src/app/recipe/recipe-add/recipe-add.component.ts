@@ -13,6 +13,8 @@ import { Aliment } from '../../models/business/aliment';
 })
 export class RecipeAddComponent extends GenericComponent implements OnInit {
 
+  private aliments: Aliment[];
+
   constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
     super();
   }
@@ -26,15 +28,14 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   getFilteredAliments(): Aliment[] {
-    let filteredAliments = this.alimentService.getAliments();
+    let filteredAliments = this.aliments;
 
     if (this.getSearchText() !== '' ) {
       // tslint:disable-next-line:max-line-length
-      filteredAliments = this.alimentService.getAliments().filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
+      filteredAliments = this. aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     }
 
     return filteredAliments;
-
   }
 
   addAlimentToRecipe(aliment: Aliment): void {

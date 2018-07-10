@@ -16,55 +16,31 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class CategoryService {
 
   private restUrl = 'http://localhost:8090/aliment/category';
 
-  categories: Category[] = [];
-  categorie: Category = null;
-
   constructor(private http: HttpClient) {
-   this.getRestCategories();
   }
 
-  public addCategory(category: Category) {
+  public addCategory(category: Category): Observable<Category> {
 
-  category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
+  // category.addAliment(new Aliment(null, 'name', 'desc', 'visual', 1, 2, 3, 4, 5));
 
-  this.http.post(this.restUrl, category, httpOptions).subscribe(result => {
-     this.getRestCategories();
-   });
+  return this.http.post<Category>(this.restUrl, category, httpOptions);
 
   }
-  public updateCategory(category: Category) {
-
-    this.http.put(this.restUrl, category, httpOptions).subscribe(result => {
-       this.getRestCategories();
-     });
+  public updateCategory(category: Category): Observable<Category> {
+    return this.http.put<Category>(this.restUrl, category, httpOptions);
   }
 
   public getCategories(): Observable<Category[]> {
-    return of(this.categories);
+    return this.http.get<Category[]>(this.restUrl);
+    // .pipe(map(data => data));
   }
 
-  public getCategorie(id: number) {
-    const real = this.categories.filter((elt) => elt.id === id);
-    return real[0];
+  public getCategory(id: number): Observable<Category> {
+    return this.http.get<Category>(this.restUrl + '/' + id);
   }
-
-
-   // Read all REST categories
-   getRestCategories(): void {
-    this.restCategoriesServiceGetRestItems()
-     .subscribe(
-       categories => {
-         this.categories = categories;
-       }
-     );
- }
-
- // Rest Items Service: Read all REST Items
- restCategoriesServiceGetRestItems(): Observable<any[]> {
-    return this.http.get<any[]>(this.restUrl).pipe(map(data => data));
- }
 }

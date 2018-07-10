@@ -15,20 +15,29 @@ constructor(private alimentService: AlimentService) {
     super();
   }
 
+  private aliments: Aliment[];
+
   ngOnInit() {
+    this.loadAliments();
     this.gererateDataTable();
   }
 
+
   public getAliments(): Aliment[] {
-    return  this.alimentService.getAliments();
+    return this.aliments;
+  }
+
+  private loadAliments() {
+    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; });
   }
 
   public getFileteredAliments(): Aliment[] {
     if (this.getSearchText() !== '' ) {
-      return this.alimentService.getAliments()
+      return this.aliments
       .filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
     } else {
-      return this.alimentService.getAliments();
+      return this.aliments;
     }
   }
 }
+

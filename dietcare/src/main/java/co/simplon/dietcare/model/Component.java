@@ -29,12 +29,12 @@ public class Component {
 		this.id = id;
 	}
 	
-	@JsonBackReference
+	@JsonBackReference (value = "meal-dietcomponents")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_dietcomponent", nullable = true)
 	private DietComponent dietComponent;
 	
-	@JsonBackReference
+	@JsonBackReference (value = "meal-components")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_meal", nullable = true)
 	private Meal meal;

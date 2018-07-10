@@ -1,13 +1,21 @@
 package co.simplon.dietcare.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "dietcomponent")
@@ -26,8 +34,8 @@ public abstract class DietComponent {
 
 	@Column(name = "visual")
 	private String visual;
-	/*
-	@JsonManagedReference
+	
+	@JsonManagedReference (value = "meal-dietcomponents")
 	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Component> components = new ArrayList<Component>();
 	
@@ -37,7 +45,7 @@ public abstract class DietComponent {
 
 	public void setComponents(List<Component> components) {
 		this.components = components;
-	}*/
+	}
 
 	public DietComponent(Long id, String name, String description, String visual) {
 		this.id = id;

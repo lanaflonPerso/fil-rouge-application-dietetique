@@ -15,6 +15,8 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   printListAliments: Boolean = false;
   printListRecipes: Boolean = false;
 
+  private aliments: Aliment[];
+
   constructor(private mealService: MealService,
               private recipeService: RecipeService,
               private alimentService: AlimentService
@@ -46,7 +48,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   }
 
   public getAliments(): Aliment[] {
-    return  this.alimentService.getAliments();
+    return  this.aliments;
   }
 
   public getRecipes() {

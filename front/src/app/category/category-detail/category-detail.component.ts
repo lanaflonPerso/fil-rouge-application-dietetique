@@ -11,27 +11,21 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CategoryDetailComponent extends GenericComponent implements OnInit {
 
-  private category: Category;
+  public category: Category;
 
   private categories: Category[];
 
   constructor(private categoryService: CategoryService,  private router: Router, private route: ActivatedRoute) {
     super();
-    this.route.params.subscribe
-    (
-        params => {
-          this.category = this.categoryService.getCategorie(Number(this.route.snapshot.paramMap.get('id')));
-        }
-    );
   }
 
   ngOnInit() {
-    this.categoryService.getCategories()
-    .subscribe(categories => this.categories = categories);
+    this.loadCategory();
   }
 
-   public getCategories(): Category[] {
-    return  this.categories;
+  loadCategory() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.categoryService.getCategory(Number(id)).subscribe( (category) => { this.category = category; } );
   }
 
   public getCategory(): Category {
@@ -41,8 +35,9 @@ export class CategoryDetailComponent extends GenericComponent implements OnInit 
   public updateCategory() {
 
     const cat: Category = this.getCategory();
-    this.categoryService.updateCategory(cat);
-    this.router.navigateByUrl('/aliment/category');
+    this.categoryService.updateCategory(cat).subscribe(() => {
+      this.router.navigateByUrl('/aliment/category');
+  });
   }
 
 }
