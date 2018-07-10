@@ -32,7 +32,7 @@ public class Moment {
 	@Column(name = "name")
 	private String name;
 	
-	@JsonManagedReference
+	@JsonManagedReference (value = "meal-moment")
 	@OneToMany(mappedBy = "moment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Meal> meals = new ArrayList<Meal>();
 		

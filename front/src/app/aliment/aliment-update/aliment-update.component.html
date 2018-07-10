@@ -5,15 +5,15 @@
         <legend>Aliment :</legend>
         
         <mat-label>description :</mat-label>
-        
-        <!--<mat-form-field>
-          <mat-select placeholder="Select" (selectionChange)="changeCat($event)" [(value)]="getCategorie().id">
+       
+        <mat-form-field *ngIf="getAliment().category != null">
+          <mat-select placeholder="Select" (selectionChange)="changeCat($event)" value="{{getAliment().category.id}}">
             <mat-option value=""></mat-option>
             <mat-option *ngFor="let categorie of getCategories()" value="{{categorie.id}}">{{categorie.name}}</mat-option>
             
           </mat-select>
         </mat-form-field>
-      -->
+      
         <mat-label>Nom :</mat-label>
         <mat-form-field>         
           <input matInput placeholder="nom de l'aliment" name="name" [(ngModel)]="getAliment().name" #name>

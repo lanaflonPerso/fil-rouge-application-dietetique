@@ -29,6 +29,7 @@ public class MealController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Meal meal) {
+		System.out.println(meal);
 		return mealService.save(meal).getId();
 	}
 	

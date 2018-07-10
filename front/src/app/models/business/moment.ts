@@ -1,4 +1,4 @@
-class Moment {
+export class Moment {
     id: number;
     name: String;
 }

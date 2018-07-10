@@ -14,40 +14,48 @@
                     <fieldset class="col-md-12">    	
                       <legend>Mon repas</legend>	
                         <form>                      
-                          <div class="form-row">
-
-                            <div class="form-group col-md-8">
-                              <label for="name">Nom:</label>
-                              <input type="text" class="form-control" id="inputName" placeholder="Donnez un nom au repas...">
-                              
-                              <label for="moment">Moment:</label>
-                              <select class="form-control" id="selectMoment">
-                                <option value=0>Choisir un moment</option>
-                                <option value=1>En-Cas du matin</option>
-                                <option value=2>Déjeuner</option>
-                                <option value=3>Goûter</option>
-                                <option value=4>Dîner</option>
-                              </select>
-
-                              <label for="date">Date:</label>
-                              <input type="date" class="form-control" id="inputDate">
-
-                              <label for="avatar">Ajouter une photo</label>
-                              <input type="file" id="photoMeal" name="photoMeal" accept="image/png, image/jpeg" />
-
+                          <div class="row">
+                            <div class="col-md-8" style="padding:25px;">                   
+                                <div class="row">
+                                    <mat-label for="name">Nom :</mat-label>
+                                    <mat-form-field>                                
+                                        <input matInput placeholder="nom de la catégorie ( ex: Fruit)" name="name" [(ngModel)]="getMeal().name" #name>
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                <mat-label for="moment">Moment:</mat-label>
+                                    <mat-form-field *ngIf="getMoments() != null">
+                                
+                                        <mat-select id="moment" name="moment" placeholder="Select" value="" (selectionChange)="changeMoment($event)">
+                                            <mat-option value=""></mat-option>
+                                            <mat-option *ngFor="let moment of getMoments()" value="{{moment.id}}">{{moment.name}}</mat-option>
+                                    </mat-select>
+                                    
+                                    </mat-form-field>
+                                </div>
+                                <div class="row">
+                                    <mat-label for="date">Date:</mat-label>
+                                    <mat-form-field>
+                                        <input matInput type="date" name="date" id="date" [(ngModel)]="getMeal().date" />
+                                    </mat-form-field>
+                                    
+                                </div>
+                                  
                             </div>
-
+                           
                           </div>
+                          
                       </form>				
                     </fieldset>	                    
-
+                    <div class="row">
+                            <mat-label for="save">What ?</mat-label>    
+                            <button id="save" mat-raised-button color="primary" (click)="addMeal()">Enregistrer</button> 
+                         </div>
                     <fieldset class="col-md-12">    	
                         <legend>Composition</legend>	
                         <form>                      
                           <div class="form-row">
 
-                            
-                          <!-- CONTENU ALIMENT -->
                           <table id="MealAlimentList" *ngIf="getListAliments().length > 0" class="table table-striped table-bordered" style="width:100%">
                               <ng-container >  
                                 <thead>

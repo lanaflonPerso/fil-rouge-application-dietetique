@@ -13,10 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "aliment")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Aliment extends DietComponent {
 
 	@Column(name = "proteins")

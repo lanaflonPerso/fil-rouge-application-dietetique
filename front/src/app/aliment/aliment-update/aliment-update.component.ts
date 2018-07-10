@@ -24,6 +24,7 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.aliment = new Aliment(null, '', '', '', 0, 0, 0, 0, 0);
     this.loadAliment();
     this.loadCategories();
   }
@@ -36,12 +37,10 @@ export class AlimentUpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => {
       this.aliment = aliment;
-      this.categoryService.getCategory(Number(this.aliment.category.id)).subscribe((category) => {
-        this.category = category;
-        this.aliment.setCategory(this.category);
-       }
-     );
-    } );
+      this.alimentService.getCategory(aliment.id).subscribe((category: Category)  => {
+        this.aliment.category = category;
+      });
+    });
   }
 
   public getAliment(): Aliment {
@@ -59,7 +58,7 @@ export class AlimentUpdateComponent implements OnInit {
   public updateAliment() {
 
     this.alimentService.updateAliment(this.aliment).subscribe( (aliment: Aliment) => { 
-      this.router.navigateByUrl('/aliment'); 
+      this.router.navigateByUrl('/aliment');
     });
 
   }
@@ -71,7 +70,7 @@ export class AlimentUpdateComponent implements OnInit {
  public changeCat(select) {
     this.categoryService.getCategory(Number(select.value)).subscribe((category) => {
        this.category = category;
-       this.aliment.setCategory(this.category);
+       this.aliment.category = category;
       }
     );
   }

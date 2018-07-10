@@ -21,3 +21,5 @@ export class Category {
         return this.aliments;
     }
 }
+
+export default Category;

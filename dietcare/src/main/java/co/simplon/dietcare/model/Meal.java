@@ -33,7 +33,7 @@ public class Meal {
 	@Column(name = "date")
 	private String date;
 	
-	@JsonBackReference
+	@JsonBackReference (value = "meal-moment")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_moment", nullable = true)
 	private Moment moment;
@@ -82,6 +82,8 @@ public class Meal {
 		this.date = date;
 	}
 
-	
+	public String toString() {
+		return "Meal = name : "+this.getName()+" date : "+this.getDate();
+	}
 
 }
