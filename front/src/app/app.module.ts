@@ -52,6 +52,7 @@ import { AlimentAddComponent } from './aliment/aliment-add/aliment-add.component
 import { AlimentUpdateComponent } from './aliment/aliment-update/aliment-update.component';
 import { AddComponent } from './moment/add/add.component';
 import { DetailComponent } from './moment/detail/detail.component';
+import { MealEditComponent } from './meal/meal-edit/meal-edit.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -67,6 +68,7 @@ export const routes: Routes = [
   { path: 'recipe/detail/:id', component: RecipeDetailComponent},
   { path: 'meal', component: MealComponent},
   { path: 'meal/add', component: MealAddComponent},
+  { path: 'meal/edit/:id', component: MealEditComponent},
   { path: 'meal/detail/:id', component: MealDetailComponent},
   { path: 'moment', component: MomentComponent},
   { path: 'moment/add', component: MomentAddComponent},
@@ -96,7 +98,8 @@ export const routes: Routes = [
     CategoryAddComponent,
     CategoryDetailComponent,
     AddComponent,
-    DetailComponent
+    DetailComponent,
+    MealEditComponent
   ],
   imports: [
     BrowserModule,

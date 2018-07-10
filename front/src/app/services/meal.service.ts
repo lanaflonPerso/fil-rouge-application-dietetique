@@ -54,6 +54,10 @@ export class MealService {
   public getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(this.restUrl);
   }
+
+  public getMeal(id: number): Observable<Meal> {
+    return this.http.get<Meal>(this.restUrl + '/' + id);
+  }
 }
 
 

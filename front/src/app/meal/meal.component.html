@@ -45,6 +45,7 @@
               <td>{{ meal.date | date:'yyyy-MM-dd' }}</td>
               <td><a href="/meal/detail/{{meal.id}}" title="{{meal.name}}">{{meal.name}}</a></td>
               <td>{{meal.moment?.name}}</td>
+              <td><a routerLink="/meal/edit/{{meal.id}}"><mat-icon>edit</mat-icon></a></td>
           </tr>
       </tbody>
   </table>

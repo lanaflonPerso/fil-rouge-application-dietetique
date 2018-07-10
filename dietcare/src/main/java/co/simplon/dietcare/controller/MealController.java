@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import co.simplon.dietcare.model.Aliment;
 import co.simplon.dietcare.model.Meal;
 import co.simplon.dietcare.service.MealService;
 
@@ -48,10 +50,10 @@ public class MealController {
 		return mealService.findAll();
 	}
 	
-	// find meal by id
-	@RequestMapping(params = "id", method = RequestMethod.GET)
+	// find category by id
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Meal> findbyId(@RequestParam("id") Long id) {
+	public Optional<Meal> findbyId(@PathVariable("id") Long id) {
 		return mealService.findbyId(id);
 	}
 	
