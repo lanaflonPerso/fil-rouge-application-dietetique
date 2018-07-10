@@ -38,16 +38,18 @@ public class AlimentController {
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public Long create(@RequestBody Aliment alim) {
-		return alimentService.save(alim).getId();
+	public Long create(@RequestBody Aliment aliment) {
+		Long id = alimentService.save(aliment).getId();
+		return id;
 	}
 	
 	// update aliment
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Aliment update(@RequestBody Aliment alim) {
-		return alimentService.save(alim);
+	public Aliment update(@RequestBody Aliment aliment) {
+		System.out.println(aliment);
+		return alimentService.save(aliment);
 	}
 	
 	// find category by id
@@ -72,13 +74,13 @@ public class AlimentController {
 	}
 	
 	// getCategory
-	@RequestMapping(value = "/getcategory/{alimenId}", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/getcategory/{alimenId}", method = RequestMethod.GET)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Category getCategory(@PathVariable("alimenId") Long alimentId) {
 		Optional<Aliment> optionalAliment = alimentService.findbyId(alimentId);
 		return optionalAliment.isPresent()?optionalAliment.get().getCategory():null;	
-	}
+	}*/
 	
 	// delete aliment by id
 	@RequestMapping(method = RequestMethod.DELETE)

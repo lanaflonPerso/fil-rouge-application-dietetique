@@ -31,7 +31,7 @@ export class MealComponent  extends GenericComponent  implements OnInit {
   }
 
   private loadMeals() {
-      this.mealService.getMeals().subscribe( (meals: Meal[]) => { this.meals = meals; });
+      this.mealService.getMeals().subscribe( (meals: Meal[]) => { this.meals = meals; console.log(meals); });
   }
 
   public getMeals(): Meal[] {

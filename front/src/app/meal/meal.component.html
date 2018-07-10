@@ -44,7 +44,7 @@
           <tr *ngFor="let meal of getMeals()">
               <td>{{ meal.date | date:'yyyy-MM-dd' }}</td>
               <td><a href="/meal/detail/{{meal.id}}" title="{{meal.name}}">{{meal.name}}</a></td>
-              <td>Moment</td>
+              <td>{{meal.moment?.name}}</td>
           </tr>
       </tbody>
   </table>

@@ -9,7 +9,6 @@ import { Aliment } from '../../models/business/aliment';
   templateUrl: './aliment-detail.component.html',
   styleUrls: ['./aliment-detail.component.css']
 })
-
 export class AlimentDetailComponent extends GenericComponent implements OnInit {
 
 
@@ -28,7 +27,7 @@ export class AlimentDetailComponent extends GenericComponent implements OnInit {
     this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => { this.aliment = aliment; } );
   }
 
-  public getAliment(): Aliment{
+  public getAliment(): Aliment {
     return this.aliment;
   }
 

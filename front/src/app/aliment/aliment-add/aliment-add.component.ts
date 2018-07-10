@@ -46,7 +46,7 @@ export class AlimentAddComponent implements OnInit {
   public changeCat(select) {
     this.categoryService.getCategory(Number(select.value)).subscribe((category) => {
        this.category = category;
-       this.aliment.category = this.category;
+       this.aliment.category = category;
       }
     );
   }

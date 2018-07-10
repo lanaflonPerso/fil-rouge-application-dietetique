@@ -25,14 +25,8 @@ export class MealService {
   listAliments = [];
 
   constructor(private http: HttpClient) {
-    const meals = LIST_MEALS.meals;
 
-    for (let i = 0; i < meals.length ; i++) {
-      const m = meals[i];
-      const meal = new Meal( m.id, m.date, m.name, null);
-      this.meals.push(meal);
-    }
-   }
+  }
 
   public addAlimentToMeal(aliment: Aliment, qty: number) {
     this.listAliments.push(new Aliment( aliment.id,

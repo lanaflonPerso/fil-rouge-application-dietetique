@@ -27,7 +27,7 @@
                 <th>Lipides</th>
                 <th>Ig</th>
                 
-                <!--<th>Catégorie</th>-->
+               <th>Catégorie</th>
                 <!--<th>Visuel</th>-->
                 <th>Que faire ?</th>  
             </tr>
@@ -39,7 +39,7 @@
                 <td> {{aliment.glucids}}</td>
                 <td> {{aliment.lipids}}</td>
                 <td> {{aliment.ig}}</td>               
-                <!--<td> {{aliment.category.name}} </td>-->
+                <td> {{aliment.category?.name}} </td>
       <!--<td><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></td>-->
 
       <td>
@@ -52,25 +52,4 @@
               </tr>
         </tbody>
       </table>
-  <!--<mat-grid-list cols="4" rowHeight="50px;" class="">
-    
-    <mat-grid-tile class="grid-item header">Nom</mat-grid-tile>
-    <mat-grid-tile class="grid-item header">Catégorie</mat-grid-tile>
-    <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
-    <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
-    
-    <ng-container *ngFor="let aliment of getFileteredAliments()">
-      <mat-grid-tile class="grid-item"> {{aliment.name}}</mat-grid-tile>
-      <mat-grid-tile class="grid-item"> {{aliment.category.name}}</mat-grid-tile>
-      <mat-grid-tile class="grid-item"><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="25" height="25" /></mat-grid-tile>
-
-      <mat-grid-tile class="grid-item">
-        <a routerLink="/aliment"><mat-icon>list</mat-icon></a>
-        -
-        <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a>
-        - 
-        <a routerLink="/aliment/{{aliment.name | lowercase}}"> <mat-icon>delete</mat-icon></a>
-      </mat-grid-tile>
-    </ng-container>
-  </mat-grid-list> -->    
 </div>
