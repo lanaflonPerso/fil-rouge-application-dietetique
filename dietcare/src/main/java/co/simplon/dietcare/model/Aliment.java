@@ -36,9 +36,9 @@ public class Aliment extends DietComponent {
 	
 	
 	@JsonBackReference(value = "category-aliments")
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_category", nullable = true)
-	private Category category;
+	private Category category = new Category();
 	
 	
 	@JsonManagedReference(value = "aliment-ingredients")

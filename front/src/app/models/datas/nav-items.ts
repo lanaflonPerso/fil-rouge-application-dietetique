@@ -49,7 +49,7 @@ const NAV_ITEMS_DATA: NavItem[] =
         link: '/aliment/category',
         picto: 'folder',
         position: 'header'
-    },
+    }/*,
     {
         id: 'stats',
         title: 'Statistiques',
@@ -65,7 +65,8 @@ const NAV_ITEMS_DATA: NavItem[] =
         link: '#',
         picto: 'person',
         position: 'header'
-    },
+    }*/
+    ,
     {
         id: 'contact',
         title: 'Contact',

@@ -56,7 +56,6 @@ public class AlimentController {
 	public Optional<Aliment> findbyId(@PathVariable("id") Long id) {
 		return alimentService.findbyId(id);
 	}
-		
 	
 	// find aliment by name
 	@RequestMapping(params = "name", method = RequestMethod.GET)
@@ -72,10 +71,27 @@ public class AlimentController {
 		return alimentService.findByNameLike(namelike);
 	}
 	
+	// getCategory
+	/*@RequestMapping(value = "/getcategory/{alimenId}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Category getCategory(@PathVariable("alimenId") Long alimentId) {
+		//return alimentId;
+		Optional<Aliment> optionalAliment = alimentService.findbyId(alimentId);
+		//System.out.println();
+		//Category cat = new Category("Test");
+		Category myCat = optionalAliment.get().getCategory();
+		return myCat;
+		//return optionalAliment;
+		//return optionalAliment.isPresent()?alimentService.getCategory(optionalAliment.get()):null;
+	}*/
+	
 	// delete aliment by id
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
 	public void deleteById(@RequestBody Aliment alim) {
 		alimentService.deleteById(alim.getId());
 	}
+	
+	
 }

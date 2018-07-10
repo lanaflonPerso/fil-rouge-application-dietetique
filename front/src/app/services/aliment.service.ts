@@ -40,4 +40,8 @@ export class AlimentService {
   public getAliment(id: number): Observable<Aliment> {
     return this.http.get<Aliment>(this.restUrl + '/' + id);
   }
+
+  public getCategory(id: number): Observable<Category> {
+    return this.http.get<Category>(this.restUrl + '/getcategory/' + id);
+  }
 }

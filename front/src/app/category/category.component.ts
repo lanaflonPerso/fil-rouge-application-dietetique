@@ -19,6 +19,7 @@ export class CategoryComponent extends GenericComponent implements OnInit {
 
   ngOnInit() {
     this.loadCategories();
+    this.gererateDataTable();
   }
 
   private loadCategories() {

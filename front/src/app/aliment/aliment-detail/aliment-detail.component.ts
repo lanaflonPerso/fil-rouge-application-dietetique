@@ -28,4 +28,8 @@ export class AlimentDetailComponent extends GenericComponent implements OnInit {
     this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => { this.aliment = aliment; } );
   }
 
+  public getAliment(): Aliment{
+    return this.aliment;
+  }
+
 }

@@ -17,6 +17,11 @@ export class MomentComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadMoments();
+    this.gererateDataTable();
+  }
+
+  private loadMoments(){
     this.momentService.getMoments().subscribe((moments: Moment[]) => { this.moments = moments; } );
   }
 

@@ -14,6 +14,8 @@ export class AlimentUpdateComponent implements OnInit {
 
   private aliment: Aliment;
 
+  private categories: Category[]
+
   private category: Category;
 
   // tslint:disable-next-line:max-line-length
@@ -23,15 +25,35 @@ export class AlimentUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.loadAliment();
+    this.loadCategories();
+  }
+
+  private loadCategories() {
+    this.categoryService.getCategories().subscribe((categories: Category[]) => { this.categories = categories; } );
   }
 
   private loadAliment() {
     const id = this.route.snapshot.paramMap.get('id');
-   this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => { this.aliment = aliment; } );
+    this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => {
+      this.aliment = aliment;
+      this.categoryService.getCategory(Number(this.aliment.category.id)).subscribe((category) => {
+        this.category = category;
+        this.aliment.setCategory(this.category);
+       }
+     );
+    } );
   }
 
   public getAliment(): Aliment {
     return this.aliment;
+  }
+
+  public getCategories(): Category[] {
+    return this.categories;
+  }
+
+  public getCategorie() {
+    return this.category;
   }
 
   public updateAliment() {

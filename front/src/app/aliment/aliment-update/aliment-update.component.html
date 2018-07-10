@@ -1,54 +1,55 @@
-<h2>Ajout d'un aliment : {{getAliment().name}}</h2>
+<h2>Mise à jour d'un aliment</h2>
+<ng-container  *ngIf="getAliment() != null">
+  <form>
+      <fieldset>
+        <legend>Aliment :</legend>
+        
+        <mat-label>description :</mat-label>
+        
+        <!--<mat-form-field>
+          <mat-select placeholder="Select" (selectionChange)="changeCat($event)" [(value)]="getCategorie().id">
+            <mat-option value=""></mat-option>
+            <mat-option *ngFor="let categorie of getCategories()" value="{{categorie.id}}">{{categorie.name}}</mat-option>
+            
+          </mat-select>
+        </mat-form-field>
+      -->
+        <mat-label>Nom :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="nom de l'aliment" name="name" [(ngModel)]="getAliment().name" #name>
+        </mat-form-field>
 
-<form>
-    <fieldset>
-      <legend>Aliment :</legend>
+        <mat-label>description :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="description de l'aliment" name="description" [(ngModel)]="getAliment().description" #proteins>
+        </mat-form-field>
       
-      <mat-label>description :</mat-label>
+      </fieldset>
+      <fieldset>
+        <legend>Valeur énergétique :</legend>
+
+        <mat-label>Protéines :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="quantité de protéines pour 100 g" name="proteins" [(ngModel)]="getAliment().proteins" #proteins>
+        </mat-form-field>
+
+        <mat-label>Glucides :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="quantité de glucides pour 100 g" name="glucids" [(ngModel)]="getAliment().glucids" #glucids>
+        </mat-form-field>
+
+
+        <mat-label>Lipides :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="quantité de lipides pour 100 g" name="lipids" [(ngModel)]="getAliment().lipids" #lipids>
+        </mat-form-field>
+
+        <mat-label>Ig :</mat-label>
+        <mat-form-field>         
+          <input matInput placeholder="Ig" name="ig" [(ngModel)]="getAliment().ig" #lipids>
+        </mat-form-field>
       
-      <!--<mat-form-field>
-        <mat-select placeholder="Select" (selectionChange)="changeCat($event)">
-          <mat-option value=""></mat-option>
-          <mat-option *ngFor="let categorie of getCategories()" value="{{categorie.id}}">{{categorie.name}}</mat-option>
-          
-        </mat-select>
-      </mat-form-field>
-    -->
-      <mat-label>Nom :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="nom de l'aliment" name="name" [(ngModel)]="getAliment().name" #name>
-      </mat-form-field>
-
-      <mat-label>description :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="description de l'aliment" name="description" [(ngModel)]="getAliment().description" #proteins>
-      </mat-form-field>
-    
-    </fieldset>
-    <fieldset>
-      <legend>Valeur énergétique :</legend>
-
-      <mat-label>Protéines :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="quantité de protéines pour 100 g" name="proteins" [(ngModel)]="getAliment().proteins" #proteins>
-      </mat-form-field>
-
-      <mat-label>Glucides :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="quantité de glucides pour 100 g" name="glucids" [(ngModel)]="getAliment().glucids" #glucids>
-      </mat-form-field>
-
-
-      <mat-label>Lipides :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="quantité de lipides pour 100 g" name="lipids" [(ngModel)]="getAliment().lipids" #lipids>
-      </mat-form-field>
-
-      <mat-label>Ig :</mat-label>
-      <mat-form-field>         
-        <input matInput placeholder="Ig" name="ig" [(ngModel)]="getAliment().ig" #lipids>
-      </mat-form-field>
-    
-    </fieldset>
-    <button mat-raised-button color="primary" (click)="updateAliment()">Enregistrer</button> 
-</form>
+      </fieldset>
+      <button mat-raised-button color="primary" (click)="updateAliment()">Enregistrer</button> 
+  </form>
+</ng-container>
