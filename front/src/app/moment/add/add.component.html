@@ -1,0 +1,11 @@
+<h2>Ajout d'un moment</h2>
+<form>
+    <fieldset>
+      <legend>catéporie :</legend>
+      <mat-label>Nom :</mat-label>
+      <mat-form-field>         
+        <input matInput placeholder="nom du moment ( ex: Diner)" name="name" [(ngModel)]="getMoment().name" #name>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="addMoment()">Enregistrer</button> 
+    </fieldset>
+</form>

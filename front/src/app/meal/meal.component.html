@@ -3,29 +3,26 @@
 <div id="meal">
 
   <div class="panel-body">            
-    <fieldset class="col-md-12">    	
-      <legend>Recherche</legend>	
-        <form>                      
-          <div class="form-row">
-
-            <div class="form-group col-md-2">
-              <select class="form-control" id="selectMoment">
-                <option value=0>Moment du repas</option>
-                <option value=1>En-Cas du matin</option>
-                <option value=2>Déjeuner</option>
-                <option value=3>Goûter</option>
-                <option value=4>Dîner</option>
-              </select>
+    <form>    
+      <fieldset class="col-md-12">    	
+        <legend>Recherche</legend>	
+          <div class="row">
+            <div class="col-3">
+            <mat-form-field *ngIf="getMoments() != null">
+              <mat-select placeholder="Select" value="">
+                <mat-option value=""></mat-option>
+                <mat-option *ngFor="let moment of getMoments()" value="{{moment.id}}">{{moment.name}}</mat-option>
+              </mat-select>
+            </mat-form-field>
             </div>
-
-            <div class="form-group col-md-10">
-              <input type="search" class="form-control" id="inputSearch" placeholder="Chercher un repas...">
-            </div>
-
+            <div class="col-9">
+              <mat-form-field>
+                <input matInput type="search" class="form-control" id="inputSearch" placeholder="Chercher un repas...">
+              </mat-form-field>
           </div>
-        </form>				
-    </fieldset>				
-
+        </div>
+      </fieldset>				
+</form>		
     <div class="clearfix"></div>            
   </div> <!-- /panel-body -->
               
@@ -40,26 +37,18 @@
           <tr>
               <th>Date</th>
               <th>Nom du repas</th>
-              <th>Moment</th>
-              <th>Kcal pour 100g</th>
+              <th>Moment</th> 
+              <th>What to do ?</th>            
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let meal of getMeals()">
               <td>{{ meal.date | date:'yyyy-MM-dd' }}</td>
               <td><a href="/meal/detail/{{meal.id}}" title="{{meal.name}}">{{meal.name}}</a></td>
-              <td>{{meal.moment}}</td>
-              <td>{{meal.kcal}}</td>
+              <td>{{meal.moment?.name}}</td>
+              <td><a routerLink="/meal/edit/{{meal.id}}"><mat-icon>edit</mat-icon></a></td>
           </tr>
       </tbody>
-      <tfoot>
-          <tr>
-              <th>Date</th>
-              <th>Nom du repas</th>
-              <th>Moment</th>
-              <th>Kcal pour 100g</th>
-          </tr>
-      </tfoot>
   </table>
 
 </div> <!-- /meal -->

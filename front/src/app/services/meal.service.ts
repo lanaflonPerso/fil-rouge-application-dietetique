@@ -1,63 +1,43 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Meal } from '../models/business/meal';
 import LIST_MEALS from '../models/datas/meal';
 import { Aliment } from '../models/business/aliment';
 import { DietComponent } from '../models/business/dietComponent';
+import { Component } from '../models/business/component';
 
+const httpOptions = {
+  headers: new HttpHeaders( {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class MealService {
 
-  meals: Meal[] = [];
-  meal: Meal = null;
-  listAliments = [];
-
-  constructor() {
-    const meals = LIST_MEALS.meals;
-
-    for (let i = 0; i < meals.length ; i++) {
-      const m = meals[i];
-      const meal = new Meal( m.id, m.date, m.name, m.moment, m.kcal);
-      this.meals.push(meal);
-    }
-   }
-
-   public getMeals() {
-    return this.meals;
-  }
-
-  public addAlimentToMeal(aliment: Aliment, qty: number) {
-    console.log('A = ' + aliment.name);
-    this.listAliments.push(new Aliment( aliment.id,
-                                        aliment.name,
-                                        aliment.description,
-                                        aliment.visual,
-                                        aliment.proteins,
-                                        aliment.glucids,
-                                        aliment.lipids,
-                                        aliment.fibers,
-                                        aliment.ig
-                                      )
-                                    );
+  private restUrl = 'http://localhost:8090/meal';
+  constructor(private http: HttpClient) {
 
   }
 
-  public delAlimentToMeal(aliment: Aliment) {
-
+  public addAlimentToMeal(meal: Meal, aliment: Aliment, qty: number) {
   }
 
-public getListAliments() {
-  return this.listAliments;
-}
-
-  /*
-  public getMeal(iReal: string) {
-    const real = this.meals.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
-    return real[0];
+  public addMeal(meal: Meal): Observable<Meal> {
+    return this.http.post<Meal>(this.restUrl, meal, httpOptions);
   }
-  */
+
+  public getMeals(): Observable<Meal[]> {
+    return this.http.get<Meal[]>(this.restUrl);
+  }
+
+  public getMeal(id: number): Observable<Meal> {
+    return this.http.get<Meal>(this.restUrl + '/' + id);
+  }
 }
 
 

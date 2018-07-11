@@ -1,7 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Aliment } from '../models/business/aliment';
 import LIST_ALIMENTS from '../models/datas/aliments';
 import { Category } from '../models/business/category';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+const httpOptions = {
+  headers: new HttpHeaders( {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -9,34 +19,31 @@ import { Category } from '../models/business/category';
 
 export class AlimentService {
 
-  aliments: Aliment[] = [];
-  aliment: Aliment = null;
+  private restUrl = 'http://localhost:8090/aliment';
 
-  constructor() {
-
-    const aliments = LIST_ALIMENTS.aliment;
-
-    for (let i = 0; i < aliments.length ; i++) {
-      const alim = aliments[i];
-      // tslint:disable-next-line:max-line-length
-      const aliment = new Aliment( alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig);
-      aliment.setCategory(new Category(alim.category.id, alim.category.name));
-      this.aliments.push(aliment);
-    }
+  constructor(private http: HttpClient) {
 
   }
 
-  public getAliments() {
-    return this.aliments;
+  public updateAliment(aliment: Aliment): Observable<Aliment> {
+    console.log(aliment);
+    return this.http.put<Aliment>(this.restUrl, aliment, httpOptions);
   }
 
-  // public getAliment(iReal: string) {
-  //   const real = this.aliments.filter((elt) => elt.name.toLowerCase() === iReal.toLowerCase());
-  //   return real[0];
-  // }
-
-  public getAliment(iReal: number) {
-    const real = this.aliments.filter((elt) => elt.id === iReal);
-    return real[0];
+  public addAliment(aliment: Aliment): Observable<Aliment> {
+    console.log(aliment);
+    return this.http.post<Aliment>(this.restUrl, aliment, httpOptions);
   }
+
+  public getAliments(): Observable<Aliment[]> {
+    return this.http.get<Aliment[]>(this.restUrl);
+  }
+
+  public getAliment(id: number): Observable<Aliment> {
+    return this.http.get<Aliment>(this.restUrl + '/' + id);
+  }
+
+  /*public getCategory(id: number): Observable<Category> {
+    return this.http.get<Category>(this.restUrl + '/getcategory/' + id);
+  }*/
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import co.simplon.dietcare.model.Aliment;
+import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.repository.AlimentRepository;
 
 @Named
@@ -46,8 +47,8 @@ public class AlimentServiceImpl implements AlimentService {
 		alimentRepository.deleteById(id);
 	}
 	
-//	@Override
-//	public long count() {
-//		return alimentRepository.findAll().size();
-//	}
+	/*@Override
+	public Category getCategory(Aliment aliment) {
+		return aliment.getCategory();
+	}*/
 }

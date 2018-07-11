@@ -35,6 +35,22 @@ const NAV_ITEMS_DATA: NavItem[] =
         position: 'header'
     },
     {
+        id: 'moment',
+        title: 'Moment',
+        anchor: 'Moment',
+        link: '/moment',
+        picto: 'query_builder',
+        position: 'header'
+    },
+    {
+        id: 'category',
+        title: 'Catégories',
+        anchor: 'Categories',
+        link: '/aliment/category',
+        picto: 'folder',
+        position: 'header'
+    }/*,
+    {
         id: 'stats',
         title: 'Statistiques',
         anchor: 'Statistiques',
@@ -49,7 +65,8 @@ const NAV_ITEMS_DATA: NavItem[] =
         link: '#',
         picto: 'person',
         position: 'header'
-    },
+    }*/
+    ,
     {
         id: 'contact',
         title: 'Contact',

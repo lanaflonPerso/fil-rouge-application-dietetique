@@ -3,7 +3,7 @@
     <fieldset>
       <legend>catéporie :</legend>
       <mat-label>Nom :</mat-label>
-      <mat-form-field>         
+      <mat-form-field *ngIf="getCategory() != null">         
         <input matInput placeholder="nom de la catégorie ( ex: Fruit)" name="name" [(ngModel)]="getCategory().name" #name>
       </mat-form-field>
       <button mat-raised-button color="primary" (click)="addCategory()">Enregistrer</button> 

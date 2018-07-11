@@ -22,7 +22,8 @@ import { MatIconModule,
   MatListModule,
   MatGridListModule,
   MatGridTile,
-  MatExpansionModule
+  MatExpansionModule,
+  MatSelectModule
 } from '@angular/material';
 
 import { RouterModule, Routes } from '@angular/router';
@@ -38,6 +39,8 @@ import { CategoryComponent } from './category/category.component';
 import { MealComponent } from './meal/meal.component';
 
 import { MomentComponent } from './moment/moment.component';
+import { AddComponent as  MomentAddComponent } from './moment/add/add.component';
+import { DetailComponent as  MomentDetailComponent } from './moment/detail/detail.component';
 import { MealAddComponent } from './meal/meal-add/meal-add.component';
 import { RecipeDetailComponent } from './recipe/recipe-detail/recipe-detail.component';
 import { CategoryAddComponent } from './category/category-add/category-add.component';
@@ -45,21 +48,31 @@ import { CategoryDetailComponent } from './category/category-detail/category-det
 import { MealDetailComponent } from './meal/meal-detail/meal-detail.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AlimentAddComponent } from './aliment/aliment-add/aliment-add.component';
+import { AlimentUpdateComponent } from './aliment/aliment-update/aliment-update.component';
+import { AddComponent } from './moment/add/add.component';
+import { DetailComponent } from './moment/detail/detail.component';
+import { MealEditComponent } from './meal/meal-edit/meal-edit.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'aliment/category', component: CategoryComponent },
   { path: 'aliment/category/add', component: CategoryAddComponent },
   { path: 'aliment/category/detail/:id', component: CategoryDetailComponent },
+  { path: 'aliment/add', component: AlimentAddComponent},
   { path: 'aliment/detail/:id', component: AlimentDetailComponent },
-  // { path: 'aliment/:nomAliment', component: AlimentDetailComponent },
+  { path: 'aliment/update/:id', component: AlimentUpdateComponent },
   { path: 'aliment', component: AlimentComponent },
   { path: 'recipe', component: RecipeComponent },
   { path: 'recipe/add', component: RecipeAddComponent},
   { path: 'recipe/detail/:id', component: RecipeDetailComponent},
   { path: 'meal', component: MealComponent},
   { path: 'meal/add', component: MealAddComponent},
+  { path: 'meal/edit/:id', component: MealEditComponent},
   { path: 'meal/detail/:id', component: MealDetailComponent},
+  { path: 'moment', component: MomentComponent},
+  { path: 'moment/add', component: MomentAddComponent},
+  { path: 'moment/detail/:id', component: MomentDetailComponent},
 ];
 
 @NgModule({
@@ -72,16 +85,21 @@ export const routes: Routes = [
     RecipeDetailComponent,
     AlimentComponent,
     AlimentDetailComponent,
+    AlimentAddComponent,
+    AlimentUpdateComponent,
     HomeComponent,
     DisplayComponent,
     GenericComponent,
     CategoryComponent,
     MealComponent,
     MealAddComponent,
+    MealDetailComponent,
     MomentComponent,
     CategoryAddComponent,
     CategoryDetailComponent,
-    MealDetailComponent
+    AddComponent,
+    DetailComponent,
+    MealEditComponent
   ],
   imports: [
     BrowserModule,
@@ -101,6 +119,7 @@ export const routes: Routes = [
     MatListModule,
     MatGridListModule,
     MatExpansionModule,
+    MatSelectModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
     HttpClientModule

@@ -1,3 +1,34 @@
-<p>
-  moment works!
-</p>
+<a routerLink="/moment/add">
+  Ajout d'une nouveau moment
+  <mat-icon>add_box</mat-icon>
+</a>
+<form>
+    <fieldset>
+      <legend>Recherche :</legend>
+      <mat-form-field appearance="legacy">
+          <mat-label>Chercher</mat-label>
+          <input matInput placeholder="Chercher un moment" (input)="filter(search.value)" #search>
+          <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+    </fieldset>
+</form>
+<div id="recipeList" *ngIf="getMoments() != null">
+    <table class="table table-striped table-bordered" >
+        <thead>
+            <tr>
+                
+                <th>Nom </th>
+                <th>Que faire ?</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let moment of getMoments()">
+              <td>{{moment.name}}</td>
+              <td>
+                  <a routerLink="/moment/detail/{{moment.id}}"><mat-icon>edit</mat-icon></a>
+              </td>
+          </tr>
+        </tbody>
+    </table>
+ </div>

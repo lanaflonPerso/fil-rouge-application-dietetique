@@ -15,11 +15,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "dietcomponent")
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public abstract class DietComponent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,8 +36,8 @@ public abstract class DietComponent {
 
 	@Column(name = "visual")
 	private String visual;
-	/*
-	@JsonManagedReference
+	
+	@JsonManagedReference (value = "meal-dietcomponents")
 	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Component> components = new ArrayList<Component>();
 	
@@ -45,7 +47,7 @@ public abstract class DietComponent {
 
 	public void setComponents(List<Component> components) {
 		this.components = components;
-	}*/
+	}
 
 	public DietComponent(Long id, String name, String description, String visual) {
 		this.id = id;

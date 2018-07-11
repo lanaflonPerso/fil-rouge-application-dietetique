@@ -1,57 +1,49 @@
-<!--
-<ol class="breadcrumb">
-  <li class="breadcrumb-item"><a href="/">Accueil</a></li>
-  <li class="breadcrumb-item active">{{aliment.name}}</li>
-</ol>
--->
+<ng-container *ngIf="getAliment() != null">
+  <div class="row">
 
-<div class="row">
+    <div class="col-lg-12">
+      <div id="header" class="clair">
+        <h1>{{getAliment().name}}</h1>
+      </div>
+    </div>
 
-  <div class="col-lg-12">
-    <div id="header" class="clair">
-      <h1>{{aliment.name}}</h1>
+ </div>
+
+  <div class="row">
+          <div class="col-lg-4">
+            <img class="img-thumbnail" src="{{getAliment().visual}}" alt="">
+          </div>  
+          <div class="col-lg-8">{{getAliment().description}}</div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+        <div style="margin-top:50px;"></div>
     </div>
   </div>
 
-  <div class="col-lg-12">
-    <div style="margin-top:50px;"></div>
-  </div>
-</div>
-
-<div class="row">
-        <div class="col-lg-4">
-          <img class="img-thumbnail" src="{{aliment.visual}}" alt="">
-        </div>  
-        <div class="col-lg-8">{{aliment.description}}</div>
-</div>
-
-<div class="row">
-  <div class="col-lg-12">
-      <div style="margin-top:50px;"></div>
-  </div>
-</div>
-
-<table class="table table-condensed">
-    <thead>
-      <tr class="center">
-        <th>Proteines en gr</th>
-        <th>Glucides en gr</th>
-        <th>Lipides en gr</th>
-        <th>Fibres en gr</th>
-        <th>IG en %</th>
-        <th>CG en %</th>
-        <th>Kcal pour 100g</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="center">
-        <td>{{aliment.proteins}}</td>                    
-        <td>{{aliment.glucids}}</td>
-        <td>{{aliment.lipids}}</td>
-        <td>{{aliment.fibers}}</td>
-        <td>{{aliment.ig}}</td>
-        <td>206</td>
-        <td>207</td>
-      </tr>
-    </tbody>
-  </table>
+  <table class="table table-condensed">
+      <thead>
+        <tr class="center">
+          <th>Proteines en gr</th>
+          <th>Glucides en gr</th>
+          <th>Lipides en gr</th>
+          <th>Fibres en gr</th>
+          <th>IG en %</th>
+          <th>CG en %</th>
+          <th>Kcal pour 100g</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="center">
+          <td>{{getAliment().proteins}}</td>                    
+          <td>{{getAliment().glucids}}</td>
+          <td>{{getAliment().lipids}}</td>
+          <td>{{getAliment().fibers}}</td>
+          <td>{{getAliment().ig}}</td>
+          <td>206</td>
+          <td>207</td>
+        </tr>
+      </tbody>
+    </table>
+</ng-container>

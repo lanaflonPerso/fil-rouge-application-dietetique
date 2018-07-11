@@ -16,10 +16,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "meal")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(
+	  	scope=Meal.class,
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+	  property = "id")
 public class Meal {
 	
 	@Id
@@ -33,12 +41,12 @@ public class Meal {
 	@Column(name = "date")
 	private String date;
 	
-	@JsonBackReference
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JsonBackReference (value = "meal-moment")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fk_moment", nullable = true)
 	private Moment moment;
 	
-	@JsonManagedReference
+	@JsonManagedReference(value = "meal-components")
 	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Component> components = new ArrayList<Component>();;
 	
@@ -82,6 +90,8 @@ public class Meal {
 		this.date = date;
 	}
 
-	
+	public String toString() {
+		return "Meal = name : "+this.getName()+" date : "+this.getDate();
+	}
 
 }

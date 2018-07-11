@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.inject.Named;
 
 import co.simplon.dietcare.model.Aliment;
+import co.simplon.dietcare.model.Category;
 
 @Named
 public interface AlimentService {
@@ -21,7 +22,6 @@ public interface AlimentService {
 	public List<Aliment> findByNameLike(String name);
 	// delete an entity by id
 	public void deleteById(Long id);
-//	// count all entities
-//	public long count(); 
+	//public Category getCategory(Aliment aliment); 
 
 }

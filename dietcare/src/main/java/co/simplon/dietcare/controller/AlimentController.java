@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import co.simplon.dietcare.model.Aliment;
+import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.service.AlimentService;
 
 @Controller
@@ -24,33 +26,36 @@ public class AlimentController {
 	@Inject
 	AlimentService alimentService;
 	
-	// aliment creation
-	@RequestMapping(method = RequestMethod.POST)
-	@ResponseStatus(HttpStatus.CREATED)
-	@ResponseBody
-	public Long create(@RequestBody Aliment alim) {
-		return alimentService.save(alim).getId();
-	}
-	
-	// update aliment
-	@RequestMapping(method = RequestMethod.PUT)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public Aliment update(@RequestBody Aliment alim) {
-		return alimentService.save(alim);
-	}
-	
-	// find all aliments
+	// find all categories
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findAll() {
 		return alimentService.findAll();
 	}
 	
-	// find aliment by id
-	@RequestMapping(params = "id", method = RequestMethod.GET)
+	
+	// aliment creation
+	@RequestMapping(method = RequestMethod.POST)
+	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
-	public Optional<Aliment> findbyId(@RequestParam("id") Long id) {
+	public Long create(@RequestBody Aliment aliment) {
+		Long id = alimentService.save(aliment).getId();
+		return id;
+	}
+	
+	// update aliment
+	@RequestMapping(method = RequestMethod.PUT)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Aliment update(@RequestBody Aliment aliment) {
+		System.out.println(aliment);
+		return alimentService.save(aliment);
+	}
+	
+	// find category by id
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@ResponseBody
+	public Optional<Aliment> findbyId(@PathVariable("id") Long id) {
 		return alimentService.findbyId(id);
 	}
 	
@@ -68,10 +73,21 @@ public class AlimentController {
 		return alimentService.findByNameLike(namelike);
 	}
 	
+	// getCategory
+	/*@RequestMapping(value = "/getcategory/{alimenId}", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Category getCategory(@PathVariable("alimenId") Long alimentId) {
+		Optional<Aliment> optionalAliment = alimentService.findbyId(alimentId);
+		return optionalAliment.isPresent()?optionalAliment.get().getCategory():null;	
+	}*/
+	
 	// delete aliment by id
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
 	public void deleteById(@RequestBody Aliment alim) {
 		alimentService.deleteById(alim.getId());
 	}
+	
+	
 }

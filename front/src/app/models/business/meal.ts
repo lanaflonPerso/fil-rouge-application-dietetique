@@ -1,16 +1,18 @@
+import { Component } from './component';
+import Moment from './moment';
+
 export class Meal {
 
     id: number;
-    date: String;
     name: String;
-    moment: String;
-    kcal: number;
+    date: String;
+    moment: Moment = null;
+    components: Component[] = [];
 
-    constructor(id: number, date: String, name: String, moment: String, kcal: number) {
+    constructor(id: number, date: String, name: String, moment: Moment) {
         this.id = id;
         this.date = date;
         this.name = name,
         this.moment = moment;
-        this.kcal = kcal;
     }
 }

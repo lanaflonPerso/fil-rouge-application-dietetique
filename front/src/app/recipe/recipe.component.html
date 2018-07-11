@@ -26,7 +26,7 @@
       <thead>
           <tr>              
             <td>Nom</td>
-            <td>Visuel</td>
+            <!--<td>Visuel</td>-->
             <td>Valeur calorique ( / 100 g)</td>
             <td>Charge Glicémique ( / 100 g)</td>
             <td>Que faire ?</td>  
@@ -35,33 +35,15 @@
       <tbody>
           <tr *ngFor="let recipe of getFileteredRecipes()">
               <td> {{recipe.name}}</td>
-              <td><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></td>
+              <!--<td><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></td>-->
               <td>500 KCal</td>
               <td>50</td>
               <td>
-                <a routerLink="/recipe/detail/{{recipe.id}}">Voir la recette<mat-icon>list</mat-icon></a>
+                <a routerLink="/recipe/edit/{{recipe.id}}"><mat-icon>edit</mat-icon></a>
+                <a routerLink="/recipe/detail/{{recipe.id}}"><mat-icon>list</mat-icon></a>
               </td>
             </tr>
       </tbody>
-  </table>
-    <!--
-    <mat-grid-list cols="5" rowHeight="50px;" class="">
-      
-      <mat-grid-tile class="grid-item header">Nom</mat-grid-tile>
-      <mat-grid-tile class="grid-item header">Visuel</mat-grid-tile>
-      <mat-grid-tile class="grid-item header">Valeur calorique ( / 100 g)</mat-grid-tile>
-      <mat-grid-tile class="grid-item header">Charge Glicémique ( / 100 g)</mat-grid-tile>
-      <mat-grid-tile class="grid-item header">Que faire ?</mat-grid-tile>
-      
-      <ng-container *ngFor="let recipe of getFileteredRecipes()">
-        <mat-grid-tile class="grid-item"> {{recipe.name}}</mat-grid-tile>
-        <mat-grid-tile class="grid-item"><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></mat-grid-tile>
-        <mat-grid-tile class="grid-item">500 KCal</mat-grid-tile>
-        <mat-grid-tile class="grid-item">50</mat-grid-tile>
-        <mat-grid-tile class="grid-item">
-          <a routerLink="/recipe/detail/{{recipe.id}}">Voir la recette<mat-icon>list</mat-icon></a>
-        </mat-grid-tile>
-      </ng-container>
-    </mat-grid-list>-->     
+  </table>       
   </div>
 </div>

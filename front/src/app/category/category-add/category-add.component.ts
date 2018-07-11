@@ -10,10 +10,11 @@ import { Aliment } from '../../models/business/aliment';
   templateUrl: './category-add.component.html',
   styleUrls: ['./category-add.component.css']
 })
+
 export class CategoryAddComponent extends GenericComponent implements OnInit {
 
   private category: Category;
-
+  private categories: Category[];
   constructor(private categoryService: CategoryService,  private router: Router) {
     super();
   }
@@ -21,9 +22,8 @@ export class CategoryAddComponent extends GenericComponent implements OnInit {
   ngOnInit() {
     this.category = new Category(null, '');
   }
-
    public getCategories(): Category[] {
-    return  this.categoryService.getCategories();
+    return  this.categories;
   }
 
   public getCategory(): Category {
@@ -31,9 +31,9 @@ export class CategoryAddComponent extends GenericComponent implements OnInit {
   }
 
   public addCategory() {
-    this.categoryService.addCategory(this.category);
-    this.category = new Category(null, '');
-    this.router.navigateByUrl('/aliment/category');
+    this.categoryService.addCategory(this.category).subscribe( () => {
+      this.router.navigateByUrl('/aliment/category');
+    });
   }
 
 }

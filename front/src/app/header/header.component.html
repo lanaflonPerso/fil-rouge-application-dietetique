@@ -1,7 +1,7 @@
 <header>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
-      <span><img src="/assets/logo.png" /></span>
+      <span><img src="/assets/logo-fond-bleu.png" /></span>
       <span *ngFor="let navItem of navItemsService.getListNavItems('header')" (click)="navItemsService.selectNavItem(navItem)">
         <figure>
           <a class="white-icon" title="{{navItem.title}}" routerLink="{{navItem.link}}">
