@@ -44,6 +44,10 @@ export class MealService {
 
   }
 
+  public delAlimentToMeal(aliment: Aliment) {
+
+  }
+
 public getListAliments() {
   return this.listAliments;
 }

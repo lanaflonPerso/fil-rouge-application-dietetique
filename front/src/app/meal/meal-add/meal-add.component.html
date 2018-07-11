@@ -62,7 +62,7 @@
                                     <tr *ngFor="let alim of getListAliments()">
                                         <td><a routerLink="/aliment/detail/{{alim.id}}" title="{{alim.name}}">{{alim.name}}</a></td>
                                         <td class="text-center"><img src="{{alim.visual}}" alt="Visuel {{alim.name}}" width="30" height="30"/></td>
-                                        <td class="text-center"><mat-icon class="pointer" (click)="addAlimentToMeal(alim)">delete</mat-icon></td>
+                                        <td class="text-center"><mat-icon class="pointer" (click)="delAlimentToMeal(alim)">delete</mat-icon></td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
