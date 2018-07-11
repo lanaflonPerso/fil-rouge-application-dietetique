@@ -47,7 +47,7 @@ public class Meal {
 	private Moment moment;
 	
 	@JsonManagedReference(value = "meal-components")
-	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Component> components = new ArrayList<Component>();;
 	
 	public Moment getMoment() {

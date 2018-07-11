@@ -11,9 +11,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "ingredient")
+@JsonIdentityInfo(
+		scope = Ingredient.class,  
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+		property = "id")
 public class Ingredient {
 	
 	@Id
@@ -21,13 +27,13 @@ public class Ingredient {
 	@Column(name = "id")
 	private Long id;
 	
-	@JsonBackReference(value = "aliment-ingredients")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JsonBackReference(value = "aliment-ingredients")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fk_aliment", nullable = true)
 	private Aliment aliment;
 	
-	@JsonBackReference(value = "recipe-ingredients")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JsonBackReference(value = "recipe-ingredients")
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fk_recipe", nullable = true)
 	private Recipe recipe;
 

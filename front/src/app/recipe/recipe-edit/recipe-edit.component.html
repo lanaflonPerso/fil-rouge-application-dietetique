@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+       
+            <form class="example-form" *ngIf="getRecipe() != null">
+                <div class="border">
+                  <fieldset>
+                      <legend>Ma recette : </legend>  
+                      <div class="recipeNameAndPhoto">
+                        <mat-label>Nom :</mat-label>
+                        <mat-form-field class="example-full-width">         
+                          <input matInput placeholder="nom de l'aliment (ex : sushi)"  name="name" [(ngModel)]="getRecipe().name" #name />
+                        </mat-form-field>
+                            
+                        <input  class="ng-hide"  id="photo" multiple type="file" #photo/>
+                        <label  for="photo" class="md-button md-raised md-primary">Choisir une image<mat-icon>insert_photo</mat-icon></label>
+                      </div>
+                      <div  class="recipeNameAndPhoto">
+                        <img width="100" heiught="100" src="{{getRecipe().visual}}" />
+                      </div>
+                  </fieldset>                        
+                  <input type="button" name="ok" value="enregistrer" class="btn btn-primary" (click)="updateRecipe()" />
+                </div>
+              </form>      
+     </div>
+  </div>
+</div>

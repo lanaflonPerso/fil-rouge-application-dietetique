@@ -1,10 +1,9 @@
+import { Recipe } from './../models/business/recipe';
+import { map } from 'rxjs/operators';
+import { Ingredient } from './../models/business/ingredient';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { RecipeAddComponent } from '../recipe/recipe-add/recipe-add.component';
 import { Aliment } from '../models/business/aliment';
 import { Injectable } from '@angular/core';
-import { Recipe } from '../models/business/recipe';
-import { Ingredient } from '../models/business/ingredient';
-import LIST_ALIMENTS from '../models/datas/aliments';
 import { Observable } from 'rxjs';
 
 const httpOptions = {
@@ -21,52 +20,76 @@ export class RecipeService {
 
   private restUrl = 'http://localhost:8090/recipe';
 
-  recipes: Recipe[] = [];
-
-  recipe: Recipe = null;
-
   constructor(private http: HttpClient) {
+  }
 
-    // tslint:disable-next-line:max-line-length
-    const recipe0 = new Recipe(1, 'Saucisse frites', '', 'https://eurekasante.vidal.fr/files/content/images/vidal/nutrition/saucisses_frites.jpg');
-    // tslint:disable-next-line:max-line-length
-    const recipe1 = new Recipe(2, 'Kebab Salade Tomate Oignon', '', 'http://static.750g.com/images/600-600/147beccae9b55ec2d9eb09e08788bffa/kebab.png');
-    const recipe2 = new Recipe(3, 'Mac Bacon', '', 'https://i.ytimg.com/vi/bje8LEdJKco/maxresdefault.jpg');
+  public getRecipe(id: Number): Observable<Recipe> {
+    return this.http.get<Recipe>(this.restUrl + '/'  + id).pipe( 
+      map< Recipe, any>(
+        (recipe: Recipe) => this.makeRecipeWithIngredientsAndAliment(recipe)
+      )
+    );
+  }
 
+  public addRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
+  }
 
-    const alims = LIST_ALIMENTS.aliment;
-    const aliments: Aliment[] = [];
-    for (let i = 0; i < alims.length; i++) {
-      const alim = alims[i];
-      // tslint:disable-next-line:max-line-length
-      aliments.push(new Aliment(alim.id, alim.name, alim.description, alim.visual, alim.protein, alim.glucid, alim.lipid, alim.fiber, alim.ig));
+  public updateRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
+  }
+
+  public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
+    const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
+      for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
+        const ingredient = recipe.ingredients[i];
+        const myAliment = ingredient.aliment;
+        const aliment: Aliment = new Aliment(
+          myAliment.id  ,
+          myAliment.name  ,
+          myAliment.description ,
+          myAliment.visual  ,
+          myAliment.proteins,
+          myAliment.glucids ,
+          myAliment.lipids  ,
+          myAliment.fibers  ,
+          myAliment.ig
+        );
+        myRecipe.addIngredient(new Ingredient(ingredient.id, ingredient.quantity, aliment) );
+    }
+    return myRecipe;
+  }
+
+  public getRecipes(): Observable<Recipe[]> {
+
+    return this.http.get<Recipe[]>(this.restUrl).pipe<Recipe[]>(
+      map< Recipe[], any>( (recipes: Recipe[]) => {
+        return recipes.map(
+            (recipe) => this.makeRecipeWithIngredientsAndAliment(recipe);
+          }
+        )
+      );
+  }
+
+ public addAlimentToRecipe(recipe: Recipe, aliment: Aliment, quantity: number) {
+
+    let indice = null;
+    for ( let i = 0;  i < recipe.ingredients.length ; i++) {
+      if ( aliment.id === recipe.ingredients[i].aliment.id) {
+        indice = i;
+        break;
+      }
     }
 
-    const saucisseIng = new Ingredient(1, 300, aliments[3]);
-    recipe0.addIngredient(saucisseIng);
-    const friteIng = new Ingredient(2, 400, aliments[4]);
-    recipe0.addIngredient(friteIng);
-
-    this.recipes.push(recipe0);
-    this.recipes.push(recipe1);
-    this.recipes.push(recipe2);
-
-    this.recipe = new Recipe(null, '', '', '');
-  }
-
-  getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(this.restUrl);
-  }
-
-  getRecipe(): Recipe {
-    return this.recipe;
-  }
-
-  deleteRecipe(recipe: Recipe) {
+    if ( indice !== null) {
+      recipe.ingredients[indice].quantity += quantity;
+    } else {
+      recipe.ingredients.push(new Ingredient( null, quantity, aliment));
+    }
 
   }
 
-  removeAlimentFromRecipe(aliment: Aliment, quantity: number) {
+  /*removeAlimentFromRecipe(aliment: Aliment, quantity: number) {
     const ingredient: Ingredient = this.recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id);
 
     if (ingredient != null) {
@@ -86,14 +109,5 @@ export class RecipeService {
     } else {
       ingredient.quantity = Number(ingredient.quantity) + Number(quantity);
     }
-  }
-
-  public getRecipeById(id: Number): Recipe {
-    return null;
-    //this.getRecipes().find(recipe => recipe.id === id);
-  }
-
-  public addRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
-  }
+  }*/
 }

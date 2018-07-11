@@ -49,8 +49,8 @@ public class Aliment extends DietComponent {
 	private Category category = new Category();
 	
 	
-	@JsonManagedReference(value = "aliment-ingredients")
-	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JsonManagedReference(value = "aliment-ingredients")
+	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Aliment() {

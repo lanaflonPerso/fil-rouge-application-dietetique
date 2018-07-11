@@ -23,8 +23,12 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipe = new Recipe(null, 'ma recette', '', '');
-    
+    this.recipe = new Recipe(null, '', '', '');
+    this.loadAliments();
+  }
+
+  private loadAliments() {
+    this.alimentService.getAliments().subscribe( (aliments: Aliment[] ) => { this.aliments = aliments; } );
   }
 
   getRecipe(): Recipe {
@@ -47,11 +51,11 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   addAlimentToRecipe(aliment: Aliment): void {
-    this.recipeService.addAlimentToRecipe(aliment, 100);
+    this.recipeService.addAlimentToRecipe(this.recipe, aliment, 100);
   }
 
   removeAlimentFromRecipe(aliment: Aliment): void {
-    this.recipeService.removeAlimentFromRecipe(aliment, 100);
+    //this.recipeService.removeAlimentFromRecipe(aliment, 100);
   }
 
   updateQuantity(event, ingredient: Ingredient) {
