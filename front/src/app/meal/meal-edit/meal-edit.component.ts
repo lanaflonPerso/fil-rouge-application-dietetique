@@ -42,7 +42,7 @@ export class MealEditComponent extends GenericComponent implements OnInit {
   }
 
   private loadMoments() {
-    this.momentService.getMoments().subscribe((moments: Moment[]) => { 
+    this.momentService.getMoments().subscribe((moments: Moment[]) => {
       this.moments = moments;
     } );
   }

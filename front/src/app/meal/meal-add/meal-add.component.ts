@@ -42,8 +42,8 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   }
 
   private loadMoments() {
-    this.momentService.getMoments().subscribe((moments: Moment[]) => { 
-      this.moments = moments; 
+    this.momentService.getMoments().subscribe((moments: Moment[]) => {
+      this.moments = moments;
     } );
   }
 
@@ -56,7 +56,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   }
 
   public addMeal() {
-    this.mealService.addMeal(this.meal).subscribe(() => { 
+    this.mealService.addMeal(this.meal).subscribe(() => {
       this.router.navigateByUrl('/meal');
     });
   }
