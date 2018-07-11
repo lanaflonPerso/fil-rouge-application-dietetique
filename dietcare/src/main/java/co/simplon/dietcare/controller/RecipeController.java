@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import co.simplon.dietcare.model.Aliment;
+import co.simplon.dietcare.model.Ingredient;
 import co.simplon.dietcare.model.Recipe;
 import co.simplon.dietcare.service.RecipeService;
 
@@ -48,31 +51,20 @@ public class RecipeController {
 	}
 	
 	// find recipe by id
-	@RequestMapping(params = "id", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
-	public Optional<Recipe> findbyId(@RequestParam("id") Long id) {
-		return recipeService.findbyId(id);
+	public Optional<Recipe> findbyId(@PathVariable("id") Long id) {
+		Optional<Recipe> optionalRecipe = recipeService.findbyId(id);
+		if(optionalRecipe.isPresent()) { 
+			List<Ingredient> ingredients = optionalRecipe.get().getIngredients();
+			
+			for(int i = 0 ; i < ingredients.size() ; i++) {
+				optionalRecipe.get().getIngredients().get(i).getAliment().getCategory();			
+			}
+			
+			
+		}
+		
+		return optionalRecipe;
 	}
-	
-	// find recipe by name
-	@RequestMapping(params = "name", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Recipe> findbyName(@RequestParam("name") String name) {
-		return recipeService.findbyName(name);
-	}
-
-	// find recipe by name like
-	@RequestMapping(params = "namelike", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Recipe> findByNameLike(@RequestParam("namelike") String namelike) {
-		return recipeService.findByNameLike(namelike);
-	}
-	
-	// delete recipe by id
-	@RequestMapping(method = RequestMethod.DELETE)
-	@ResponseBody
-	public void deleteById(@RequestBody Recipe recipe) {
-		recipeService.deleteById(recipe.getId());
-	}
-
 }

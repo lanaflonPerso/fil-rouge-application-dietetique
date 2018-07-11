@@ -20,12 +20,13 @@
       <mat-icon>add_box</mat-icon>
     </a>
   </p>
-
-  <div id="recipeList">
+  
+  <div id="recipeList" *ngIf="getRecipes() != null">
     <table class="table table-striped table-bordered">
       <thead>
           <tr>              
             <td>Nom</td>
+            <td>Nb ingrédients</td>
             <!--<td>Visuel</td>-->
             <td>Valeur calorique ( / 100 g)</td>
             <td>Charge Glicémique ( / 100 g)</td>
@@ -33,11 +34,12 @@
           </tr>
       </thead>
       <tbody>
-          <tr *ngFor="let recipe of getFileteredRecipes()">
+          <tr *ngFor="let recipe of getRecipes()">
               <td> {{recipe.name}}</td>
+              <td>{{recipe.getIngredients().length}}</td>
               <!--<td><img src="{{recipe.visual}}" title="photo de {{recipe.name}}" width="25" height="25" /></td>-->
-              <td>500 KCal</td>
-              <td>50</td>
+              <td>{{recipe.getEnergy()}}</td>
+              <td>{{recipe.getCg()}}</td>
               <td>
                 <a routerLink="/recipe/edit/{{recipe.id}}"><mat-icon>edit</mat-icon></a>
                 <a routerLink="/recipe/detail/{{recipe.id}}"><mat-icon>list</mat-icon></a>

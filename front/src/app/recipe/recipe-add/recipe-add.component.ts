@@ -23,19 +23,23 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.recipe = new Recipe(null, 'ma recette', '', '');
-    
+    this.recipe = new Recipe(null, '', '', '');
+    this.loadAliments();
   }
 
-  getRecipe(): Recipe {
+  private loadAliments() {
+    this.alimentService.getAliments().subscribe( (aliments: Aliment[] ) => { this.aliments = aliments; } );
+  }
+
+  public getRecipe(): Recipe {
     return this.recipe;
   }
 
-  addRecipe() {
+  public addRecipe() {
     this.recipeService.addRecipe(this.recipe).subscribe(() => { this.router.navigateByUrl('/recipe'); } );
   }
 
-  getFilteredAliments(): Aliment[] {
+  public getFilteredAliments(): Aliment[] {
     let filteredAliments = this.aliments;
 
     if (this.getSearchText() !== '' ) {
@@ -46,15 +50,15 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
     return filteredAliments;
   }
 
-  addAlimentToRecipe(aliment: Aliment): void {
-    this.recipeService.addAlimentToRecipe(aliment, 100);
+  public addAlimentToRecipe(aliment: Aliment): void {
+    this.recipeService.addAlimentToRecipe(this.recipe, aliment, 100);
   }
 
-  removeAlimentFromRecipe(aliment: Aliment): void {
-    this.recipeService.removeAlimentFromRecipe(aliment, 100);
+  public removeAlimentFromRecipe(aliment: Aliment): void {
+    //this.recipeService.removeAlimentFromRecipe(aliment, 100);
   }
 
-  updateQuantity(event, ingredient: Ingredient) {
+  public updateQuantity(event, ingredient: Ingredient) {
     ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
 

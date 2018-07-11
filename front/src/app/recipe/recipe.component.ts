@@ -17,6 +17,7 @@ export class RecipeComponent extends GenericComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.loadRecipes();
     this.gererateDataTable();
   }
@@ -25,7 +26,7 @@ export class RecipeComponent extends GenericComponent implements OnInit {
     this.recipeService.getRecipes().subscribe( (recipes: Recipe[]) => { this.recipes = recipes; } );
   }
 
-  public getRecipes() {
+  public getRecipes(): Recipe[] {
     return this.recipes;
   }
 

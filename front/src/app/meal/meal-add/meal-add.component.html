@@ -56,7 +56,7 @@
                         <form>                      
                           <div class="form-row">
 
-                          <table id="MealAlimentList" *ngIf="getListAliments().length > 0" class="table table-striped table-bordered" style="width:100%">
+                          <table id="MealAlimentList" *ngIf="getAliments().length > 0" class="table table-striped table-bordered" style="width:100%">
                               <ng-container >  
                                 <thead>
                                     <tr>
@@ -67,7 +67,7 @@
                                 </thead>
                                 
                                 <tbody>                                                              
-                                    <tr *ngFor="let alim of getListAliments()">
+                                    <tr *ngFor="let alim of getAliments()">
                                         <td><a routerLink="/aliment/detail/{{alim.id}}" title="{{alim.name}}">{{alim.name}}</a></td>
                                         <td class="text-center"><img src="{{alim.visual}}" alt="Visuel {{alim.name}}" width="30" height="30"/></td>
                                         <td class="text-center"><mat-icon class="pointer" (click)="addAlimentToMeal(alim)">delete</mat-icon></td>

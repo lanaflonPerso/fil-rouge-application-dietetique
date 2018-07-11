@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -49,8 +50,9 @@ public class Aliment extends DietComponent {
 	private Category category = new Category();
 	
 	
-	@JsonManagedReference(value = "aliment-ingredients")
-	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	//@JsonManagedReference(value = "aliment-ingredients")
+	@JsonIgnore
+	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Aliment() {

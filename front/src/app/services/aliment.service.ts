@@ -26,7 +26,6 @@ export class AlimentService {
   }
 
   public updateAliment(aliment: Aliment): Observable<Aliment> {
-    console.log(aliment);
     return this.http.put<Aliment>(this.restUrl, aliment, httpOptions);
   }
 
@@ -42,8 +41,4 @@ export class AlimentService {
   public getAliment(id: number): Observable<Aliment> {
     return this.http.get<Aliment>(this.restUrl + '/' + id);
   }
-
-  /*public getCategory(id: number): Observable<Category> {
-    return this.http.get<Category>(this.restUrl + '/getcategory/' + id);
-  }*/
 }

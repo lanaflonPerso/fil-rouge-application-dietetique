@@ -18,6 +18,11 @@
                         <div  class="recipeNameAndPhoto">
                           <img width="100" heiught="100" src="{{getRecipe().visual}}" />
                         </div>
+                        <div>
+                            <mat-label class="lead">Cg = <mark>{{getRecipe().getCg()}}</mark></mat-label>
+                            <br />
+                            <mat-label class="lead">Cg / 100 = <mark>{{getRecipe().getCgFor100()}}</mark></mat-label>
+                          </div> 
                     </fieldset>
                     <fieldset>
                         <legend>Composition</legend>
@@ -44,37 +49,30 @@
               </div>
       </div>
       
-          <div class="col-6 " class="border">
-            <div>
-              <mat-label class="lead">Cg = <mark>{{getRecipe().getCg()}}</mark></mat-label>
-              <br />
-              <mat-label class="lead">Cg / 100 = <mark>{{getRecipe().getCgFor100()}}</mark></mat-label>
-            </div>  
-            Rechercher des aliments
-              <div id="search" >
-                  
-                <form class="example-form" >
-                  <fieldset>
-                    <legend>Chercher une recette :</legend>
-                    <mat-form-field appearance="legacy">
-                        <mat-label>Recipe search</mat-label>
-                        <input matInput placeholder="Chercher un aliment" (input)="filter(search.value)" #search>
-                        <mat-icon matSuffix>search</mat-icon>
-                        </mat-form-field>
-                  </fieldset>
-                </form>
+  <div class="col-6 " class="border">
+    <div id="search" >
+          
+        <form class="example-form" >
+          <fieldset>
+            <legend>Aliments :</legend>
+            <mat-form-field appearance="legacy">
+                <mat-label>Recherche d'aliments</mat-label>
+                <input matInput placeholder="Chercher un aliment" (input)="filter(search.value)" #search>
+                <mat-icon matSuffix>search</mat-icon>
+                </mat-form-field>
+          </fieldset>
+        </form>
 
-                <div *ngFor="let aliment of getFilteredAliments()">
-                      
-                  <mat-label class="label">{{aliment.name}} :</mat-label>
-                  <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
-                
-                  <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
-                  <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
-                
-                </div> 
-              </div>
-      
+        <div *ngFor="let aliment of getFilteredAliments()">
+              
+          <mat-label class="label">{{aliment.name}} :</mat-label>
+          <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
+        
+          <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
+          <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
+        
+        </div> 
+      </div>     
     </div>
   </div>
 
