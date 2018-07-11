@@ -59,8 +59,7 @@ public class RecipeController {
 			List<Ingredient> ingredients = optionalRecipe.get().getIngredients();
 			
 			for(int i = 0 ; i < ingredients.size() ; i++) {
-				Aliment aliment = optionalRecipe.get().getIngredients().get(i).getAliment();
-				System.out.println(aliment.getName());
+				optionalRecipe.get().getIngredients().get(i).getAliment().getCategory();			
 			}
 			
 			

@@ -19,9 +19,45 @@
                         <img width="100" heiught="100" src="{{getRecipe().visual}}" />
                       </div>
                   </fieldset>                        
+                  
                   <input type="button" name="ok" value="enregistrer" class="btn btn-primary" (click)="updateRecipe()" />
+
+                  <fieldset *ngIf="getRecipe().getIngredients().length > 0">
+                    <legend>Composition</legend>
+                    <div class="row" *ngFor="let ingredient of getRecipe().getIngredients()">
+                        <div class="col-3">{{ingredient.aliment.name}}</div>
+                        <div class="col-3">{{ingredient.quantity}} g</div>
+                        
+                    </div>
+                  </fieldset>
                 </div>
               </form>      
      </div>
+  <div class="col-6 " class="border">
+      <div id="search" >
+            
+          <form class="example-form" >
+            <fieldset>
+              <legend>Aliments :</legend>
+              <mat-form-field appearance="legacy">
+                  <mat-label>Recherche d'aliments</mat-label>
+                  <input matInput placeholder="Chercher un aliment" (input)="filter(search.value)" #search>
+                  <mat-icon matSuffix>search</mat-icon>
+                  </mat-form-field>
+            </fieldset>
+          </form>
+  
+          <div *ngFor="let aliment of getFilteredAliments()">
+                
+            <mat-label class="label">{{aliment.name}} :</mat-label>
+            <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
+          
+            <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
+            <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
+
+          
+          </div> 
+        </div>     
+      </div>
   </div>
 </div>

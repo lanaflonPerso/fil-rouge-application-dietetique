@@ -28,7 +28,7 @@ constructor(private alimentService: AlimentService) {
   }
 
   private loadAliments() {
-    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
+    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; });
   }
 
   public getFileteredAliments(): Aliment[] {
