@@ -71,4 +71,10 @@ export class AlimentUpdateComponent implements OnInit {
     );
   }
 
+  public  onFileChanged(event) {
+      const file = event.target.files[0];
+      this.alimentService.upload(file).subscribe((data) => { console.log(data); });
+
+    }
+
 }

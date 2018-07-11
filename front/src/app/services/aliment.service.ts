@@ -40,4 +40,12 @@ export class AlimentService {
   public getAliment(id: number): Observable<Aliment> {
     return this.http.get<Aliment>(this.restUrl + '/' + id);
   }
+
+  public upload(file) {
+    const urlCloudinary = 'https://api.cloudinary.com/v1_1/dfexmhgqi/image/upload';
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('upload_preset', 'rhd8pini');
+    return this.http.post<any>(urlCloudinary, formData);
+  }
 }
