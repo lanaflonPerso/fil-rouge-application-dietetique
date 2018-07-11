@@ -30,6 +30,10 @@ public class AlimentController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findAll() {
+		List<Aliment> list = alimentService.findAll();
+		for(Aliment aliment: list) {
+			System.out.println(aliment.getName());
+		}
 		return alimentService.findAll();
 	}
 	

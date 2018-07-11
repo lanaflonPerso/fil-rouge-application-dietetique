@@ -34,10 +34,11 @@ export class MealAddComponent extends GenericComponent implements OnInit {
               private router: Router
             ) {
     super();
-    this.loadMoments();
   }
 
   ngOnInit() {
+    this.loadMoments();
+    this.loadAliments();
     this.meal = new Meal(null, '', '', null);
   }
 
@@ -97,7 +98,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
     this.mealService.addAlimentToMeal(this.meal, aliment, 100);
   }
 
-  public getListAliments() {
+  public loadAliments() {
     return this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
   }
 }

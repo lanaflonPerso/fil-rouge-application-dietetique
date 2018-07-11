@@ -12,16 +12,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "dietcomponent")
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(
+		scope = DietComponent.class,  
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+		property = "id")
 public abstract class DietComponent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,18 +45,6 @@ public abstract class DietComponent {
 	@Column(name = "visual")
 	private String visual;
 	
-	@JsonManagedReference (value = "meal-dietcomponents")
-	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Component> components = new ArrayList<Component>();
-	
-	public List<Component> getComponents() {
-		return components;
-	}
-
-	public void setComponents(List<Component> components) {
-		this.components = components;
-	}
-
 	public DietComponent(Long id, String name, String description, String visual) {
 		this.id = id;
 		this.name = name;

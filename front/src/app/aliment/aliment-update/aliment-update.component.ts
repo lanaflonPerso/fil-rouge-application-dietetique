@@ -53,10 +53,9 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   public updateAliment() {
-    console.log(this.aliment);
-    this.alimentService.updateAliment(this.aliment).subscribe( (aliment: Aliment) => {
-      this.router.navigateByUrl('/aliment');
-    });
+      this.alimentService.updateAliment(this.aliment).subscribe( () => {
+        this.router.navigateByUrl('/aliment');
+      });
 
   }
 

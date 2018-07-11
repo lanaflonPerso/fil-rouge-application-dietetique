@@ -2,6 +2,7 @@ import { Aliment } from './aliment';
 
 export class Ingredient {
 
+    id: number;
     quantity: number;
     aliment: Aliment = null;
 
@@ -41,7 +42,7 @@ export class Ingredient {
     public getEnergy(): number {
         let energy = 0;
         if ( this.getAliment() != null) {
-            energy = this.getAliment().getEnergy() * this.quantity;
+            energy = this.getAliment().getEnergy() * this.quantity / 100;
         }
         return energy;
     }
