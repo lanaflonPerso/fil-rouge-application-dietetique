@@ -1,6 +1,7 @@
 import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { AlimentService } from '../services/aliment.service';
+import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
 
 @Component({
@@ -11,13 +12,14 @@ import { Aliment } from '../models/business/aliment';
 
 export class AlimentComponent extends GenericComponent implements OnInit {
 
-constructor(private alimentService: AlimentService) {
+constructor(private alimentService: AlimentService, private categoryService: CategoryService) {
     super();
   }
 
   private aliments: Aliment[];
 
   ngOnInit() {
+    this.aliments = [];
     this.loadAliments();
     this.gererateDataTable();
   }
@@ -28,7 +30,18 @@ constructor(private alimentService: AlimentService) {
   }
 
   private loadAliments() {
-    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; });
+    //console.log('test');
+    this.categoryService.getCategories().subscribe( (categories) => {
+      //console.log('test1 : ' + categories.length);
+      for ( let i = 0 ; i < categories.length ; i++) {
+        //console.log('test2 : ' +  categories[i].aliments.length);
+        for ( let j = 0 ; j < categories[i].aliments.length ; j++) {
+          categories[i].aliments[j].category = categories[i];
+          this.aliments.push(categories[i].aliments[j]);
+        }
+      }
+    });
+    //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
   }
 
   public getFileteredAliments(): Aliment[] {

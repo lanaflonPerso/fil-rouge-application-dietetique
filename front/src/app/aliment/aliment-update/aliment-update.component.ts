@@ -20,7 +20,6 @@ export class AlimentUpdateComponent implements OnInit {
 
   // tslint:disable-next-line:max-line-length
   constructor(private alimentService: AlimentService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router) {
-
   }
 
   ngOnInit() {

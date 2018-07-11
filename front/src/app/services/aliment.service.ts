@@ -30,7 +30,6 @@ export class AlimentService {
   }
 
   public addAliment(aliment: Aliment): Observable<Aliment> {
-    console.log(aliment);
     return this.http.post<Aliment>(this.restUrl, aliment, httpOptions);
   }
 

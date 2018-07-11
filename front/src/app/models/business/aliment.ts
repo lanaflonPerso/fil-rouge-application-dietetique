@@ -20,6 +20,10 @@ export class Aliment extends DietComponent {
         this.ig = ig;
     }
 
+    public setCategory(category: Category) {
+        this.category = category;
+    }
+
     public getProteins(): number {
         return this.proteins;
     }

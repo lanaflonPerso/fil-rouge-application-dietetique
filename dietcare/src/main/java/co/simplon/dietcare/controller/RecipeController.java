@@ -32,6 +32,7 @@ public class RecipeController {
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
 	public Long create(@RequestBody Recipe recipe) {
+		System.out.println(recipe);
 		return recipeService.save(recipe).getId();
 	}
 	
@@ -40,6 +41,7 @@ public class RecipeController {
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Recipe update(@RequestBody Recipe recipe) {
+		System.out.println(recipe);
 		return recipeService.save(recipe);
 	}
 	
@@ -55,15 +57,14 @@ public class RecipeController {
 	@ResponseBody
 	public Optional<Recipe> findbyId(@PathVariable("id") Long id) {
 		Optional<Recipe> optionalRecipe = recipeService.findbyId(id);
-		if(optionalRecipe.isPresent()) { 
+		/*if(optionalRecipe.isPresent()) { 
 			List<Ingredient> ingredients = optionalRecipe.get().getIngredients();
 			
 			for(int i = 0 ; i < ingredients.size() ; i++) {
 				optionalRecipe.get().getIngredients().get(i).getAliment().getCategory();			
-			}
+			}		
 			
-			
-		}
+		}*/
 		
 		return optionalRecipe;
 	}

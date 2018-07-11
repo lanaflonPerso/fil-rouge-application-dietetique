@@ -32,7 +32,7 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
 
   private loadRecipe() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.recipeService.getRecipe(Number(id)).subscribe((recipe: Recipe) => { this.recipe = recipe; } );
+    this.recipeService.getRecipe(Number(id)).subscribe((recipe: Recipe) => { console.log(recipe); this.recipe = recipe; } );
   }
 
   private loadAliments() {
@@ -48,8 +48,8 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
   }
 
   public addAlimentToRecipe(aliment: Aliment): void {
-    console.log(this.recipe);
     this.recipeService.addAlimentToRecipe(this.recipe, aliment, 100);
+    console.log(this.recipe);
   }
 
   public removeAlimentFromRecipe(aliment: Aliment): void {

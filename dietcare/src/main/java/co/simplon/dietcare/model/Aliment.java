@@ -44,14 +44,15 @@ public class Aliment extends DietComponent {
 	private Float ig;
 	
 	
-	//@JsonBackReference(value = "category-aliments")
+	@JsonBackReference(value = "category-aliments")
+	//@JsonManagedReference(value = "category-aliments")
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fk_category", nullable = true)
 	private Category category = new Category();
 	
 	
-	//@JsonManagedReference(value = "aliment-ingredients")
-	@JsonIgnore
+	@JsonBackReference(value = "aliment-ingredients")
+	//@JsonIgnore
 	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
