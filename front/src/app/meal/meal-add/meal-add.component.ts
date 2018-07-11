@@ -94,10 +94,10 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   }
 
   public addAlimentToMeal(aliment: Aliment): void {
-    this.mealService.addAlimentToMeal(aliment, 100);
+    this.mealService.addAlimentToMeal(this.meal, aliment, 100);
   }
 
   public getListAliments() {
-    return this.mealService.listAliments;
+    return this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
   }
 }

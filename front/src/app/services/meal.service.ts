@@ -5,6 +5,7 @@ import { Meal } from '../models/business/meal';
 import LIST_MEALS from '../models/datas/meal';
 import { Aliment } from '../models/business/aliment';
 import { DietComponent } from '../models/business/dietComponent';
+import { Component } from '../models/business/component';
 
 const httpOptions = {
   headers: new HttpHeaders( {
@@ -19,32 +20,11 @@ const httpOptions = {
 export class MealService {
 
   private restUrl = 'http://localhost:8090/meal';
-
-  meals: Meal[] = [];
-  meal: Meal = null;
-  listAliments = [];
-
   constructor(private http: HttpClient) {
 
   }
 
-  public addAlimentToMeal(aliment: Aliment, qty: number) {
-    this.listAliments.push(new Aliment( aliment.id,
-                                        aliment.name,
-                                        aliment.description,
-                                        aliment.visual,
-                                        aliment.proteins,
-                                        aliment.glucids,
-                                        aliment.lipids,
-                                        aliment.fibers,
-                                        aliment.ig
-                                      )
-                                    );
-
-  }
-
-  public getListAliments() {
-    return this.listAliments;
+  public addAlimentToMeal(meal: Meal, aliment: Aliment, qty: number) {
   }
 
   public addMeal(meal: Meal): Observable<Meal> {

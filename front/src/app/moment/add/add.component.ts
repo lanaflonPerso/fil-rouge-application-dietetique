@@ -19,7 +19,7 @@ export class AddComponent implements OnInit {
   }
 
   public addMoment() {
-    this.momentService.addMoment(this.moment).subscribe((moment: Moment) => { this.router.navigateByUrl('/moment'); } );
+    this.momentService.addMoment(this.moment).subscribe(() => { this.router.navigateByUrl('/moment'); } );
   }
 
   public getMoment() {

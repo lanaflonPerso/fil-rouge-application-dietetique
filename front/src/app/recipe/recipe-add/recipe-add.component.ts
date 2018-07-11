@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../models/business/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { Aliment } from '../../models/business/aliment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-add',
@@ -15,16 +16,23 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
 
   private aliments: Aliment[];
 
-  constructor(private recipeService: RecipeService, private alimentService: AlimentService) {
+  private recipe: Recipe = null;
+
+  constructor(private recipeService: RecipeService, private alimentService: AlimentService, private router: Router) {
     super();
   }
 
   ngOnInit() {
-
+    this.recipe = new Recipe(null, 'ma recette', '', '');
+    
   }
 
   getRecipe(): Recipe {
-    return this.recipeService.getRecipe();
+    return this.recipe;
+  }
+
+  addRecipe() {
+    this.recipeService.addRecipe(this.recipe).subscribe(() => { this.router.navigateByUrl('/recipe'); } );
   }
 
   getFilteredAliments(): Aliment[] {
@@ -49,4 +57,7 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   updateQuantity(event, ingredient: Ingredient) {
     ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
+
+ 
+
 }
