@@ -46,7 +46,6 @@ export class AlimentService {
   }
 
   public upload(file) {
-    // https://github.com/davidostermann/CPRO-cloudinary-direct-upload/blob/master/src/App.js
     const urlCloudinary = 'https://api.cloudinary.com/v1_1/dfexmhgqi/image/upload';
     const formData = new FormData();
     formData.append('file', file);

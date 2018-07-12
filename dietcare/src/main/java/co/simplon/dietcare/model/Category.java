@@ -22,8 +22,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "category")
-/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIdentityInfo(
 		  	scope=Category.class,
 			generator = ObjectIdGenerators.PropertyGenerator.class, 
 		    property = "id")*/
@@ -37,6 +37,8 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
+	//@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 

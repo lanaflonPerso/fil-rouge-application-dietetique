@@ -59,8 +59,11 @@ export class RecipeService {
           myAliment.fibers  ,
           myAliment.ig
         );
+
+        const myIngredient: Ingredient = new Ingredient(ingredient.id, ingredient.quantity, aliment);
         //aliment.setCategory(new Category( category.id, category.name) );
-        myRecipe.addIngredient(new Ingredient(ingredient.id, ingredient.quantity, aliment) );
+        myRecipe.addIngredient(myIngredient);
+        //ingredient.setRecipe(myRecipe);
     }
     return myRecipe;
   }

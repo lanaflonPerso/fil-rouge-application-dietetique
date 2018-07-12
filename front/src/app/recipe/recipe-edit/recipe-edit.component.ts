@@ -49,7 +49,7 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
 
   public addAlimentToRecipe(aliment: Aliment): void {
     this.recipeService.addAlimentToRecipe(this.recipe, aliment, 100);
-    console.log(this.recipe);
+    //console.log(this.recipe);
   }
 
   public removeAlimentFromRecipe(aliment: Aliment): void {

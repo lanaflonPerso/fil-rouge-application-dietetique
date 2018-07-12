@@ -6,7 +6,7 @@ export class Ingredient {
     id: number;
     quantity: number;
     aliment: Aliment = null;
-    //recipe: Recipe = null;
+    recipe: Recipe = null;
 
     constructor(id: number, quantity: number , aliment: Aliment) {
         this.id = id;
@@ -14,13 +14,13 @@ export class Ingredient {
         this.quantity = quantity;
     }
 
-   /*public setRecipe(recipe: Recipe) {
+   public setRecipe(recipe: Recipe) {
         this.recipe = recipe;
     }
 
     public getRecipe(): Recipe {
         return this.recipe;
-    }*/
+    }
 
     public setAliment(aliment: Aliment) {
         this.aliment = aliment;

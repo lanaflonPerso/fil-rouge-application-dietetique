@@ -21,8 +21,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "aliment")
-/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIdentityInfo(
 		scope = Aliment.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 		property = "id")*/
@@ -43,16 +43,16 @@ public class Aliment extends DietComponent {
 	@Column(name = "ig")
 	private Float ig;
 	
-	
+	//@JsonManagedReference
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	
 	
 	//@JsonManagedReference(value = "aliment-ingredients")
-	/*@JsonIgnore
+	@JsonIgnore
 	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Ingredient> ingredients = new ArrayList<Ingredient>();*/
+	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Aliment() {
 		super();
@@ -68,13 +68,13 @@ public class Aliment extends DietComponent {
 		this.ig = ig;
 	}
 	
-	/*public List<Ingredient> getIngredients() {
+	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
-	}*/
+	}
 
 
 	public Category getCategory() {
