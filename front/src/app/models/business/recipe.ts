@@ -12,7 +12,7 @@ export class Recipe extends DietComponent {
 
     public addIngredient(ingredient: Ingredient): void {
         this.ingredients.push(ingredient);
-        //ingredient.setRecipe(this);
+        // ingredient.setRecipe(this);
     }
 
     public getIngredients(): Ingredient[] {

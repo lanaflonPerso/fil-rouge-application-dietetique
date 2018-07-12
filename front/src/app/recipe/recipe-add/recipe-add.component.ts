@@ -55,13 +55,13 @@ export class RecipeAddComponent extends GenericComponent implements OnInit {
   }
 
   public removeAlimentFromRecipe(aliment: Aliment): void {
-    //this.recipeService.removeAlimentFromRecipe(aliment, 100);
+    // this.recipeService.removeAlimentFromRecipe(aliment, 100);
   }
 
   public updateQuantity(event, ingredient: Ingredient) {
     ingredient.quantity = !isNaN(event.target.value) ? Number(event.target.value) : 0;
   }
 
- 
+
 
 }

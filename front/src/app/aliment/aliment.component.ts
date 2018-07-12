@@ -46,7 +46,7 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
       console.log(this.aliments);
 
     });*/
-    //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
+    // this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
   }
 
   public getFileteredAliments(): Aliment[] {
