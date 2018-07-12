@@ -2,3 +2,7 @@
     color: #FFFFFF;
     background-color: rgb(50, 63, 235);
 }
+
+a:hover {
+color:#BBB;
+}

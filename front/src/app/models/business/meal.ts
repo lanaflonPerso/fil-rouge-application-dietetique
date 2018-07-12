@@ -1,4 +1,4 @@
-import { Component } from './component';
+import { MealComponent } from './mealComponent';
 import Moment from './moment';
 
 export class Meal {
@@ -7,7 +7,7 @@ export class Meal {
     name: String;
     date: String;
     moment: Moment = null;
-    components: Component[] = [];
+    mealComponent: MealComponent[] = [];
 
     constructor(id: number, date: String, name: String, moment: Moment) {
         this.id = id;

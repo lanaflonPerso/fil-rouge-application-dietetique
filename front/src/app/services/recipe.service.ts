@@ -24,7 +24,7 @@ export class RecipeService {
   }
 
   public getRecipe(id: Number): Observable<Recipe> {
-    return this.http.get<Recipe>(this.restUrl + '/'  + id).pipe( 
+    return this.http.get<Recipe>(this.restUrl + '/'  + id).pipe(
       map< Recipe, any>(
         (recipe: Recipe) => this.makeRecipeWithIngredientsAndAliment(recipe)
       )
@@ -65,7 +65,7 @@ export class RecipeService {
     return this.http.get<Recipe[]>(this.restUrl).pipe<Recipe[]>(
       map< Recipe[], any>( (recipes: Recipe[]) => {
         return recipes.map(
-            (recipe) => this.makeRecipeWithIngredientsAndAliment(recipe);
+            (recipe) => this.makeRecipeWithIngredientsAndAliment(recipe));
           }
         )
       );
