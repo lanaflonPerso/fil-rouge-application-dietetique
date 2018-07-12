@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -21,11 +22,11 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "category")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIdentityInfo(
 		  	scope=Category.class,
 			generator = ObjectIdGenerators.PropertyGenerator.class, 
-		  property = "id")
+		    property = "id")*/
 public class Category {
 	
 	@Id
@@ -36,8 +37,8 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
-	//@JsonIgnore
-	//@JsonManagedReference(value = "category-aliments")
+	//@JsonBackReference
+	@JsonIgnore
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 

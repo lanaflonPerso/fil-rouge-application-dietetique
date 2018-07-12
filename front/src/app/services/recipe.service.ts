@@ -1,3 +1,4 @@
+import { Category } from './../models/business/category';
 import { Recipe } from './../models/business/recipe';
 import { map } from 'rxjs/operators';
 import { Ingredient } from './../models/business/ingredient';
@@ -36,14 +37,17 @@ export class RecipeService {
   }
 
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
+    
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
+    
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
         const ingredient = recipe.ingredients[i];
         const myAliment = ingredient.aliment;
+       // const category = myAliment.category;
         const aliment: Aliment = new Aliment(
           myAliment.id  ,
           myAliment.name  ,
@@ -55,7 +59,11 @@ export class RecipeService {
           myAliment.fibers  ,
           myAliment.ig
         );
-        myRecipe.addIngredient(new Ingredient(ingredient.id, ingredient.quantity, aliment) );
+
+        const myIngredient: Ingredient = new Ingredient(ingredient.id, ingredient.quantity, aliment);
+        //aliment.setCategory(new Category( category.id, category.name) );
+        myRecipe.addIngredient(myIngredient);
+        //ingredient.setRecipe(myRecipe);
     }
     return myRecipe;
   }

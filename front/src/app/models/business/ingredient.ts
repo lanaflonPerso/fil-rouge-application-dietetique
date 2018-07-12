@@ -1,14 +1,25 @@
 import { Aliment } from './aliment';
+import { Recipe } from './recipe';
 
 export class Ingredient {
 
     id: number;
     quantity: number;
     aliment: Aliment = null;
+    recipe: Recipe = null;
 
     constructor(id: number, quantity: number , aliment: Aliment) {
-       this.aliment = aliment;
+        this.id = id;
+        this.aliment = aliment;
         this.quantity = quantity;
+    }
+
+   public setRecipe(recipe: Recipe) {
+        this.recipe = recipe;
+    }
+
+    public getRecipe(): Recipe {
+        return this.recipe;
     }
 
     public setAliment(aliment: Aliment) {

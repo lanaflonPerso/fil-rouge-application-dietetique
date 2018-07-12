@@ -1,7 +1,10 @@
 import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { AlimentService } from '../services/aliment.service';
+import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
+import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-aliment',
@@ -11,13 +14,14 @@ import { Aliment } from '../models/business/aliment';
 
 export class AlimentComponent extends GenericComponent implements OnInit {
 
-constructor(private alimentService: AlimentService) {
+constructor(private alimentService: AlimentService, private categoryService: CategoryService, private router: Router) {
     super();
   }
 
-  private aliments: Aliment[];
+  public aliments: Aliment[];
 
   ngOnInit() {
+    this.aliments = [];
     this.loadAliments();
     this.gererateDataTable();
   }
@@ -28,7 +32,21 @@ constructor(private alimentService: AlimentService) {
   }
 
   private loadAliments() {
-    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
+
+    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
+    /*this.categoryService.getCategories().subscribe( (categories) => {
+      for ( let i = 0 ; i < categories.length ; i++) {
+        for ( let j = 0 ; j < categories[i].aliments.length ; j++) {
+          categories[i].aliments[j].category = categories[i];
+          this.aliments.push(categories[i].aliments[j]);
+        }
+
+      }
+
+      console.log(this.aliments);
+
+    });*/
+    // this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
   }
 
   public getFileteredAliments(): Aliment[] {
@@ -38,6 +56,10 @@ constructor(private alimentService: AlimentService) {
     } else {
       return this.aliments;
     }
+  }
+
+  public deleteAliment(id: number) {
+    this.alimentService.deleteAliment(id).subscribe( () => { this.loadAliments(); });
   }
 }
 

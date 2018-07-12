@@ -6,6 +6,7 @@ import java.util.Optional;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import co.simplon.dietcare.model.Ingredient;
 import co.simplon.dietcare.model.Recipe;
 import co.simplon.dietcare.repository.RecipeRepository;
 
@@ -17,6 +18,11 @@ public class RecipeServiceImpl implements RecipeService {
 	
 	@Override
 	public Recipe save(Recipe recipe) {
+		
+		for(Ingredient ingredient: recipe.getIngredients()) {
+			ingredient.setRecipe(recipe);
+		}
+		
 		return recipeRepository.save(recipe);
 	}
 	

@@ -42,7 +42,7 @@ public class Meal {
 	private String date;
 	
 	//@JsonBackReference (value = "meal-moment")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinColumn(name = "fk_moment", nullable = true)
 	private Moment moment;
 	

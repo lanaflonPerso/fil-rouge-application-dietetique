@@ -15,6 +15,8 @@ export class AlimentAddComponent implements OnInit {
 
   private aliment: Aliment;
 
+  private file = null;
+
   private category: Category;
 
   private categories: Category[];
@@ -34,9 +36,14 @@ export class AlimentAddComponent implements OnInit {
 
   public addAliment() {
 
-    this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
+    this.alimentService.upload(this.file).subscribe((data) => {
+      this.aliment.visual = data.secure_url;
+     this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
       this.router.navigateByUrl('/aliment');
     });
+    });
+
+
   }
 
   public getCategories() {
@@ -49,6 +56,10 @@ export class AlimentAddComponent implements OnInit {
        this.aliment.category = category;
       }
     );
+  }
+
+  public  onFileChanged(event) {
+    this.file = event.target.files[0];
   }
 
 }

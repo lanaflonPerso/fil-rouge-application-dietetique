@@ -11,7 +11,7 @@ import { Category } from '../models/business/category';
 
 export class CategoryComponent extends GenericComponent implements OnInit {
 
-  categories: Category[];
+  categories: Category[] = [];
 
   constructor(private categoryService: CategoryService) {
     super();

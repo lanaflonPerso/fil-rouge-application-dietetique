@@ -14,17 +14,18 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "aliment")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIdentityInfo(
 		scope = Aliment.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id")
+		property = "id")*/
 public class Aliment extends DietComponent {
 
 	@Column(name = "proteins")
@@ -42,15 +43,15 @@ public class Aliment extends DietComponent {
 	@Column(name = "ig")
 	private Float ig;
 	
-	
-	//@JsonBackReference(value = "category-aliments")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "fk_category", nullable = true)
+	//@JsonManagedReference
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	
 	
 	//@JsonManagedReference(value = "aliment-ingredients")
-	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
+	@JsonIgnore
+	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Aliment() {

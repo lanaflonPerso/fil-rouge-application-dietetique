@@ -14,13 +14,14 @@ export class AlimentUpdateComponent implements OnInit {
 
   private aliment: Aliment;
 
+  private file = null;
+
   private categories: Category[];
 
   private category: Category;
 
   // tslint:disable-next-line:max-line-length
   constructor(private alimentService: AlimentService, private categoryService: CategoryService, private route: ActivatedRoute, private router: Router) {
-
   }
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class AlimentUpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => {
       this.aliment = aliment;
+      console.log(aliment);
     });
   }
 
@@ -53,10 +55,12 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   public updateAliment() {
+    // this.alimentService.upload(this.file).subscribe((data) => {
+      // this.aliment.visual = data.secure_url;
       this.alimentService.updateAliment(this.aliment).subscribe( () => {
         this.router.navigateByUrl('/aliment');
       });
-
+    // });
   }
 
   public getAlimentById(id: number) {
@@ -71,5 +75,19 @@ export class AlimentUpdateComponent implements OnInit {
       }
     );
   }
+
+  public  onFileChanged(event) {
+      this.file = event.target.files[0];
+
+      const reader = new FileReader();
+      const aliment = this.aliment;
+      reader.onload = function(evt: ProgressEvent) {
+        console.log(evt);
+        // aliment.visual =  evt.target.result;
+      };
+
+      reader.readAsDataURL(this.file);
+
+    }
 
 }

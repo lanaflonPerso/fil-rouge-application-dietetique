@@ -11,9 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "component")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(
+	  	scope=Component.class,
+		generator = ObjectIdGenerators.PropertyGenerator.class, 
+	  property = "id")
 public class Component {
 	
 	@Id
@@ -35,7 +43,7 @@ public class Component {
 	private DietComponent dietComponent;
 	
 	@JsonBackReference (value = "meal-components")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_meal", nullable = true)
 	private Meal meal;
 	

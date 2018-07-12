@@ -25,11 +25,11 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "dietcomponent")
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonIdentityInfo(
 		scope = DietComponent.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id")
+		property = "id")*/
 public abstract class DietComponent {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

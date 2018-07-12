@@ -30,10 +30,6 @@ public class AlimentController {
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findAll() {
-		List<Aliment> list = alimentService.findAll();
-		for(Aliment aliment: list) {
-			System.out.println(aliment.getName());
-		}
 		return alimentService.findAll();
 	}
 	
@@ -76,21 +72,12 @@ public class AlimentController {
 	public List<Aliment> findByNameLike(@RequestParam("namelike") String namelike) {
 		return alimentService.findByNameLike(namelike);
 	}
-	
-	// getCategory
-	/*@RequestMapping(value = "/getcategory/{alimenId}", method = RequestMethod.GET)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public Category getCategory(@PathVariable("alimenId") Long alimentId) {
-		Optional<Aliment> optionalAliment = alimentService.findbyId(alimentId);
-		return optionalAliment.isPresent()?optionalAliment.get().getCategory():null;	
-	}*/
-	
+		
 	// delete aliment by id
-	@RequestMapping(method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
-	public void deleteById(@RequestBody Aliment alim) {
-		alimentService.deleteById(alim.getId());
+	public void deleteById(@PathVariable("id") Long id) {
+		alimentService.deleteById(id);
 	}
 	
 	

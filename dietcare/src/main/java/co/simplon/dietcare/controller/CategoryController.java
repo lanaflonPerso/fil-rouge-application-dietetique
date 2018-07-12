@@ -14,17 +14,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.service.CategoryService;
 
 
-@Controller
+@RestController
 @RequestMapping("/aliment/category")
 public class CategoryController {
 	
 	@Inject
 	CategoryService categoryService;
+	
+	// find all categories
+	@RequestMapping(method = RequestMethod.GET)
+	//@ResponseBody
+	public List<Category> findAll() {
+		return categoryService.findAll();
+	}
 	
 	// category creation
 	@RequestMapping(method = RequestMethod.POST)
@@ -42,38 +50,12 @@ public class CategoryController {
 		return categoryService.save(cat);
 	}
 	
-	// find all categories
-	@RequestMapping(method = RequestMethod.GET)
-	@ResponseBody
-	public List<Category> findAll() {
-		return categoryService.findAll();
-	}
+	
 	
 	// find category by id
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Optional<Category> findbyId(@PathVariable("id") Long id) {
 		return categoryService.findbyId(id);
-	}
-	
-	// find category by name
-	@RequestMapping(value = "/filter/{name}", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Category> findbyName(@PathVariable("name") String name) {
-		return categoryService.findbyName(name);
-	}
-
-	// find category by name like
-	@RequestMapping(params = "/likefilter/{name}", method = RequestMethod.GET)
-	@ResponseBody
-	public List<Category> findByNameLike(@PathVariable("name") String name) {
-		return categoryService.findByNameLike(name);
-	}
-	
-	// delete category by id
-	@RequestMapping(method = RequestMethod.DELETE)
-	@ResponseBody
-	public void deleteById(@RequestBody Category cat) {
-		categoryService.deleteById(cat.getId());
 	}
 }
