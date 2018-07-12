@@ -21,11 +21,11 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "aliment")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonIdentityInfo(
 		scope = Aliment.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-		property = "id")
+		property = "id")*/
 public class Aliment extends DietComponent {
 
 	@Column(name = "proteins")
@@ -44,17 +44,16 @@ public class Aliment extends DietComponent {
 	private Float ig;
 	
 	
-	@JsonBackReference(value = "category-aliments")
-	//@JsonManagedReference(value = "category-aliments")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
-	@JoinColumn(name = "fk_category", nullable = true)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonBackReference
+	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	
 	
-	@JsonBackReference(value = "aliment-ingredients")
-	//@JsonIgnore
-	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
+	//@JsonManagedReference(value = "aliment-ingredients")
+	/*@JsonIgnore
+	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Ingredient> ingredients = new ArrayList<Ingredient>();*/
 
 	public Aliment() {
 		super();
@@ -70,13 +69,13 @@ public class Aliment extends DietComponent {
 		this.ig = ig;
 	}
 	
-	public List<Ingredient> getIngredients() {
+	/*public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
 
 	public void setIngredients(List<Ingredient> ingredients) {
 		this.ingredients = ingredients;
-	}
+	}*/
 
 
 	public Category getCategory() {

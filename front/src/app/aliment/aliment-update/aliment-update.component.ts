@@ -36,6 +36,7 @@ export class AlimentUpdateComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.alimentService.getAliment(Number(id)).subscribe((aliment: Aliment ) => {
       this.aliment = aliment;
+      console.log(aliment);
     });
   }
 

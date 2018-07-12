@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlimentService } from '../services/aliment.service';
 import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
+import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
 
 @Component({
   selector: 'app-aliment',
@@ -16,7 +17,7 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
     super();
   }
 
-  private aliments: Aliment[];
+  public aliments: Aliment[];
 
   ngOnInit() {
     this.aliments = [];
@@ -30,16 +31,19 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
   }
 
   private loadAliments() {
-    //console.log('test');
+
+    //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
     this.categoryService.getCategories().subscribe( (categories) => {
-      //console.log('test1 : ' + categories.length);
       for ( let i = 0 ; i < categories.length ; i++) {
-        //console.log('test2 : ' +  categories[i].aliments.length);
         for ( let j = 0 ; j < categories[i].aliments.length ; j++) {
           categories[i].aliments[j].category = categories[i];
           this.aliments.push(categories[i].aliments[j]);
         }
+
       }
+
+      console.log(this.aliments);
+
     });
     //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
   }

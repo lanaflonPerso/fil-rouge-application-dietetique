@@ -21,7 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name = "ingredient")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonIdentityInfo(
-		//scope = Ingredient.class,  
+		scope = Ingredient.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 		property = "id")
 public class Ingredient {
@@ -31,13 +31,13 @@ public class Ingredient {
 	@Column(name = "id")
 	private Long id;
 	
-	@JsonManagedReference(value = "aliment-ingredients")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	//@JsonBackReference(value = "aliment-ingredients")
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_aliment", nullable = false)
 	private Aliment aliment;
 	
-	@JsonBackReference(value = "recipe-ingredients")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+	//@JsonBackReference(value = "recipe-ingredients")
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_recipe", nullable = false)
 	private Recipe recipe;
 

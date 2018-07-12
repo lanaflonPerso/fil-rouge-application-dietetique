@@ -22,11 +22,11 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "category")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonIdentityInfo(
 		  	scope=Category.class,
 			generator = ObjectIdGenerators.PropertyGenerator.class, 
-		    property = "id")
+		    property = "id")*/
 public class Category {
 	
 	@Id
@@ -37,8 +37,7 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
-	//@JsonIgnore
-	@JsonManagedReference(value = "category-aliments")
+	@JsonManagedReference
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 

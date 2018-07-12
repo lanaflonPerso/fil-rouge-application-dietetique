@@ -43,7 +43,7 @@ public class Component {
 	private DietComponent dietComponent;
 	
 	@JsonBackReference (value = "meal-components")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinColumn(name = "fk_meal", nullable = true)
 	private Meal meal;
 	

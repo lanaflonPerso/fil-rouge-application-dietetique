@@ -44,7 +44,7 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
   }
 
   public updateRecipe() {
-    this.recipeService.updateRecipe(this.recipe).subscribe( () => { this.router.navigateByUrl('/recipe'); } );
+    this.recipeService.updateRecipe(this.recipe).subscribe( () => { console.log(this.recipe); this.router.navigateByUrl('/recipe'); } );
   }
 
   public addAlimentToRecipe(aliment: Aliment): void {
