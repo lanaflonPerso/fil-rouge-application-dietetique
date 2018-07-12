@@ -14,6 +14,8 @@ export class AlimentUpdateComponent implements OnInit {
 
   private aliment: Aliment;
 
+  private file = null;
+
   private categories: Category[];
 
   private category: Category;
@@ -53,10 +55,12 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   public updateAliment() {
+    this.alimentService.upload(this.file).subscribe((data) => {
+      this.aliment.visual = data.secure_url;
       this.alimentService.updateAliment(this.aliment).subscribe( () => {
         this.router.navigateByUrl('/aliment');
       });
-
+    });
   }
 
   public getAlimentById(id: number) {
@@ -73,9 +77,7 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   public  onFileChanged(event) {
-      const file = event.target.files[0];
-      this.alimentService.upload(file).subscribe((data) => { console.log(data); });
-
+      this.file = event.target.files[0];
     }
 
 }

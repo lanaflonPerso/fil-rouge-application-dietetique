@@ -45,7 +45,6 @@ public class Aliment extends DietComponent {
 	
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JsonBackReference
 	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	

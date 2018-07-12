@@ -4,6 +4,7 @@ import { AlimentService } from '../services/aliment.service';
 import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
 import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-aliment',
@@ -13,7 +14,7 @@ import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
 
 export class AlimentComponent extends GenericComponent implements OnInit {
 
-constructor(private alimentService: AlimentService, private categoryService: CategoryService) {
+constructor(private alimentService: AlimentService, private categoryService: CategoryService, private router: Router) {
     super();
   }
 
@@ -32,8 +33,8 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
 
   private loadAliments() {
 
-    //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
-    this.categoryService.getCategories().subscribe( (categories) => {
+    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
+    /*this.categoryService.getCategories().subscribe( (categories) => {
       for ( let i = 0 ; i < categories.length ; i++) {
         for ( let j = 0 ; j < categories[i].aliments.length ; j++) {
           categories[i].aliments[j].category = categories[i];
@@ -44,7 +45,7 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
 
       console.log(this.aliments);
 
-    });
+    });*/
     //this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
   }
 
@@ -55,6 +56,10 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
     } else {
       return this.aliments;
     }
+  }
+
+  public deleteAliment(id: number) {
+    this.alimentService.deleteAliment(id).subscribe( () => { this.loadAliments(); });
   }
 }
 

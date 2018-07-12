@@ -37,7 +37,6 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 	
-	@JsonManagedReference
 	@OneToMany(mappedBy = "category", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Aliment> aliments = new ArrayList<Aliment>();
 

@@ -74,10 +74,10 @@ public class AlimentController {
 	}
 		
 	// delete aliment by id
-	@RequestMapping(method = RequestMethod.DELETE)
+	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
-	public void deleteById(@RequestBody Aliment alim) {
-		alimentService.deleteById(alim.getId());
+	public void deleteById(@PathVariable("id") Long id) {
+		alimentService.deleteById(id);
 	}
 	
 	
