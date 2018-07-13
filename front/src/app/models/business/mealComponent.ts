@@ -1,5 +1,6 @@
 import { Aliment } from './aliment';
 import { Recipe } from './recipe';
+import { DietComponent } from './dietComponent';
 
 // import { Aliment } from './aliment';
 
@@ -7,12 +8,18 @@ export class MealComponent {
 
     id: number;
     quantity: number;
+    dietComponent: DietComponent = null;
     aliment: Aliment = null;
     recipe: Recipe = null;
 
     constructor(id: number, quantity: number, aliment: Aliment, recipe: Recipe) {
         this.id = id;
         this.quantity = quantity;
+        if(aliment !== null){
+            this.dietComponent = aliment;
+        } else if ( recipe !== null) {
+            this.dietComponent = recipe;
+        }
         this.aliment = aliment;
         this.recipe = recipe;
     }

@@ -37,14 +37,12 @@ public class MealComponent {
 		this.id = id;
 	}
 	
-	@JsonBackReference (value = "meal-dietcomponents")
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "fk_dietcomponent", nullable = true)
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_dietcomponent", nullable = false)
 	private DietComponent dietComponent;
 	
-	@JsonBackReference (value = "meal-components")
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_meal", nullable = true)
+	@JoinColumn(name = "fk_meal", nullable = false)
 	private Meal meal;
 	
 	@Column(name = "quantity")

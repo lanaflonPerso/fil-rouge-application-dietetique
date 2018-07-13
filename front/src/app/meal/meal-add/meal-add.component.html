@@ -54,8 +54,7 @@
                     </fieldset>	  
 
                     <div class="row">
-                        <mat-label for="save">What ?</mat-label>    
-                        <button id="save" mat-raised-button color="primary" (click)="addMeal()">Enregistrer</button> 
+                       <button id="save" mat-raised-button color="primary" (click)="addMeal()">Enregistrer</button> 
                     </div>
 
                     <fieldset class="col-md-12">    	
@@ -112,7 +111,7 @@
                                           <td>
                                               <mat-form-field style="width:100px !important">
                                                       <mat-label class="label">quantité (Nbr)</mat-label>
-                                                      <input matInput id="{{meal.recipe.id}}" name="{{meal.recipe.name}}" type="number" [(ngModel)]="meal.quantity" min="0" step="10" />
+                                                      <input matInput id="{{meal.recipe.id}}" name="{{meal.recipe.name}}" type="number" [(ngModel)]="meal.quantity" min="0" step="1" />
                                               </mat-form-field>
                                               </td>
                                           <td class="text-center"><img src="{{meal.recipe.visual}}" alt="Visuel {{meal.recipe.name}}" width="30" height="30"/></td>

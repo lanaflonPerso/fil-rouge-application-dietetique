@@ -18,14 +18,17 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @Entity
 @Table(name = "dietcomponent")
 @Inheritance(strategy = InheritanceType.JOINED)
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonDeserialize(as = Aliment.class)
 /*@JsonIdentityInfo(
 		scope = DietComponent.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
@@ -45,6 +48,19 @@ public abstract class DietComponent {
 	@Column(name = "visual")
 	private String visual;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<MealComponent> mealComponents = new ArrayList<MealComponent>();
+	
+	public List<MealComponent> getMealComponent() {
+		return mealComponents;
+	}
+
+	public void setMealComponent(List<MealComponent> mealComponent) {
+		this.mealComponents = mealComponent;
+	}
+
+
 	public DietComponent(Long id, String name, String description, String visual) {
 		this.id = id;
 		this.name = name;

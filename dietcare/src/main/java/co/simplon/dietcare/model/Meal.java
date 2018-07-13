@@ -42,9 +42,8 @@ public class Meal {
 	@Column(name = "date")
 	private String date;
 	
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_moment", nullable = true)
+	@JoinColumn(name = "fk_moment", nullable = false)
 	private Moment moment;
 	
 	
@@ -95,5 +94,4 @@ public class Meal {
 	public String toString() {
 		return "Meal = name : "+this.getName()+" date : "+this.getDate();
 	}
-
 }

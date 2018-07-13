@@ -112,7 +112,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
 
   // https://www.w3schools.com/jsref/jsref_filter.asp
   public getMealAliments(): MealComponent[] {
-    return this.meal.mealComponent.filter(this.checkIfIsAliment);
+    return this.meal.mealComponents.filter(this.checkIfIsAliment);
   }
 
   public checkIfIsAliment(mealComponent) {
@@ -121,7 +121,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   }
 
   public getMealRecipes(): MealComponent[] {
-    return this.meal.mealComponent.filter(this.checkIfIsRecipe);
+    return this.meal.mealComponents.filter(this.checkIfIsRecipe);
   }
 
   public checkIfIsRecipe(mealComponent) {
@@ -137,19 +137,19 @@ export class MealAddComponent extends GenericComponent implements OnInit {
     // return this.recipeService.getRecipes().subscribe( (recipes) => { this.recipes = recipes; } );
     this.recipeService.getRecipes().subscribe( (recipes) => {
                                                               this.recipes = recipes;
-                                                              // console.log(this.recipes[0].ingredients);
+                                                              console.log(this.recipes[0].ingredients);
                                                             }
                                               );
 
     return null;
   }
-
+/*
   public getCgAliments(): Number {
     let cg: Number = 0;
-    if ( this.meal.mealComponent.length > 0) {
-       for ( let i = 0 ; i < this.meal.mealComponent.length ; i++ ) {
-          if (this.meal.mealComponent[i].aliment != null) {
-            cg = Number(cg) + ( this.meal.mealComponent[i].aliment.ig *  this.meal.mealComponent[i].quantity )  / 100;
+    if ( this.meal.mealComponents.length > 0) {
+       for ( let i = 0 ; i < this.meal.mealComponents.length ; i++ ) {
+          if (this.meal.mealComponents[i].aliment != null) {
+            cg = Number(cg) + ( this.meal.mealComponents[i].aliment.ig *  this.meal.mealComponents[i].quantity )  / 100;
           }
        }
     }
@@ -159,9 +159,10 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   public getCgRecipes(): Number {
     return 0;
   }
-
+*/
   public getCg(): Number {
-    return Number(this.getCgAliments()) + Number(this.getCgRecipes());
+    // return Number(this.getCgAliments()) + Number(this.getCgRecipes());
+    return this.meal.getCg();
   }
 
   public delAlimentFromMeal(aliment: Aliment): void {
