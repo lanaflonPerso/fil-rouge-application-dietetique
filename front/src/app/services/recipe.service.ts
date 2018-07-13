@@ -37,12 +37,10 @@ export class RecipeService {
   }
 
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
-    
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
-    
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
         const ingredient = recipe.ingredients[i];
@@ -61,9 +59,9 @@ export class RecipeService {
         );
 
         const myIngredient: Ingredient = new Ingredient(ingredient.id, ingredient.quantity, aliment);
-        //aliment.setCategory(new Category( category.id, category.name) );
+        // aliment.setCategory(new Category( category.id, category.name) );
         myRecipe.addIngredient(myIngredient);
-        //ingredient.setRecipe(myRecipe);
+        // ingredient.setRecipe(myRecipe);
     }
     return myRecipe;
   }

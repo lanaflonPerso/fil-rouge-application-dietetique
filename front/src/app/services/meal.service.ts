@@ -6,6 +6,7 @@ import LIST_MEALS from '../models/datas/meal';
 import { Aliment } from '../models/business/aliment';
 import { DietComponent } from '../models/business/dietComponent';
 import { MealComponent } from '../models/business/mealComponent';
+import { Recipe } from '../models/business/recipe';
 
 const httpOptions = {
   headers: new HttpHeaders( {
@@ -24,12 +25,14 @@ export class MealService {
 
   }
 
-  public addAlimentToMeal(meal: Meal, aliment: Aliment, quantity: number): Meal {
+  public addAlimentToMeal(meal: Meal, aliment: Aliment, quantity: number): void {
     let indice = null;
     for ( let i = 0;  i < meal.mealComponent.length ; i++) {
-      if ( aliment.id === meal.mealComponent[i].aliment.id) {
-        indice = i;
-        break;
+      if (meal.mealComponent[i].aliment !== null) {
+        if ( aliment.id === meal.mealComponent[i].aliment.id) {
+          indice = i;
+          break;
+        }
       }
     }
 
@@ -38,22 +41,57 @@ export class MealService {
     } else {
       meal.mealComponent.push(new MealComponent( null, quantity, aliment, null));
     }
-    return meal;
   }
-/*
-  public delAlimentFromMeal(meal: Meal, aliment: Aliment): void {
+
+  public addRecipeToMeal(meal: Meal, recipe: Recipe, quantity: number): void {
     let indice = null;
     for ( let i = 0;  i < meal.mealComponent.length ; i++) {
-      if ( aliment.id === meal.mealComponent[i].aliment.id) {
-        indice = i;
-        break;
+      if (meal.mealComponent[i].recipe !== null) {
+        if ( recipe.id === meal.mealComponent[i].recipe.id) {
+          indice = i;
+          break;
+        }
       }
     }
 
     if ( indice !== null) {
-      delete meal.mealComponent[indice];
+      meal.mealComponent[indice].quantity += quantity;
+    } else {
+      meal.mealComponent.push(new MealComponent( null, quantity, null, recipe));
     }
-  }*/
+  }
+
+  public delAlimentFromMeal(meal: Meal, aliment: Aliment) {
+    let indice = null;
+    for ( let i = 0;  i < meal.mealComponent.length ; i++) {
+      if (meal.mealComponent[i].aliment !== null) {
+        if ( aliment.id === meal.mealComponent[i].aliment.id) {
+          indice = i;
+          break;
+        }
+      }
+    }
+
+    if ( indice !== null) {
+      meal.mealComponent.splice(indice, 1);
+    }
+  }
+
+  public delRecipeFromMeal(meal: Meal, recipe: Recipe): void {
+    let indice = null;
+    for ( let i = 0;  i < meal.mealComponent.length ; i++) {
+      if (meal.mealComponent[i].recipe !== null) {
+        if ( recipe.id === meal.mealComponent[i].recipe.id) {
+          indice = i;
+          break;
+        }
+      }
+    }
+
+    if ( indice !== null) {
+      meal.mealComponent.splice(indice, 1);
+    }
+  }
 
   public addMeal(meal: Meal): Observable<Meal> {
     return this.http.post<Meal>(this.restUrl, meal, httpOptions);
