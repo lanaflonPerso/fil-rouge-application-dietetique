@@ -33,23 +33,14 @@ export class RecipeService {
   }
 
   public addRecipe(recipe: Recipe): Observable<Recipe> {
-    console.log(recipe);
     return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
-<<<<<<< HEAD
-=======
-    console.log(recipe);
->>>>>>> afcdab3b1f7cd2c196caefd70e4391e38950d372
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
-<<<<<<< HEAD
-=======
-
->>>>>>> afcdab3b1f7cd2c196caefd70e4391e38950d372
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
         const ingredient = recipe.ingredients[i];

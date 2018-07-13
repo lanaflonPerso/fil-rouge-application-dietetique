@@ -1,11 +1,13 @@
+import { CategoryService } from './../services/category.service';
 import { Observable, Subject, of} from 'rxjs';
 import { map } from 'rxjs/operators';
 import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { AlimentService } from '../services/aliment.service';
-import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
 import { Router } from '../../../node_modules/@angular/router';
+import categories from '../models/datas/categories';
+import Category from '../models/business/category';
 
 
 
@@ -19,7 +21,7 @@ export class AlimentComponent extends GenericComponent implements OnInit {
 
 errorMsg = '';
 
-constructor(private alimentService: AlimentService) {
+constructor(private alimentService: AlimentService, private categoryService: CategoryService, private router: Router) {
     super();
   }
 
@@ -27,12 +29,13 @@ constructor(private alimentService: AlimentService) {
 
   ngOnInit() {
     this.aliments = [];
+    this.loadCategories();
     this.loadAliments();
     this.gererateDataTable();
-    this.observeAliments();
+   // this.observeAliments();
   }
 
-  private observeAliments() {
+ /* private observeAliments() {
 
     const myObservable = of( 1, 2, 3 );
 
@@ -51,6 +54,23 @@ constructor(private alimentService: AlimentService) {
     subject.next(10);
     subject.next(4);
 
+  }*/
+
+  private loadCategories() {
+     this.categoryService.getCategories().subscribe (
+      // tslint:disable-next-line:no-shadowed-variable
+      (categories: Category[]) => {
+        if ( categories.length === 0 ){
+          // tslint:disable-next-line:max-line-length
+          this.errorMsg = 'Aucune catégorie n\est présente dans votre référentiel, vous allez être redirigé vers l\'écran des catégories d\aliment';
+          setTimeout(
+                      () => {
+                            this.router.navigateByUrl('/aliment/category');
+                      }, 1000
+                    );
+        }
+      }
+     );
   }
 
   public getAliments(): Aliment[] {
@@ -61,7 +81,7 @@ constructor(private alimentService: AlimentService) {
     this.errorMsg = '';
     this.alimentService.getAliments().subscribe(
       (aliments) => {
-        this.aliments = aliments; 
+        this.aliments = aliments;
       }
       ,
       () => {
@@ -81,7 +101,7 @@ constructor(private alimentService: AlimentService) {
 
   public deleteAliment(id: number) {
     this.errorMsg = '';
-    this.alimentService.deleteAliment(id).subscribe( 
+    this.alimentService.deleteAliment(id).subscribe(
       () => {
         this.loadAliments();
       }

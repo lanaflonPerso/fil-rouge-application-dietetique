@@ -32,6 +32,7 @@ export class GenericComponent implements OnInit {
           function() {
             const table: any = $('.table');
             table.DataTable({
+                              'searching': false,
                               'language': {
                                             'url': '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
                                 }
