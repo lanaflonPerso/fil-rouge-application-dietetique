@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -24,10 +25,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "meal")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
 	  	scope=Meal.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-	  property = "id")
+	  property = "id")*/
 public class Meal {
 	
 	@Id
@@ -41,14 +42,15 @@ public class Meal {
 	@Column(name = "date")
 	private String date;
 	
-	//@JsonBackReference (value = "meal-moment")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_moment", nullable = true)
 	private Moment moment;
 	
-	@JsonManagedReference(value = "meal-components")
-	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
-	private List<Component> components = new ArrayList<Component>();;
+	
+	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY)
+	private List<MealComponent> mealComponents = new ArrayList<MealComponent>();
+
 	
 	public Moment getMoment() {
 		return moment;
@@ -58,12 +60,12 @@ public class Meal {
 		this.moment = moment;
 	}
 
-	public List<Component> getComponents() {
-		return components;
+	public List<MealComponent> getMealComponents() {
+		return mealComponents;
 	}
 
-	public void setComponents(ArrayList<Component> components) {
-		this.components = components;
+	public void setMealComponents(ArrayList<MealComponent> mealComponents) {
+		this.mealComponents = mealComponents;
 	}
 
 	public Long getId() {

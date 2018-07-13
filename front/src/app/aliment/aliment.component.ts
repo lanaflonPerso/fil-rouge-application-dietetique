@@ -1,10 +1,13 @@
+import { Observable, Subject, of} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { GenericComponent } from './../generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 import { AlimentService } from '../services/aliment.service';
 import { CategoryService } from '../services/category.service';
 import { Aliment } from '../models/business/aliment';
-import { TouchSequence } from '../../../node_modules/@types/selenium-webdriver';
 import { Router } from '../../../node_modules/@angular/router';
+
+
 
 @Component({
   selector: 'app-aliment',
@@ -14,7 +17,9 @@ import { Router } from '../../../node_modules/@angular/router';
 
 export class AlimentComponent extends GenericComponent implements OnInit {
 
-constructor(private alimentService: AlimentService, private categoryService: CategoryService, private router: Router) {
+errorMsg = '';
+
+constructor(private alimentService: AlimentService) {
     super();
   }
 
@@ -24,29 +29,45 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
     this.aliments = [];
     this.loadAliments();
     this.gererateDataTable();
+    this.observeAliments();
   }
 
+  private observeAliments() {
+
+    const myObservable = of( 1, 2, 3 );
+
+    // Create observer object
+    const myObserver = {
+      next: x       => console.log('Observer got a next value: ' + x),
+      error: err    => console.error('Observer got an error: ' + err),
+      complete: ()  => console.log('Observer got a complete notification'),
+    };
+
+    //myObservable.subscribe(myObserver);
+
+    const subject = new Subject<number>();
+
+    subject.subscribe(myObserver);
+    subject.next(10);
+    subject.next(4);
+
+  }
 
   public getAliments(): Aliment[] {
     return this.aliments;
   }
 
   private loadAliments() {
-
-    this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
-    /*this.categoryService.getCategories().subscribe( (categories) => {
-      for ( let i = 0 ; i < categories.length ; i++) {
-        for ( let j = 0 ; j < categories[i].aliments.length ; j++) {
-          categories[i].aliments[j].category = categories[i];
-          this.aliments.push(categories[i].aliments[j]);
-        }
-
+    this.errorMsg = '';
+    this.alimentService.getAliments().subscribe(
+      (aliments) => {
+        this.aliments = aliments; 
       }
-
-      console.log(this.aliments);
-
-    });*/
-    // this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; console.log(aliments); });
+      ,
+      () => {
+        this.errorMsg = 'problème de récupération de la liste d\'aliments';
+      }
+    );
   }
 
   public getFileteredAliments(): Aliment[] {
@@ -59,7 +80,15 @@ constructor(private alimentService: AlimentService, private categoryService: Cat
   }
 
   public deleteAliment(id: number) {
-    this.alimentService.deleteAliment(id).subscribe( () => { this.loadAliments(); });
+    this.errorMsg = '';
+    this.alimentService.deleteAliment(id).subscribe( 
+      () => {
+        this.loadAliments();
+      }
+      , () => {
+        this.errorMsg = 'impossible de supprimer l\'aliment vérifier qu\'il ne soit pas intégré dans une recette ou un repas';
+      }
+    );
   }
 }
 

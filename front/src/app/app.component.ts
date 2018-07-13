@@ -1,6 +1,7 @@
 import { GenericComponent } from './generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 
+import { NgFlashMessageService } from 'ng-flash-messages';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent extends GenericComponent implements OnInit {
 
-
-  ngOnInit(): void {
+ ngOnInit(): void {
 
   }
 

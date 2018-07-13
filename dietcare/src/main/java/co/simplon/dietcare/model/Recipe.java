@@ -28,7 +28,7 @@ public class Recipe extends DietComponent {
 	}
 	
 	//@JsonManagedReference(value = "recipe-ingredients")
-	@OneToMany(mappedBy = "recipe", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "recipe", fetch= FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public List<Ingredient> getIngredients() {

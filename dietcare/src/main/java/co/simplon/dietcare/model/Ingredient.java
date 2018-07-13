@@ -32,13 +32,13 @@ public class Ingredient {
 	private Long id;
 	
 	//@JsonBackReference(value = "aliment-ingredients")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_aliment", nullable = false)
 	private Aliment aliment;
 	
 	//@JsonBackReference(value = "recipe-ingredients")
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_recipe", nullable = false)
 	private Recipe recipe;
 

@@ -72,7 +72,8 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 
 	// load aliment table
 	private final void loadAlimentTable(String alimFileLocation) {
-
+		
+		System.exit(0);
 
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(CSV_SEPARATOR).build();
 

@@ -13,10 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "aliment")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 /*@JsonIdentityInfo(
 		scope = Aliment.class,  
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
@@ -38,15 +39,14 @@ public class Aliment extends DietComponent {
 	@Column(name = "ig")
 	private Float ig;
 	
-	//@JsonManagedReference
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	
 	
-	//@JsonManagedReference(value = "aliment-ingredients")
+	
 	@JsonIgnore
-	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "aliment", fetch= FetchType.LAZY, cascade = CascadeType.MERGE)
 	private List<Ingredient> ingredients = new ArrayList<Ingredient>();
 
 	public Aliment() {
