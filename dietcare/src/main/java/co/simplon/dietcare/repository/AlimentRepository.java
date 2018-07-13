@@ -9,11 +9,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
 import co.simplon.dietcare.model.Aliment;
-import co.simplon.dietcare.model.Category;
 
 @Named
 public interface AlimentRepository extends JpaRepository<Aliment, Long>{
 	public List<Aliment> findByName(String name);
 	public Optional<Aliment> findById(Long Id);
 	public List<Aliment> findByNameLike(@Param("name") String name);
+	public List<Aliment> findByNameContainingIgnoreCase(String name);
 }

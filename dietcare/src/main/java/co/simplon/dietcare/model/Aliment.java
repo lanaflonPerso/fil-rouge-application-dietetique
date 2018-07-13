@@ -12,12 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "aliment")
@@ -66,8 +61,20 @@ public class Aliment extends DietComponent {
 		this.lipids = lipids;
 		this.fibers = fibers;
 		this.ig = ig;
+		this.category = null;
 	}
 	
+	public Aliment(Long id, String name, String description, String visual, Float proteins, Float glucids, Float lipids,
+			Float fibers, Float ig, Category category) {
+		super(id, name, description, visual);
+		this.proteins = proteins;
+		this.glucids = glucids;
+		this.lipids = lipids;
+		this.fibers = fibers;
+		this.ig = ig;
+		this.category = category;
+	}
+
 	public List<Ingredient> getIngredients() {
 		return ingredients;
 	}
