@@ -44,16 +44,16 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
   }
 
   public updateRecipe() {
-    this.recipeService.updateRecipe(this.recipe).subscribe( () => { console.log(this.recipe); this.router.navigateByUrl('/recipe'); } );
+    this.recipeService.updateRecipe(this.recipe).subscribe( () => { this.router.navigateByUrl('/recipe'); } );
   }
 
   public addAlimentToRecipe(aliment: Aliment): void {
     this.recipeService.addAlimentToRecipe(this.recipe, aliment, 100);
-    //console.log(this.recipe);
+    console.log(this.recipe);
   }
 
   public removeAlimentFromRecipe(aliment: Aliment): void {
-    //this.recipeService.removeAlimentFromRecipe(aliment, 100);
+    this.recipeService.removeAlimentFromRecipe(this.recipe, aliment, 100);
   }
 
   public updateQuantity(event, ingredient: Ingredient) {
@@ -61,13 +61,14 @@ export class RecipeEditComponent extends GenericComponent implements OnInit {
   }
 
   public getFilteredAliments(): Aliment[] {
+
     let filteredAliments = this.aliments;
 
     if (this.getSearchText() !== '' ) {
-      // tslint:disable-next-line:max-line-length
-      filteredAliments = this. aliments.filter(aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() ));
+      filteredAliments = this. aliments.filter(
+        aliment => aliment.name.toLocaleLowerCase().includes( this.getSearchText().toLocaleLowerCase() )
+      );
     }
-
     return filteredAliments;
   }
 

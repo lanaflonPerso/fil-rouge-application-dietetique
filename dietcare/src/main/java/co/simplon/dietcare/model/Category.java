@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "category")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 /*@JsonIdentityInfo(
 		  	scope=Category.class,
 			generator = ObjectIdGenerators.PropertyGenerator.class, 

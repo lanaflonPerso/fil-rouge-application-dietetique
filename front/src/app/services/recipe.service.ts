@@ -33,21 +33,21 @@ export class RecipeService {
   }
 
   public addRecipe(recipe: Recipe): Observable<Recipe> {
+    console.log(recipe);
     return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
-    
+    console.log(recipe);
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
-    
+
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
         const ingredient = recipe.ingredients[i];
         const myAliment = ingredient.aliment;
-       // const category = myAliment.category;
         const aliment: Aliment = new Aliment(
           myAliment.id  ,
           myAliment.name  ,
@@ -61,9 +61,7 @@ export class RecipeService {
         );
 
         const myIngredient: Ingredient = new Ingredient(ingredient.id, ingredient.quantity, aliment);
-        //aliment.setCategory(new Category( category.id, category.name) );
         myRecipe.addIngredient(myIngredient);
-        //ingredient.setRecipe(myRecipe);
     }
     return myRecipe;
   }
@@ -97,25 +95,14 @@ export class RecipeService {
 
   }
 
-  /*removeAlimentFromRecipe(aliment: Aliment, quantity: number) {
-    const ingredient: Ingredient = this.recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id);
+  removeAlimentFromRecipe(recipe: Recipe, aliment: Aliment, quantity: number) {
+    const ingredient: Ingredient = recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id);
 
     if (ingredient != null) {
       ingredient.quantity -= quantity;
       if (ingredient.quantity <= 0) {
-        this.recipe.getIngredients().splice(this.recipe.getIngredients().indexOf(ingredient), 1);
+        recipe.getIngredients().splice(recipe.getIngredients().indexOf(ingredient), 1);
       }
     }
   }
-
-  addAlimentToRecipe(aliment: Aliment, quantity: number) {
-    let ingredient: Ingredient = this.recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id);
-
-    if (ingredient == null) {
-      ingredient = new Ingredient(null, quantity, aliment);
-      this.recipe.addIngredient(ingredient);
-    } else {
-      ingredient.quantity = Number(ingredient.quantity) + Number(quantity);
-    }
-  }*/
 }

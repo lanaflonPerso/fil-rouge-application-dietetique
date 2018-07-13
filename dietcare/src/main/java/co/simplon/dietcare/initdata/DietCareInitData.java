@@ -39,12 +39,13 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		loadCategoryTable("data/csv/groupes.csv");
-		loadAlimentTable("data/csv/aliments.csv");
+		//loadCategoryTable("data/csv/groupes.csv");
+		//loadAlimentTable("data/csv/aliments.csv");
 	}
 
 	private final void loadAlimentTable(String alimFileLocation) {
-
+		
+		System.exit(0);
 
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(CSV_SEPARATOR).build();
 
@@ -82,7 +83,7 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 				
 				categ = categMap.get(categoryStr);
 
-				Aliment alim = new Aliment(fileLine[3], categ, null, fileLine[4].matches(d) ? new BigDecimal(fileLine[4]) : null,
+				/*Aliment alim = new Aliment(fileLine[3], categ, null, fileLine[4].matches(d) ? new BigDecimal(fileLine[4]) : null,
 						fileLine[5].matches(d) ? new BigDecimal(fileLine[5]) : null,
 						fileLine[6].matches(d) ? new BigDecimal(fileLine[6]) : null,
 						fileLine[7].matches(d) ? new BigDecimal(fileLine[7]) : null,
@@ -122,7 +123,7 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 						fileLine[41].matches(d) ? new BigDecimal(fileLine[41]) : null,
 						fileLine[42].matches(d) ? new BigDecimal(fileLine[42]) : null);
 
-				newAlimentList.add(alim);
+				newAlimentList.add(alim);*/
 				
 			}
 

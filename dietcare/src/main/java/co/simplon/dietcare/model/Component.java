@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "component")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @JsonIdentityInfo(
 	  	scope=Component.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
@@ -43,7 +43,7 @@ public class Component {
 	private DietComponent dietComponent;
 	
 	@JsonBackReference (value = "meal-components")
-	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_meal", nullable = true)
 	private Meal meal;
 	
