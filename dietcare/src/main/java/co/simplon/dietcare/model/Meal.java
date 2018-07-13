@@ -44,7 +44,7 @@ public class Meal {
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_moment", nullable = false)
-	private Moment moment;
+	private Moment moment  = new Moment();
 	
 	
 	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY)
