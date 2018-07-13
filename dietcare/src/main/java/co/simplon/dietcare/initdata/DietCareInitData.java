@@ -39,9 +39,9 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
-		loadCategoryTable("data/csv/groupes.csv");
-		loadAlimentTable("data/csv/aliments.csv");
-		loadGlycemicFile("data/csv/glycemique.csv");
+//		loadCategoryTable("data/csv/groupes.csv");
+//		loadAlimentTable("data/csv/aliments.csv");
+//		loadGlycemicFile("data/csv/glycemique.csv");
 	}
 	
 	// load category table
@@ -73,8 +73,6 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 	// load aliment table
 	private final void loadAlimentTable(String alimFileLocation) {
 		
-		System.exit(0);
-
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(CSV_SEPARATOR).build();
 
 		try (CSVReader reader = new CSVReaderBuilder(new FileReader(alimFileLocation)).withCSVParser(csvParser).build()) {
@@ -110,6 +108,8 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 						fileLine[8].matches(regex) ? new Float(fileLine[8].replace(',', '.')) : 0f,
 						fileLine[11].matches(regex) ? new Float(fileLine[11].replace(',', '.')) : 0f, null, categ);
 
+				System.out.println("Ajout aliment : " + alim);
+				
 				newAlimentList.add(alim);
 				
 			}

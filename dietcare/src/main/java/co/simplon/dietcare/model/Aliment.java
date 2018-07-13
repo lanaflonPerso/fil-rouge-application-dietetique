@@ -61,7 +61,6 @@ public class Aliment extends DietComponent {
 		this.lipids = lipids;
 		this.fibers = fibers;
 		this.ig = ig;
-		this.category = null;
 	}
 	
 	public Aliment(Long id, String name, String description, String visual, Float proteins, Float glucids, Float lipids,
@@ -134,7 +133,7 @@ public class Aliment extends DietComponent {
 	
 	@Override
 	public String toString() {
-		return "Aliment [id=" + this.getId() + ", name=" + this.getName() + ", category=" + category + ", description=" + this.getDescription()
+		return "Aliment [id=" + this.getId() + ", name=" + this.getName() + ", category id=" + category.getId() + ", description=" + this.getDescription()
 				+ ", visual=" + this.getVisual() + ", proteins=" + proteins + ", glucids=" + glucids + ", lipids=" + lipids + ", fibers="
 				+ fibers + ", ig=" + ig + "]";
 	}
