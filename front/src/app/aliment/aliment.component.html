@@ -16,7 +16,7 @@
 <p>
   <a routerLink="/aliment/add"><mat-icon>add_box</mat-icon></a>
 </p>
-
+<p class="error" *ngIf="errorMsg != ''">{{errorMsg}}</p>
 <div id="recipeList"  *ngIf="aliments.length > 0">
     <table class="table table-striped table-bordered">
         <thead>

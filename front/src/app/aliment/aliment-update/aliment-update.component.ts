@@ -84,12 +84,10 @@ export class AlimentUpdateComponent implements OnInit {
 
   public  onFileChanged(event) {
       this.file = event.target.files[0];
-
       const reader = new FileReader();
       const aliment = this.aliment;
       reader.onload = function(evt: ProgressEvent) {
-        console.log(evt);
-         aliment.visual =  evt.target.result;
+        aliment.visual =  evt.target.result;
       };
 
       reader.readAsDataURL(this.file);

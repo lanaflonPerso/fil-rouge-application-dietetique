@@ -19,11 +19,14 @@ export class CategoryComponent extends GenericComponent implements OnInit {
 
   ngOnInit() {
     this.loadCategories();
-    this.gererateDataTable();
   }
 
   private loadCategories() {
-    this.categoryService.getCategories().subscribe((categories) => { this.categories = categories; } );
+    this.categoryService.getCategories().subscribe((categories) => { 
+      this.categories = categories;
+      this.gererateDataTable();
+    }
+  );
   }
 
   public getCategories(): Category[] {

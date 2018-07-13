@@ -16,13 +16,13 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
-@Table(name = "component")
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
-	  	scope=Component.class,
+@Table(name = "mealcomponent")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIdentityInfo(
+	  	scope=MealComponent.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-	  property = "id")
-public class Component {
+	  property = "id")*/
+public class MealComponent {
 	
 	@Id
 	@GeneratedValue

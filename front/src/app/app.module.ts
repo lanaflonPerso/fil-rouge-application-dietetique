@@ -54,8 +54,6 @@ import { AddComponent } from './moment/add/add.component';
 import { DetailComponent } from './moment/detail/detail.component';
 import { MealEditComponent } from './meal/meal-edit/meal-edit.component';
 import { RecipeEditComponent } from './recipe/recipe-edit/recipe-edit.component';
-//import { ImageUploadModule } from 'angular2-image-upload';
-
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -127,8 +125,7 @@ export const routes: Routes = [
     MatSelectModule,
     FlexLayoutModule,
     RouterModule.forRoot(routes),
-    HttpClientModule,
-    //ImageUploadModule.forRoot()
+    HttpClientModule
   ],
   providers: [
     RecipeService,
