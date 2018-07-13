@@ -1,8 +1,6 @@
 import { GenericComponent } from './generic/generic.component';
 import { Component, OnInit } from '@angular/core';
 
-import { NgFlashMessageService } from 'ng-flash-messages';
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
