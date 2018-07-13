@@ -55,12 +55,18 @@ export class AlimentUpdateComponent implements OnInit {
   }
 
   public updateAliment() {
-    // this.alimentService.upload(this.file).subscribe((data) => {
-      // this.aliment.visual = data.secure_url;
-      this.alimentService.updateAliment(this.aliment).subscribe( () => {
+    if( this.file != null) {
+      this.alimentService.upload(this.file).subscribe((data) => {
+        this.aliment.visual = data.secure_url;
+      this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
         this.router.navigateByUrl('/aliment');
       });
-    // });
+      });
+    } else {
+      this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
+        this.router.navigateByUrl('/aliment');
+      });
+    }
   }
 
   public getAlimentById(id: number) {

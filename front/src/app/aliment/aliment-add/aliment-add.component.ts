@@ -36,7 +36,7 @@ export class AlimentAddComponent implements OnInit {
 
   public addAliment() {
 
-    if(this.file != null) {
+    if( this.file != null) {
       this.alimentService.upload(this.file).subscribe((data) => {
         this.aliment.visual = data.secure_url;
       this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
