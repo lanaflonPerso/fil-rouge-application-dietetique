@@ -14,6 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -21,10 +22,10 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Entity
 @Table(name = "moment")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@JsonIdentityInfo(
+/*@JsonIdentityInfo(
 	  	scope=Moment.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
-	  property = "id")
+	  property = "id")*/
 public class Moment {
 	
 	
@@ -40,7 +41,7 @@ public class Moment {
 	@Column(name = "name")
 	private String name;
 	
-	//@JsonManagedReference (value = "meal-moment")
+	@JsonIgnore
 	@OneToMany(mappedBy = "moment", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Meal> meals = new ArrayList<Meal>();
 		

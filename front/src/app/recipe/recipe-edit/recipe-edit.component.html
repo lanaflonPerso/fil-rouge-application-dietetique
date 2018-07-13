@@ -29,6 +29,10 @@
                         <div class="col-3">{{ingredient.quantity}} g</div>
                         
                     </div>
+                    <div class="row">
+                      <div class="col-3">Cg : </div>
+                      <div class="col-3">{{getRecipe().getCgFor100()}}</div>
+                    </div>
                   </fieldset>
                 </div>
               </form>      
@@ -50,7 +54,7 @@
           <div *ngFor="let aliment of getFilteredAliments()">
                 
             <mat-label class="label">{{aliment.name}} :</mat-label>
-            <img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />
+            <!--<img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />-->
           
             <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
             <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
