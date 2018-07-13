@@ -36,12 +36,18 @@ export class AlimentAddComponent implements OnInit {
 
   public addAliment() {
 
-    this.alimentService.upload(this.file).subscribe((data) => {
-      this.aliment.visual = data.secure_url;
-     this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
-      this.router.navigateByUrl('/aliment');
-    });
-    });
+    if(this.file != null) {
+      this.alimentService.upload(this.file).subscribe((data) => {
+        this.aliment.visual = data.secure_url;
+      this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
+        this.router.navigateByUrl('/aliment');
+      });
+      });
+    } else {
+      this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
+        this.router.navigateByUrl('/aliment');
+      });
+    }
 
 
   }
@@ -60,6 +66,16 @@ export class AlimentAddComponent implements OnInit {
 
   public  onFileChanged(event) {
     this.file = event.target.files[0];
+
+    const reader = new FileReader();
+    const aliment = this.aliment;
+    reader.onload = function(evt: ProgressEvent) {
+      console.log(evt);
+       aliment.visual =  evt.target.result != undefined ? evt.target.result : null;
+    };
+
+    reader.readAsDataURL(this.file);
+
   }
 
 }

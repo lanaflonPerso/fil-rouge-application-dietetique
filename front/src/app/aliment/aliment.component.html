@@ -40,15 +40,20 @@
                 <td> {{aliment.lipids}}</td>
                 <td> {{aliment.ig}}</td>               
                 <td> {{aliment.category?.name}} </td>
-                <td><img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="50" height="50" /></td>
+                <td>
+                  <ng-container *ngIf="aliment.visual">
+                    <img src="{{aliment.visual}}" title="photo de {{aliment.name}}" width="50" height="50" />
+                  </ng-container>
+                </td>
 
-      <td>
-        <a routerLink="/aliment/detail/{{aliment.id}}"><mat-icon>list</mat-icon></a>
-        -
-        <a routerLink="/aliment/update/{{aliment.id}}"><mat-icon>edit</mat-icon></a>
-       <!-- <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a> -->
-        - 
-        <a (click)="deleteAliment(aliment.id)"> <mat-icon>delete</mat-icon></a>
+                <td>
+                  <a routerLink="/aliment/detail/{{aliment.id}}"><mat-icon>list</mat-icon></a>
+                  -
+                  <a routerLink="/aliment/update/{{aliment.id}}"><mat-icon>edit</mat-icon></a>
+                <!-- <a routerLink="/aliment/{{aliment.name | lowercase}}"><mat-icon>edit</mat-icon></a> -->
+                  - 
+                  <a class="pointer" (click)="deleteAliment(aliment.id)"> <mat-icon>delete</mat-icon></a>
+                </td>
               </tr>
         </tbody>
       </table>

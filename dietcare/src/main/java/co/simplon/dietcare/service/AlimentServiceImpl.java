@@ -45,10 +45,5 @@ public class AlimentServiceImpl implements AlimentService {
 	@Override
 	public void deleteById(Long id) {
 		alimentRepository.deleteById(id);
-	}
-	
-	/*@Override
-	public Category getCategory(Aliment aliment) {
-		return aliment.getCategory();
-	}*/
+	}		
 }
