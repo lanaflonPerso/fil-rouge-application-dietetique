@@ -10,6 +10,7 @@ import { Moment } from '../../models/business/moment';
 import { Meal } from '../../models/business/meal';
 import { MealComponent } from '../../models/business/mealComponent';
 import { Router } from '@angular/router';
+import { Recipe } from '../../models/business/recipe';
 
 @Component({
   selector: 'app-meal-add',
@@ -29,6 +30,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   // private mealComponent: MealComponent[] = [];
 
   private aliments: Aliment[];
+  private recipes: Recipe[];
 
   constructor(private mealService: MealService,
               private recipeService: RecipeService,
@@ -42,6 +44,7 @@ export class MealAddComponent extends GenericComponent implements OnInit {
   ngOnInit() {
     this.loadMoments();
     this.loadAliments();
+    this.loadRecipes();
     this.meal = new Meal(null, '', '', null);
   }
 
@@ -93,15 +96,18 @@ export class MealAddComponent extends GenericComponent implements OnInit {
     return  this.aliments;
   }
 
-  public getRecipes() {
-    return  this.recipeService.getRecipes();
+  public getRecipes(): Recipe[] {
+    return  this.recipes;
   }
 
   public addAlimentToMeal(aliment: Aliment): void {
-    // this.mealService.addAlimentToMeal(this.meal, aliment, 100);
-    // this.mealComponent.push(new MealComponent(aliment.id, 100, aliment, null));
-   this.meal = this.mealService.addAlimentToMeal(this.meal, aliment, 100);
+   this.mealService.addAlimentToMeal(this.meal, aliment, 100);
    this.getCg();
+  }
+
+  public addRecipeToMeal(recipe: Recipe): void {
+    this.mealService.addRecipeToMeal(this.meal, recipe, 1);
+    this.getCg();
   }
 
   // https://www.w3schools.com/jsref/jsref_filter.asp
@@ -114,32 +120,56 @@ export class MealAddComponent extends GenericComponent implements OnInit {
     return mealComponent.aliment != null;
   }
 
+  public getMealRecipes(): MealComponent[] {
+    return this.meal.mealComponent.filter(this.checkIfIsRecipe);
+  }
+
+  public checkIfIsRecipe(mealComponent) {
+    // console.log('A = ' + mealComponent.recipe.name);
+    return mealComponent.recipe != null;
+  }
+
   public loadAliments() {
     return this.alimentService.getAliments().subscribe( (aliments) => { this.aliments = aliments; } );
   }
 
-  public getCg(): Number {
+  public loadRecipes() {
+    // return this.recipeService.getRecipes().subscribe( (recipes) => { this.recipes = recipes; } );
+    this.recipeService.getRecipes().subscribe( (recipes) => {
+                                                              this.recipes = recipes;
+                                                              // console.log(this.recipes[0].ingredients);
+                                                            }
+                                              );
+
+    return null;
+  }
+
+  public getCgAliments(): Number {
     let cg: Number = 0;
     if ( this.meal.mealComponent.length > 0) {
        for ( let i = 0 ; i < this.meal.mealComponent.length ; i++ ) {
+          if (this.meal.mealComponent[i].aliment != null) {
             cg = Number(cg) + ( this.meal.mealComponent[i].aliment.ig *  this.meal.mealComponent[i].quantity )  / 100;
+          }
        }
     }
     return Number.parseFloat(Number(cg).toFixed(2));
   }
 
-  public delAlimentFromMeal(aliment: Aliment) {
-    let indice = null;
-    for ( let i = 0;  i < this.meal.mealComponent.length ; i++) {
-      if ( aliment.id === this.meal.mealComponent[i].aliment.id) {
-        indice = i;
-        break;
-      }
-    }
-
-    if ( indice !== null) {
-      this.meal.mealComponent.splice(indice, 1);
-    }
+  public getCgRecipes(): Number {
+    return 0;
   }
+
+  public getCg(): Number {
+    return Number(this.getCgAliments()) + Number(this.getCgRecipes());
+  }
+
+  public delAlimentFromMeal(aliment: Aliment): void {
+    this.mealService.delAlimentFromMeal(this.meal, aliment);
+   }
+
+   public delRecipeFromMeal(recipe: Recipe): void {
+    this.mealService.delRecipeFromMeal(this.meal, recipe);
+   }
 
 }

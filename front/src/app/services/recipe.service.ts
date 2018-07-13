@@ -41,7 +41,6 @@ export class RecipeService {
   }
 
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
-
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
         const ingredient = recipe.ingredients[i];
