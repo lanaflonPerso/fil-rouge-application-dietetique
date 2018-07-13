@@ -33,12 +33,10 @@ export class RecipeService {
   }
 
   public addRecipe(recipe: Recipe): Observable<Recipe> {
-    console.log(recipe);
     return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
-    console.log(recipe);
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
