@@ -39,7 +39,7 @@ public class Aliment extends DietComponent {
 	@Column(name = "ig")
 	private Float ig;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_category", nullable = false)
 	private Category category = new Category();
 	
