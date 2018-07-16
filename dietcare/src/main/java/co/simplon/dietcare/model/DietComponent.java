@@ -48,7 +48,7 @@ public abstract class DietComponent {
 	@Column(name = "visual")
 	private String visual;
 	
-	
+	@JsonIgnore
 	@OneToMany(mappedBy = "dietComponent", fetch= FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<MealComponent> mealComponents = new ArrayList<MealComponent>();
 	
