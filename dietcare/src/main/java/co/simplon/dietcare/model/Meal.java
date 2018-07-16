@@ -24,8 +24,8 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "meal")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-/*@JsonIdentityInfo(
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(
 	  	scope=Meal.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 	  property = "id")*/
@@ -47,7 +47,7 @@ public class Meal {
 	private Moment moment  = new Moment();
 	
 	
-	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY)
+	@OneToMany(mappedBy = "meal", fetch= FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval=true)
 	private List<MealComponent> mealComponents = new ArrayList<MealComponent>();
 
 	
@@ -92,6 +92,32 @@ public class Meal {
 	}
 
 	public String toString() {
-		return "Meal = name : "+this.getName()+" date : "+this.getDate();
+		String str = "Meal = name : "+this.getName()+" date : "+this.getDate();
+		str += "\n Moment : ";
+		if(this.getMoment() != null) {
+			str += this.getMoment().getName();			
+		}
+		else {
+			str += "Vide";
+		}
+		
+		str += "\n Composition :";
+		if(this.getMealComponents().size() > 0) {
+			str += "Il y a "+this.getMealComponents().size() +" élément(s) \n : ";
+			for(MealComponent mealComponent : this.getMealComponents()) {
+				if(mealComponent.getDietComponent() != null) {
+					str += mealComponent.getDietComponent().getName() + " : quantité : " +mealComponent.getDietComponent() + " g ";;
+				}
+			}
+			
+		}else {
+			str += "Vide";
+		}
+		
+		return str;
+	}
+	
+	public void addMealComponent(MealComponent mealComponent) {
+		this.mealComponents.add(mealComponent);
 	}
 }

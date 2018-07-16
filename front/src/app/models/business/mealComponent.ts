@@ -11,13 +11,16 @@ export class MealComponent {
     dietComponent: DietComponent = null;
     aliment: Aliment = null;
     recipe: Recipe = null;
+    type: String;
 
     constructor(id: number, quantity: number, aliment: Aliment, recipe: Recipe) {
         this.id = id;
         this.quantity = quantity;
-        if(aliment !== null){
+        if ( aliment !== null ) {
+            this.type = 'aliment';
             this.dietComponent = aliment;
         } else if ( recipe !== null) {
+            this.type = 'recipe';
             this.dietComponent = recipe;
         }
         this.aliment = aliment;

@@ -12,13 +12,14 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 @Entity
 @Table(name = "mealcomponent")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-/*@JsonIdentityInfo(
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@JsonIdentityInfo(
 	  	scope=MealComponent.class,
 		generator = ObjectIdGenerators.PropertyGenerator.class, 
 	  property = "id")*/
@@ -37,10 +38,12 @@ public class MealComponent {
 		this.id = id;
 	}
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_dietcomponent", nullable = false)
 	private DietComponent dietComponent;
 	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_meal", nullable = false)
 	private Meal meal;

@@ -70,8 +70,8 @@ export class AlimentAddComponent implements OnInit {
     const reader = new FileReader();
     const aliment = this.aliment;
     reader.onload = function(evt: ProgressEvent) {
-      console.log(evt);
-       aliment.visual =  evt.target.result != undefined ? evt.target.result : null;
+      //console.log(evt);
+       //aliment.visual =  evt.target.result != undefined ? evt.target.result : null;
     };
 
     reader.readAsDataURL(this.file);

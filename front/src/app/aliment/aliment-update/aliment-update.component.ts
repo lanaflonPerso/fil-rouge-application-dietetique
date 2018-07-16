@@ -86,7 +86,7 @@ export class AlimentUpdateComponent implements OnInit {
       const reader = new FileReader();
       const aliment = this.aliment;
       reader.onload = function(evt: ProgressEvent) {
-        aliment.visual =  evt.target.result;
+        //aliment.visual =  evt.target.result;
       };
 
       reader.readAsDataURL(this.file);
