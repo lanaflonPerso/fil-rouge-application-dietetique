@@ -19,22 +19,22 @@ export class Recipe extends DietComponent {
         return this.ingredients;
     }
 
-    public getCg(): Number {
-        let cg: Number = 0;
+    public getCg(): number {
+        let cg = 0;
         if ( this.ingredients.length > 0) {
            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
-                cg = Number(cg) + Number(this.ingredients[i].getCg());
+                cg += Number(this.ingredients[i].getCg());
            }
         }
         return cg;
     }
 
-    public getCgFor100(): Number {
+    public getCgFor100(): number {
 
-        let cg100: Number = 0;
+        let cg100 = 0;
         if ( this.ingredients.length > 0) {
            for ( let i = 0 ; i < this.ingredients.length ; i++ ) {
-                cg100 = Number(cg100) + Number(this.ingredients[i].getCgFor100());
+                cg100 += Number(this.ingredients[i].getCgFor100());
            }
         }
         return cg100;
