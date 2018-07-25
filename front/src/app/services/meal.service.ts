@@ -27,12 +27,12 @@ export class MealService {
 
   }
 
-  public addAlimentToMeal(meal: Meal, aliment: Aliment, quantity: number): void {
+  public addAlimentToMeal(meal: Meal, aliment: Aliment, quantity: number): Meal {
     const myAliment: Aliment = new Aliment(
       aliment.id      ,
       aliment.name    ,
       aliment.visual  ,
-      aliment.description , 
+      aliment.description ,
       aliment.proteins,
       aliment.glucids,
       aliment.lipids,
@@ -55,9 +55,11 @@ export class MealService {
     } else {
       meal.mealComponents.push(new MealComponent( null, quantity, myAliment, null));
     }
+
+    return meal;
   }
 
-  public addRecipeToMeal(meal: Meal, recipe: Recipe, quantity: number): void {
+  public addRecipeToMeal(meal: Meal, recipe: Recipe, quantity: number): Meal {
     const myRecipe = new Recipe( recipe.id, recipe.name, recipe.description, recipe.visual);
     let indice = null;
     for ( let i = 0;  i < meal.mealComponents.length ; i++) {
@@ -74,6 +76,8 @@ export class MealService {
     } else {
       meal.mealComponents.push(new MealComponent( null, quantity, null, myRecipe));
     }
+
+    return meal;
   }
 
   public delAlimentFromMeal(meal: Meal, aliment: Aliment) {

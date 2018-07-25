@@ -16,12 +16,13 @@ export class Meal {
         this.moment = moment;
     }
 
-    public getCg() {
+    public getCg(): number {
         let cg = 0;
         for (let i = 0; i < this.mealComponents.length; i++) {
-            if(this.mealComponents[i].aliment !== null){
+            // cg += this.mealComponents[i].dietComponent.getCg();
+            if (this.mealComponents[i].type === 'aliment') {
                 cg += this.mealComponents[i].aliment.ig * this.mealComponents[i].quantity / 100;
-            } else if (this.mealComponents[i].recipe !== null){
+            } else if (this.mealComponents[i].type === 'recipe') {
                 cg += Number(this.mealComponents[i].recipe.getCgFor100()) * this.mealComponents[i].quantity;
             }
         }

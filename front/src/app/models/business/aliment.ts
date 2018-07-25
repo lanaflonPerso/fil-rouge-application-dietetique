@@ -39,4 +39,8 @@ export class Aliment extends DietComponent {
     public getEnergy(): number {
         return this.proteins * 4 + this.glucids * 4 + 9 * this.lipids;
     }
+
+    public getCg(): number {
+        return this.ig;
+    }
 }
