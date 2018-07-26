@@ -27,7 +27,7 @@ export class AlimentAddComponent implements OnInit {
 
   ngOnInit() {
     this.aliment = new Aliment(null, '', '', '' , 0, 0, 0, 0, 0);
-    this.categoryService.getCategories().subscribe((categories: Category[]) => { this.categories = categories; })
+    this.categoryService.getCategories().subscribe((categories: Category[]) => { this.categories = categories; });
   }
 
   public getAliment(): Aliment {
@@ -36,7 +36,7 @@ export class AlimentAddComponent implements OnInit {
 
   public addAliment() {
 
-    if( this.file != null) {
+    if (this.file != null) {
       this.alimentService.upload(this.file).subscribe((data) => {
         this.aliment.visual = data.secure_url;
       this.alimentService.addAliment(this.aliment).subscribe((aliment: Aliment) => {
@@ -70,8 +70,8 @@ export class AlimentAddComponent implements OnInit {
     const reader = new FileReader();
     const aliment = this.aliment;
     reader.onload = function(evt: ProgressEvent) {
-      //console.log(evt);
-       //aliment.visual =  evt.target.result != undefined ? evt.target.result : null;
+      // console.log(evt);
+       // aliment.visual =  evt.target.result != undefined ? evt.target.result : null;
     };
 
     reader.readAsDataURL(this.file);
