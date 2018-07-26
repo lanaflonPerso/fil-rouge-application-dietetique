@@ -1,0 +1,7 @@
+co.simplon.dietcare
+co.simplon.dietcare.controller
+co.simplon.dietcare.filter
+co.simplon.dietcare.initdata
+co.simplon.dietcare.model
+co.simplon.dietcare.repository
+co.simplon.dietcare.service

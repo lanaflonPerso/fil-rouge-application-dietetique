@@ -16,8 +16,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import co.simplon.dietcare.model.Aliment;
-import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.service.AlimentService;
+
+/**
+ * Controller for Aliment
+ * @author Franck ACHARD, Xavier TAGLIARINO, Ahmed BEN ROUAG
+ *
+ */
 
 @Controller
 @RequestMapping("/aliment")
@@ -26,15 +31,21 @@ public class AlimentController {
 	@Inject
 	AlimentService alimentService;
 	
-	// find all categories
+	/**
+	 * Find all aliments
+	 * @return list of all aliments
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findAll() {
 		return alimentService.findAll();
 	}
 	
-	
-	// aliment creation
+	/**
+	 * Create aliment
+	 * @param aliment: aliment to create
+	 * @return the id of the created aliment
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -43,7 +54,11 @@ public class AlimentController {
 		return id;
 	}
 	
-	// update aliment
+	/**
+	 * Update aliment
+	 * @param aliment: aliment to update
+	 * @return aliment updated
+	 */
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -52,28 +67,43 @@ public class AlimentController {
 		return alimentService.save(aliment);
 	}
 	
-	// find category by id
+	/**
+	 * Find aliment by id
+	 * @param id: id of aliment to find
+	 * @return the aliment
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Optional<Aliment> findbyId(@PathVariable("id") Long id) {
 		return alimentService.findbyId(id);
 	}
 	
-	// find aliment by name
+	/**
+	 * Find aliments by exact name
+	 * @param name: name of aliments to find
+	 * @return list of matching aliments
+	 */
 	@RequestMapping(params = "name", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findbyName(@RequestParam("name") String name) {
 		return alimentService.findbyName(name);
 	}
 
-	// find aliment by name like
+	/**
+	 * Find aliments by name like
+	 * @param namelike: partial name of aliments to find
+	 * @return list of matching aliments
+	 */
 	@RequestMapping(params = "namelike", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Aliment> findByNameLike(@RequestParam("namelike") String namelike) {
 		return alimentService.findByNameLike(namelike);
 	}
 		
-	// delete aliment by id
+	/**
+	 * Delete aliment by id
+	 * @param id: id of aliment to delete
+	 */
 	@RequestMapping(value = "/{id}",method = RequestMethod.DELETE)
 	@ResponseBody
 	public void deleteById(@PathVariable("id") Long id) {
