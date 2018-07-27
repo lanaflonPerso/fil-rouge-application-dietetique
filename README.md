@@ -1,7 +1,7 @@
 # fil-rouge-application-dietetique
 
 ## Description
-DietCare est une application de gestion de base de données alimentaire permettant de connaitre la qualité nutritive de chaque aliment et de constituer des recette et repas.
+DietCare est une application de gestion de base de données alimentaire permettant de connaitre la qualité nutritive de chaque aliment et de constituer des recettes et repas.
 
 ## Documentation
 
