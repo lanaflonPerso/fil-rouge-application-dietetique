@@ -24,6 +24,12 @@ import co.simplon.dietcare.model.Category;
 import co.simplon.dietcare.repository.AlimentRepository;
 import co.simplon.dietcare.repository.CategoryRepository;
 
+/**
+ * Init data for aliments and categories
+ * @deprecated Use sql scripts instead
+ * @author Franck ACHARD (adaptated from Jules GRAND's code)
+ *
+ */
 @Component
 public class DietCareInitData implements ApplicationListener<ContextRefreshedEvent> {
 
@@ -37,6 +43,7 @@ public class DietCareInitData implements ApplicationListener<ContextRefreshedEve
 		this.alimentRepo = alimentRepo;
 	}
 
+	
 	@Override
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 //		loadCategoryTable("data/csv/groupes.csv");

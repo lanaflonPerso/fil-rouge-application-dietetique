@@ -49,7 +49,7 @@
               </div>
       </div>
       
-  <div class="col-6 " class="border">
+  <div class="col-6" class="border">
     <div id="search" >
           
         <form class="example-form" >
@@ -63,15 +63,18 @@
           </fieldset>
         </form>
 
+        <table>
         <div *ngFor="let aliment of getFilteredAliments()">
-              
-          <mat-label class="label">{{aliment.name}} :</mat-label>
-          <!--<img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />-->
-        
-          <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
-          <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
-        
-        </div> 
+          <tr>
+            <td><mat-label class="label">{{aliment.name}} :</mat-label></td>
+            <!--<img src="{{aliment.visual}}" alt="photo de {{aliment.name}}" width="100" height="100" />-->
+            <td>
+              <mat-icon (click)="addAlimentToRecipe(aliment)">add</mat-icon>
+              <mat-icon (click)="removeAlimentFromRecipe(aliment)">remove</mat-icon>
+          </td>
+          </tr>
+        </div>
+      </table>
       </div>     
     </div>
   </div>
