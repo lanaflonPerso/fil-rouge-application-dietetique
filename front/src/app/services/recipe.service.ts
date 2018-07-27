@@ -18,12 +18,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class RecipeService {
-
+  /**
+   * Url to access to the WebService
+   */
   private restUrl = 'http://localhost:8090/recipe';
 
   constructor(private http: HttpClient) {
   }
-
+/**
+ * Call a WS to get a recipe
+ *
+ * @param {number} id id of the recipe to get
+ * @returns Observable<Recipe>
+ */
   public getRecipe(id: Number): Observable<Recipe> {
     return this.http.get<Recipe>(this.restUrl + '/'  + id).pipe(
       map< Recipe, any>(
@@ -31,16 +38,32 @@ export class RecipeService {
       )
     );
   }
-
+/**
+ * Call a WS to add a recipe
+ *
+ * @param {Recipe} recipe Params of recipe to add
+ * @returns Observable<Recipe>
+ */
   public addRecipe(recipe: Recipe): Observable<Recipe> {
     console.log(recipe);
     return this.http.post<Recipe>(this.restUrl, recipe, httpOptions);
   }
-
+/**
+ * Call a WS to update a recipe
+ *
+ * @param {Recipe} recipe Params of recipe to update
+ * @returns Observable<Recipe>
+ */
   public updateRecipe(recipe: Recipe): Observable<Recipe> {
     return this.http.put<Recipe>(this.restUrl, recipe, httpOptions);
   }
 
+/**
+ * Create a recipe with their ingredients
+ *
+ * @param {Recipe} recipe Params of recipe to upgrade
+ * @returns Recipe
+ */
   public makeRecipeWithIngredientsAndAliment(recipe): Recipe  {
     const myRecipe: Recipe = new Recipe(recipe.id, recipe.name, recipe.visual, recipe.description);
       for ( let i = 0 ; i < recipe.ingredients.length ; i++ ) {
@@ -64,6 +87,11 @@ export class RecipeService {
     return myRecipe;
   }
 
+/**
+ * Get list of recipes
+ *
+ * @returns Observable<Recipe[]>
+ */
   public getRecipes(): Observable<Recipe[]> {
 
     return this.http.get<Recipe[]>(this.restUrl).pipe<Recipe[]>(
@@ -75,6 +103,14 @@ export class RecipeService {
       );
   }
 
+  /**
+   * Add or increase an aliment to a recipe
+   *
+   * @param {Recipe} recipe
+   * @param {Aliment} aliment
+   * @param {number} quantity
+   * @returns void
+   */
  public addAlimentToRecipe(recipe: Recipe, aliment: Aliment, quantity: number) {
 
     let indice = null;
@@ -93,6 +129,14 @@ export class RecipeService {
 
   }
 
+  /**
+   * Remove or decrease an aliment from a recipe
+   *
+   * @param {Recipe} recipe
+   * @param {Aliment} aliment
+   * @param {number} quantity
+   * @returns void
+   */
   removeAlimentFromRecipe(recipe: Recipe, aliment: Aliment, quantity: number) {
     const ingredient: Ingredient = recipe.getIngredients().find(myIngredient => myIngredient.aliment.id === aliment.id);
 

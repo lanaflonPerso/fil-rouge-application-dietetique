@@ -20,13 +20,23 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class MealService {
-  
 
+/**
+ * Url to access to the WebService
+ */
   private restUrl = 'http://localhost:8090/meal';
+
   constructor(private http: HttpClient) {
 
   }
-
+/**
+ * Add an aliment to meal
+ *
+ * @param {Meal} meal
+ * @param {Aliment} aliment
+ * @param {number} quantity
+ * @returns Meal
+ */
   public addAlimentToMeal(meal: Meal, aliment: Aliment, quantity: number): Meal {
     const myAliment: Aliment = new Aliment(
       aliment.id      ,
@@ -59,6 +69,14 @@ export class MealService {
     return meal;
   }
 
+  /**
+   * Add a recipe to meal
+   *
+   * @param {Meal} meal
+   * @param {Recipe} recipe
+   * @param {number} quantity
+   * @returns Meal
+   */
   public addRecipeToMeal(meal: Meal, recipe: Recipe, quantity: number): Meal {
     const myRecipe = new Recipe( recipe.id, recipe.name, recipe.description, recipe.visual);
     let indice = null;
@@ -80,6 +98,13 @@ export class MealService {
     return meal;
   }
 
+  /**
+   * Delete an aliment from meal
+   * 
+   * @param {Meal} meal
+   * @param {Aliment} aliment
+   * @returns void
+   */
   public delAlimentFromMeal(meal: Meal, aliment: Aliment) {
     let indice = null;
     for ( let i = 0;  i < meal.mealComponents.length ; i++) {
@@ -96,6 +121,13 @@ export class MealService {
     }
   }
 
+  /**
+   * Delete a recipe from meal
+   *
+   * @param {Meal} meal
+   * @param {Recipe} recipe
+   * @returns void
+   */
   public delRecipeFromMeal(meal: Meal, recipe: Recipe): void {
     let indice = null;
     for ( let i = 0;  i < meal.mealComponents.length ; i++) {
@@ -112,15 +144,32 @@ export class MealService {
     }
   }
 
+  /**
+   * Call a WS to Add a meal to the database
+   *
+   * @param {Meal} meal Meal to add
+   * @returns Observable<Meal[]>
+   */
   public addMeal(meal: Meal): Observable<Meal> {
     console.log(meal);
     return this.http.post<Meal>(this.restUrl, meal, httpOptions);
   }
 
+  /**
+   * Call a WS to get a list of meals
+   *
+   * @returns Observable<Meal[]>
+   */
   public getMeals(): Observable<Meal[]> {
     return this.http.get<Meal[]>(this.restUrl);
   }
 
+  /**
+   * Call a WS to get a specfic meal
+   *
+   * @param {number} id id of the meal to get
+   * @returns Observable<Meal[]>   *
+   */
   public getMeal(id: number): Observable<Meal> {
     return this.http.get<Meal>(this.restUrl + '/' + id);
   }
