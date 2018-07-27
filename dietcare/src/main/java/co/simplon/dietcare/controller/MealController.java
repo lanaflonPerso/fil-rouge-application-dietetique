@@ -6,7 +6,6 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -27,8 +26,12 @@ import co.simplon.dietcare.model.Moment;
 import co.simplon.dietcare.model.Recipe;
 import co.simplon.dietcare.service.MealService;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
+/**
+ * Controller for Meal
+ * @author Franck ACHARD, Xavier TAGLIARINO, Ahmed BEN ROUAG
+ *
+ */
 @Controller
 @RequestMapping("/meal")
 public class MealController {
@@ -36,7 +39,6 @@ public class MealController {
 	@Inject
 	MealService mealService;
 	
-	// meal creation
 	/*@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -45,6 +47,11 @@ public class MealController {
 		return mealService.save(meal).getId();
 	}*/
 	
+	/**
+	 * Create meal
+	 * @param httpEntity: http request for meal creation
+	 */
+	// plan B pour la creation de "meal" car on n'y arrive pas avec @RequestBody...
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -237,7 +244,11 @@ public class MealController {
 		
 	}
 	
-	// update meal
+	/**
+	 * Update meal
+	 * @param meal: meal to update
+	 * @return meal updated
+	 */
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -245,35 +256,53 @@ public class MealController {
 		return mealService.save(meal);
 	}
 	
-	// find all meals
+	/**
+	 * Find all meals
+	 * @return list of all meals
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Meal> findAll() {
 		return mealService.findAll();
 	}
 	
-	// find category by id
+	/**
+	 * Find meal by id
+	 * @param id: id of meal to find
+	 * @return the meal
+	 */	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Optional<Meal> findbyId(@PathVariable("id") Long id) {
 		return mealService.findbyId(id);
 	}
 	
-	// find meal by name
+	/**
+	 * Find meals by exact name
+	 * @param name: name of meal to find
+	 * @return list of matching meals
+	 */
 	@RequestMapping(params = "name", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Meal> findbyName(@RequestParam("name") String name) {
 		return mealService.findbyName(name);
 	}
 
-	// find meal by name like
+	/**
+	 * Find meals by name like
+	 * @param namelike: partial name of meals to find
+	 * @return list of matching meals
+	 */
 	@RequestMapping(params = "namelike", method = RequestMethod.GET)
 	@ResponseBody
 	public List<Meal> findByNameLike(@RequestParam("namelike") String namelike) {
 		return mealService.findByNameLike(namelike);
 	}
 	
-	// delete meal by id
+	/**
+	 * Delete meal
+	 * @param meal: meal to delete
+	 */
 	@RequestMapping(method = RequestMethod.DELETE)
 	@ResponseBody
 	public void deleteById(@RequestBody Meal meal) {

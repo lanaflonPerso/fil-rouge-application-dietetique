@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
  
+/**
+ * CORS Filter
+ * @author Xavier TAGLIARINO
+ *
+ */
 @Component
 public class CorsFilter extends OncePerRequestFilter {
 

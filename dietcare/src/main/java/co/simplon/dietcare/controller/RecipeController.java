@@ -11,14 +11,17 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import co.simplon.dietcare.model.Aliment;
-import co.simplon.dietcare.model.Ingredient;
 import co.simplon.dietcare.model.Recipe;
 import co.simplon.dietcare.service.RecipeService;
+
+/**
+ * Controller for Recipe
+ * @author Franck ACHARD, Xavier TAGLIARINO, Ahmed BEN ROUAG
+ *
+ */
 
 @Controller
 @RequestMapping("/recipe")
@@ -27,7 +30,11 @@ public class RecipeController {
 	@Inject
 	RecipeService recipeService;
 	
-	// recipe creation
+	/**
+	 * Create recipe
+	 * @param recipe: recipe to create
+	 * @return the id of the created recipe
+	 */
 	@RequestMapping(method = RequestMethod.POST)
 	@ResponseStatus(HttpStatus.CREATED)
 	@ResponseBody
@@ -36,7 +43,11 @@ public class RecipeController {
 		return recipeService.save(recipe).getId();
 	}
 	
-	// update recipe
+	/**
+	 * Update recipe
+	 * @param recipe: recipe to update
+	 * @return recipe updated
+	 */
 	@RequestMapping(method = RequestMethod.PUT)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -45,14 +56,21 @@ public class RecipeController {
 		return recipeService.save(recipe);
 	}
 	
-	// find all recipes
+	/**
+	 * Find all recipes
+	 * @return list of all recipes
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	@ResponseBody
 	public List<Recipe> findAll() {
 		return recipeService.findAll();
 	}
 	
-	// find recipe by id
+	/**
+	 * Find recipe by id
+	 * @param id: id of recipe to find
+	 * @return the recipe
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public Optional<Recipe> findbyId(@PathVariable("id") Long id) {
