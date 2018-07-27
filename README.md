@@ -8,5 +8,9 @@
 ### Guide utilisateur
 ### Guide développement
 
-## TODO & bugs connus
+## TODO
+
+
+## Bugs connus
+* Pagination KO sur page accueil aliments => temps chargement des 2800 aliments conséquent
 
