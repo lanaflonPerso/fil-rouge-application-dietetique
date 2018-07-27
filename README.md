@@ -11,6 +11,8 @@ DietCare est une application de gestion de base de données alimentaire permetta
 
 ### [Guide développement](https://github.com/turbo-xav/fil-rouge-application-dietetique/releases/download/v1.0.2/dietcare-dev-et-deploiement.docx)
 
+### [Modèle de données (format StarUML)](https://github.com/turbo-xav/fil-rouge-application-dietetique/releases/download/v1.0.2/fil-rouge.mdj)
+
 ## TODO
 * front :
   * contrôle de valeur & format des champs
