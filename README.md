@@ -22,6 +22,8 @@ DietCare est une application de gestion de base de données alimentaire permetta
 * back :
   * gestion des exceptions
   * finir la Javadoc... (seuls les controllers ont été couverts)
+* finir la doc de dev
+* finir la doc utilisateur
 
 ## Bugs connus
 * Front :
