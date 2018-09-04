@@ -13,6 +13,10 @@ DietCare est une application de gestion de base de données alimentaire permetta
 
 ### [Modèle de données](https://github.com/turbo-xav/fil-rouge-application-dietetique/releases/download/v1.0.2/dietcare-MD.pdf)
 
+### Maquettes Balsamiq
+* [Export PNG des maquettes](https://github.com/turbo-xav/fil-rouge-application-dietetique/releases/download/v1.0.2/export-balsamiq-Aliments-.-Co.zip)
+* [Export du projet Balsamiq](https://github.com/turbo-xav/fil-rouge-application-dietetique/releases/download/v1.0.2/export-balsamiq-Aliments-.-Co.bmpr)
+
 ## TODO
 * front :
   * contrôle de valeur & format des champs
